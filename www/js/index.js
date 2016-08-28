@@ -67,6 +67,7 @@ var app = {
         console.log(device);
 
         //alert(device.uuid);
+        window.open = cordova.InAppBrowser.open;
 
         $.getScript( "js/postdeviceready.js" )
             .done(function( script, textStatus ) {
@@ -102,7 +103,6 @@ var app = {
         push.on('notification', function(data) {
             console.log(data);
             alert(data.title+" Message: " +data.message);
-            alert(data.sound);
         });
         push.on('error', function(e) {
             console.log(e);
