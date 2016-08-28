@@ -100,3 +100,8 @@ h3.mc-text-danger  {
 .nascosto {
     display:none;
 }
+
+
+.ios7header {
+    margin-top:20px;
+}
