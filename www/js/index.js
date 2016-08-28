@@ -100,10 +100,13 @@ var app = {
             "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
         push.on('registration', function(data) {
 // data.registrationId
+            console.log(data);
         });
         push.on('notification', function(data) {
+            console.log(data);
         });
         push.on('error', function(e) {
+            console.log(e);
 // e.message
         });
 
