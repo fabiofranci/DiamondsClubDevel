@@ -24,7 +24,9 @@
   <gap:plugin name="org.apache.cordova.network-information" source="npm" />
   <gap:plugin name="org.apache.cordova.file" source="npm" />
 
-  <plugin name="phonegap-plugin-push" source="npm" />
+  <plugin name="phonegap-plugin-push" source="npm">
+    <variable name="SENDER_ID" value="12345" />
+  </plugin>
 
 
   <icon src="res/icon_new.png"/>
