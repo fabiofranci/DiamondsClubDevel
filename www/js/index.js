@@ -64,15 +64,6 @@ var app = {
         console.log(id);
         console.log(device);
 
-        if (device.platform=='iOS') {
-            var numb=device.version;
-            if (parsefloat(numb)>=7.0) {
-                console.log("IOS versione > 7 ovvero "+numb);
-            } else {
-                console.log("IOS versione <7 overro "+numb);
-            }
-        }
-
         //alert(device.uuid);
         function playAudio(url) {
             alert("playAudio on "+url);
@@ -97,7 +88,16 @@ var app = {
             });
         //checkConnessione();
 
-    //------- (i) start app here -----//
+        if (device.platform=='iOS') {
+            var numb=device.version;
+            if (parseFloat(numb)>=7.0) {
+                document.body.style.marginTop = "20px";
+            }
+        }
+
+
+
+        //------- (i) start app here -----//
 
 //(i) inizializzazione
         function print_r(printthis, returnoutput) {
