@@ -1,0 +1,102 @@
+﻿body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+}
+h1,h2,h3,h4,h5 {
+    color:#0071bc;
+}
+
+.ui-btn-icon-notext.ui-corner-all {
+    -webkit-border-radius: .3125em;
+    border-radius: .3125em;
+}
+.ui-title {
+    color:#fff;
+}
+.mc-text-center {
+    text-align:center;
+}
+.mc-top-margin-1-5 {
+    margin-top:1.5em;
+}
+h2.mc-text-danger,
+h3.mc-text-danger  {
+    color:red;
+}
+
+.bi-invalid-input {
+    background-color:#fffacd!important;
+}
+
+.bi-invisible {
+    display:none;
+}
+
+.bi-ctn-err {
+    background-color:#ffe1cd;
+    padding:0 .5em;
+    margin-bottom:.5em;
+    border: 1px solid #e9cfbd;
+    border-radius:3px 3px;
+}
+
+.bi-header {
+    border: 0px; position: fixed; width: 100%; top: 0px; left: 0px; z-index: 21; background:#616161;
+}
+
+.fontsize12 {
+    font-size:12px;
+}
+
+.badge {
+  background: #BA070F;
+  color: #fff;
+  padding: 1px 7px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 999;
+  border-radius: .8em;
+  border: 2px solid #fff;
+}
+
+.ui-badge-container {
+  position: relative;
+}
+
+.wrap {
+    white-space: normal !important;
+}
+
+/* Declare fonts to use and their server location */
+@font-face{
+    font-family:'Whitney';
+    src:url(http://[path-to-font-on-a-publicly-accessible-server]/whitney-semibold.eot);
+    src:url(http://[path-to-font-on-a-publicly-accessible-server]/whitney-semibold.eot?#iefix) format("embedded-    opentype"),url(http://[path-to-font-on-a-publicly-accessible-server]/whitney-semibold.woff) format("woff"),url(http://[path-to-font-on-a-publicly-accessible-server]/whitney-semibold.ttf) format("truetype"),url(http://[path-to-font-on-a-publicly-accessible-server]/whitney-semibold.svg#WhitneySemiboldRegular) format("svg");
+    font-weight:normal;
+    font-style:normal
+}
+
+/* Override any existing styles with your own fonts - may need to use !important for some properties to work */
+* {
+    font-family: 'Whitney', sans-serif;
+}
+
+
+.custom {
+    padding: 0;
+}
+
+.custom > div {
+    margin: 0;
+}
+
+.custom > div > label {
+    border-radius: 0;
+    border: 0;
+}
+
+.nascosto {
+    display:none;
+}
