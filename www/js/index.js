@@ -96,6 +96,18 @@ var app = {
             }
         }
 
+        var push = PushNotification.init({ "android": {"senderID": "553559042102"},
+            "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
+        push.on('registration', function(data) {
+// data.registrationId
+        });
+        push.on('notification', function(data) {
+        });
+        push.on('error', function(e) {
+// e.message
+        });
+
+
 
 
         //------- (i) start app here -----//
