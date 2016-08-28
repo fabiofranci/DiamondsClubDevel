@@ -42,7 +42,7 @@ h3.mc-text-danger  {
 }
 
 .bi-header {
-    border: 0px; position: fixed; width: 100%; top: 0px; left: 0px; z-index: 21; background:#616161;
+    border: 0px; position: fixed; width: 100%; top: 0px; left: 0px; z-index: 21; background:#616161; padding-top:20px;
 }
 
 .fontsize12 {
