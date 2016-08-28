@@ -68,7 +68,6 @@ var app = {
 
         //alert(device.uuid);
 
-        //senderID: "553559042102"
         $.getScript( "js/postdeviceready.js" )
             .done(function( script, textStatus ) {
                 console.log('playaudio and base64 loaded');
