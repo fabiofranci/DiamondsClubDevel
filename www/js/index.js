@@ -63,6 +63,16 @@ var app = {
     receivedEvent: function(id) {
         console.log(id);
         console.log(device);
+
+        if (device.platform=='iOS') {
+            var numb=device.version;
+            if (parsefloat(numb)>=7.0) {
+                console.log("IOS versione > 7 ovvero "+numb);
+            } else {
+                console.log("IOS versione <7 overro "+numb);
+            }
+        }
+
         //alert(device.uuid);
         function playAudio(url) {
             alert("playAudio on "+url);
