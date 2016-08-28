@@ -92,7 +92,7 @@ var app = {
                 //$(".ui-header-fixed").addClass("ios7header");
             }
         }
-        
+
         var push = PushNotification.init({ "android": {"senderID": "553559042102"},
             "ios": {"alert": "true", "badge": "true", "sound": "true", "senderID":553559042102, "gcmSandbox":"true"}, "windows": {} } );
         push.on('registration', function(data) {
@@ -101,6 +101,8 @@ var app = {
         });
         push.on('notification', function(data) {
             console.log(data);
+            alert(data.title+" Message: " +data.message);
+            alert(data.sound);
         });
         push.on('error', function(e) {
             console.log(e);
