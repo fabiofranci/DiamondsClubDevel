@@ -92,7 +92,7 @@ var app = {
             var numb=device.version;
             if (parseFloat(numb)>=7.0) {
                 console.log("bingo! IOS versione "+numb);
-                document.body.style.marginTop = "20px";
+                $(".ui-header").css("margin-top:20px");
             }
         }
 
