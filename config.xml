@@ -25,7 +25,7 @@
   <gap:plugin name="org.apache.cordova.file" source="npm" />
 
   <plugin name="phonegap-plugin-push" source="npm">
-    <variable name="SENDER_ID" value="12345" />
+    <variable name="SENDER_ID" value="553559042102" />
   </plugin>
 
 
