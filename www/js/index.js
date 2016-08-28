@@ -66,9 +66,6 @@ var app = {
         console.log(id);
         console.log(device);
 
-        //alert(device.uuid);
-        window.open = cordova.InAppBrowser.open;
-
         $.getScript( "js/postdeviceready.js" )
             .done(function( script, textStatus ) {
                 console.log('playaudio and base64 loaded');
