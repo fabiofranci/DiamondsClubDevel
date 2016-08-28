@@ -62,6 +62,7 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         console.log(id);
+        console.log(device);
         //alert(device.uuid);
         function playAudio(url) {
             alert("playAudio on "+url);
