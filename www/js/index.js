@@ -821,7 +821,7 @@ var app = {
                 htmldettaglio+="<p>"+materiale.didascalia+"</p>";
                 if (materiale.tipo=='audio') {
                     var urlaudio="http://www.diamondsclub.it/"+materiale.risorsa;
-                    htmldettaglio+="<a href='#' class='ui-btn ui-btn-d' onclick='playAudio("+urlaudio+");'>Ascolta Audio</a>";
+                    htmldettaglio+="<a href='#' class='ui-btn ui-btn-d' onclick='playAudio(\""+urlaudio+"\");'>Ascolta Audio</a>";
 
                     //htmldettaglio+="<audio id='successSound' src='http://www.diamondsclub.it/"+materiale.risorsa+"' type='audio/mpeg'> Your browser does not support the <code>audio</code> element </audio>";
                 }
