@@ -40,6 +40,19 @@
 
  */
 
+function playAudio(encodedUrl) {
+    url=Base64.decode(encodedUrl);
+    alert("playAudio on "+url);
+    var my_media = new Media(url,
+        // success callback
+        function () { console.log("playAudio():Audio Success"); },
+        // error callback
+        function (err) { console.log("playAudio():Audio Error: " + err); }
+    );
+    // Play audio
+    my_media.play();
+}
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -155,20 +168,6 @@ var app = {
 // Decode the String
         var decodedString = Base64.decode(encodedString);
         console.log(decodedString); // Outputs: "Hello World!"
-
-        function playAudio(encodedUrl) {
-            url=Base64.decode(encodedUrl);
-            alert("playAudio on "+url);
-            var my_media = new Media(url,
-                // success callback
-                function () { console.log("playAudio():Audio Success"); },
-                // error callback
-                function (err) { console.log("playAudio():Audio Error: " + err); }
-            );
-            // Play audio
-            my_media.play();
-        }
-
 
         if (window.localStorage.getItem('codiceUtente')>0) {
         } else {
