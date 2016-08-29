@@ -125,7 +125,7 @@ var app = {
 
     // Update DOM on a Received Event
     lanciaApp: function(id) {
-        function playAudio(encodedUrl) {
+        function playAudio(encodedUrl) { 
             url=Base64.decode(encodedUrl);
             console_log(my_media);
             if (my_media) {
