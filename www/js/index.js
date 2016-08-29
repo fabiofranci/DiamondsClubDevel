@@ -123,6 +123,18 @@ var app = {
 
     // Update DOM on a Received Event
     lanciaApp: function(id) {
+        function playAudio(encodedUrl) {
+            url=Base64.decode(encodedUrl);
+            alert("playAudio on "+url);
+            var my_media = new Media(url,
+                // success callback
+                function () { console.log("playAudio():Audio Success"); },
+                // error callback
+                function (err) { console.log("playAudio():Audio Error: " + err); }
+            );
+            // Play audio
+            my_media.play();
+        }
 
         function inizializzazione_variabili() {
             console.log("Dentro inizializzazione_variabili");
@@ -695,13 +707,13 @@ var app = {
                             if (materiale.tipo=='video') {
                                 htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a class='youtube-media' href='http://www.youtube.com/embed/"+materiale.videocode+"?autoplay=1&wmode=opaque&fs=1'> ";
                             }
-                            else if  (materiale.tipo=='audio') {
+                            if  (materiale.tipo=='audio') {
 
-                                var urlaudio="http://www.diamondsclub.it/"+materiale.risorsa;
+                                var urlaudio="http://www.diamondsclub.it"+materiale.risorsa;
                                 var encodedUrl=Base64.encode(urlaudio);
                                 htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='playAudio(\""+encodedUrl+"\");'>";
                             }
-                            else {
+                            if (materiale.tipo=='link' || materiale.tipo=='pdf') { 
 //                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' datasottocat='"+sottocat[i]+"' datamateriale='"+j+"' class='btn-materiale-dettaglio'>";
                                 htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='window.open(materiale.risorsa, \'_system\')'>";
                             }
