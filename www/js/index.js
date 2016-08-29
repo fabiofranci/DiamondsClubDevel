@@ -128,7 +128,7 @@ var app = {
 
             });
         });
-    }
+    },
 
     // Update DOM on a Received Event
     lanciaApp: function(id) {
