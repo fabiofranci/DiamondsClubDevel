@@ -102,6 +102,7 @@ var app = {
         push.on('registration', function(data) {
             // data.registrationId
             console.log(data);
+            app.lanciaApp('deviceready');
         });
         push.on('notification', function(data) {
             console.log(data);
@@ -111,7 +112,6 @@ var app = {
             console.log(e);
 // e.message
         });
-        app.lanciaApp('deviceready');
     },
 
 
