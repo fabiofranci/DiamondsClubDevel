@@ -59,38 +59,44 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        console.log(id);
-        console.log(device);
-
+        console.log("deviceready");
         $.getScript( "js/postdeviceready.js" )
             .done(function( script, textStatus ) {
                 console.log('playaudio and base64 loaded');
+                app.iniettajquerymobile('deviceready');
             })
             .fail(function( jqxhr, settings, exception ) {
                 alert('Errore loading playaudio and base64');
             });
 
+
+    },
+
+    iniettajquerymobile: function(id) {
+        console.log(device);
+        console.log("01 - Dentro iniettajquerymobile");
         $.getScript( "lib/jqm/jquery.mobile-1.4.5.js" )
             .done(function( script, textStatus ) {
-                $.getScript('js/jqm.page.params.js');
+                app.iniettajquery2('deviceready');
             })
             .fail(function( jqxhr, settings, exception ) {
                 alert("Errore caricamento jquery mobile");
             });
-        //checkConnessione();
+    }
 
-        if (device.platform=='iOS') {
-            var numb=device.version;
-            if (parseFloat(numb)>=7.0) {
-                console.log("bingo! IOS versione "+numb);
-                //$(".ui-header-fixed").addClass("ios7header");
-            }
-        }
+    iniettajquery2: function(id) {
+        console.log("02 - Dentro iniettajquery2");
+        $.getScript( "js/jqm.page.params.js" )
+            .done(function( script, textStatus ) {
+                app.lanciaApp('deviceready');
+            })
+            .fail(function( jqxhr, settings, exception ) {
+                alert("Errore caricamento jquery page params");
+            });
+    }
 
+    inizializzaPush: function(id) {
+        console.log("03 - Dentro inizializzaPush");
         var push = PushNotification.init({ "android": {"senderID": "553559042102"},
             "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
         push.on('registration', function(data) {
@@ -105,13 +111,24 @@ var app = {
             console.log(e);
 // e.message
         });
+    }
 
 
-
+    // Update DOM on a Received Event
+    lanciaApp: function(id) {
+        console.log("04 - Dentro lanciaApp");
 
         //------- (i) start app here -----//
 
 //(i) inizializzazione
+        if (device.platform=='iOS') {
+            var numb=device.version;
+            if (parseFloat(numb)>=7.0) {
+                console.log("bingo! IOS versione "+numb);
+                //$(".ui-header-fixed").addClass("ios7header");
+            }
+        }
+
         function print_r(printthis, returnoutput) {
             var output = '';
 
