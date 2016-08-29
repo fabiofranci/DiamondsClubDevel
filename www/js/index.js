@@ -103,7 +103,7 @@ var app = {
             // data.registrationId
             console.log(data);
             //ora devo scrivere sul db in remoto il codice di registrazione, poi posso lanciare l'app
-            app.aspettaMobileInit('deviceready');
+            app.prelancio('deviceready');
         });
         push.on('notification', function(data) {
             console.log(data);
@@ -115,14 +115,11 @@ var app = {
         });
     },
 
-
-    aspettaMobileInit: function(id) {
-        console.log("04 - Dentro aspettaMobileInit");
+    prelancio: function(id) {
+        console.log("04 - Dentro prelancio");
             $.mobile.defaultPageTransition = "slide";
-            $('#page-index').on('pageshow',function() {
                 inizializzazione_variabili();
                 app.lanciaApp('deviceready');
-            });
     },
 
     // Update DOM on a Received Event
