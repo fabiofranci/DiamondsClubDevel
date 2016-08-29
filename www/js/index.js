@@ -126,16 +126,20 @@ var app = {
     // Update DOM on a Received Event
     lanciaApp: function(id) {
         function playAudio(encodedUrl) {
-            url=Base64.decode(encodedUrl);
-            console.log("playAudio on "+url);
-            var my_media = new Media(url,
-                // success callback
-                function () { console.log("playAudio():Audio Success"); },
-                // error callback
-                function (err) { console.log("playAudio():Audio Error: " + err); }
-            );
-            // Play audio
-            my_media.play();
+            if (my_media) {
+                my_media.pause();
+            } else {
+                url=Base64.decode(encodedUrl);
+                console.log("playAudio on "+url);
+                my_media = new Media(url,
+                    // success callback
+                    function () { console.log("playAudio():Audio Success"); },
+                    // error callback
+                    function (err) { console.log("playAudio():Audio Error: " + err); }
+                );
+                // Play audio
+                my_media.play();
+            }
         }
 
         function inizializzazione_variabili() {
@@ -179,6 +183,8 @@ var app = {
         var viaggi_first_time=0;
         var ospiti_first_time=0;
         var materiali_first_time=0;
+
+        var my_media=null;
 
         inizializzazione_variabili();
 
