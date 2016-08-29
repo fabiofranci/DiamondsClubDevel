@@ -60,19 +60,6 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         console.log("deviceready");
-        $.getScript( "js/postdeviceready.js" )
-            .done(function( script, textStatus ) {
-                console.log('playaudio and base64 loaded');
-                app.iniettajquerymobile('deviceready');
-            })
-            .fail(function( jqxhr, settings, exception ) {
-                alert('Errore loading playaudio and base64');
-            });
-
-
-    },
-
-    iniettajquerymobile: function(id) {
         console.log(device);
         console.log(Media);
         console.log("01 - Dentro iniettajquerymobile");
