@@ -1,6 +1,6 @@
 function playAudio(encodedUrl) {
     url=Base64.decode(encodedUrl);
-    console_log(my_media);
+    console.log(my_media);
     if (my_media) {
         my_media.pause();
     } else {
