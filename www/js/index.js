@@ -172,6 +172,8 @@ var app = {
         var ospiti_first_time=0;
         var materiali_first_time=0;
 
+        inizializzazione_variabili();
+
         var initial = '#page-index';
         if(window.localStorage.getItem('idUser')>0) {
             initial = '#page-index-logged';
@@ -625,8 +627,8 @@ var app = {
                 url: "https://www.diamondsclub.it/api/materiali.php",
                 data: jQuery.param(params) ,
                 success: function (data) {
-                    console.log("SUCCESS!");
-                    console.log(data);
+                    //console.log("SUCCESS!");
+                    //console.log(data);
                     resp=data.resp;
                     sottocat=data.sottocategorie;
                     md5_materiali=data.md5;
@@ -636,7 +638,7 @@ var app = {
                     window.localStorage.setItem("sottocategorie_materiali_memoria",JSON.stringify(sottocat));
                 },
                 error: function (e) {
-                    console.log("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
+                    //console.log("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
                     //console.log(e);
                     resp=JSON.parse(window.localStorage.getItem("materiali_memoria"));
                     sottocat=JSON.parse(window.localStorage.getItem("sottocategorie_materiali_memoria"));
