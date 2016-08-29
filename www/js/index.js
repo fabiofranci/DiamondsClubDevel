@@ -118,16 +118,11 @@ var app = {
 
     aspettaMobileInit: function(id) {
         console.log("04 - Dentro aspettaMobileInit");
-
-        $(document).on("mobileinit", function (event, ui) {
             $.mobile.defaultPageTransition = "slide";
-
             $('#page-index').on('pageshow',function() {
                 inizializzazione_variabili();
                 app.lanciaApp('deviceready');
-
             });
-        });
     },
 
     // Update DOM on a Received Event
