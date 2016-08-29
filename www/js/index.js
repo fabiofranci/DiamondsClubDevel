@@ -127,7 +127,7 @@ var app = {
     lanciaApp: function(id) {
         function playAudio(encodedUrl) {
             url=Base64.decode(encodedUrl);
-            alert("playAudio on "+url);
+            console.log("playAudio on "+url);
             var my_media = new Media(url,
                 // success callback
                 function () { console.log("playAudio():Audio Success"); },
@@ -712,13 +712,15 @@ var app = {
                             if  (materiale.tipo=='audio') {
                                 var urlaudio="http://www.diamondsclub.it"+materiale.risorsa;
                                 var encodedUrl=Base64.encode(urlaudio);
-                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='playAudio(\""+encodedUrl+"\");'>";
+                                var riga="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='playAudio(\""+encodedUrl+"\");'>";
+                                console.log(riga);
+                                htmlcalendario+=riga;
                             }
                             if (materiale.tipo=='link' || materiale.tipo=='pdf') {
                                 var DClink=materiale.risorsa;
                                 var DCtarget='_system';
                                 var riga="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='window.open(\""+DClink+"\", \""+DCtarget+"\")'>"
-                                console.log(riga);
+                                //console.log(riga);
                                 htmlcalendario+=riga;
                             }
                             htmlcalendario+="<img src='http://www.diamondsclub.it/"+materiale.immagine+"'>";
@@ -1167,9 +1169,9 @@ var app = {
         $("#btn-submit-login").click(function(){
             var txt_email=$("#txt-email").val();
             var txt_password=$("#txt-password").val();
-            console.log("login email:"+txt_email);
-            console.log("login password:"+txt_password);
-            console.log("secret:"+secret);
+            //console.log("login email:"+txt_email);
+            //console.log("login password:"+txt_password);
+            //console.log("secret:"+secret);
 
             if (checkConnessione()) {
                 $.mobile.loading( 'show', {
