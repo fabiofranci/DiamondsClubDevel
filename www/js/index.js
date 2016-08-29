@@ -779,8 +779,16 @@ var app = {
                             htmlcalendario+="<li class='"+tipodato+" "+classedato+"' data-role='list-divider'><h3>"+materiale.didascalia+"</h3></li>";
                             if (materiale.tipo=='video') {
                                 htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a class='youtube-media' href='http://www.youtube.com/embed/"+materiale.videocode+"?autoplay=1&wmode=opaque&fs=1'> ";
-                            } else {
-                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' datasottocat='"+sottocat[i]+"' datamateriale='"+j+"' class='btn-materiale-dettaglio'>";
+                            }
+                            else if  (materiale.tipo=='audio') {
+
+                                var urlaudio="http://www.diamondsclub.it/"+materiale.risorsa;
+                                var encodedUrl=Base64.encode(urlaudio);
+                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='playAudio(\""+encodedUrl+"\");'>";
+                            }
+                            else {
+//                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' datasottocat='"+sottocat[i]+"' datamateriale='"+j+"' class='btn-materiale-dettaglio'>";
+                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='window.open(materiale.risorsa, \'_system\')'>";
                             }
                             htmlcalendario+="<img src='http://www.diamondsclub.it/"+materiale.immagine+"'>";
                             htmlcalendario+="<p><strong>"+materiale.autore+"</strong></p>";
@@ -828,36 +836,6 @@ var app = {
 // ---------------------------------------------------------------------------------------------------------------
 // (f) pagina materiali, retrieve and deploy
 // ---------------------------------------------------------------------------------------------------------------
-
-        $('body').on('click', 'a.btn-materiale-dettaglio', function() {
-            var pageleaderoffset=$(this).offset().top;
-            window.localStorage.setItem("pageleaderoffsetMateriali",pageleaderoffset);
-            var htmldettaglio="";
-            var sottocategoria=$(this).attr('datasottocat');
-            var j=$(this).attr('datamateriale');
-            resp=JSON.parse(window.localStorage.getItem("materiali_memoria"));
-            var materiale=resp[sottocategoria][j];
-
-            if (materiale.tipo=='link' || materiale.tipo=='pdf') {
-                window.open(materiale.risorsa, '_system');
-            } else {
-                var width=$( window ).width()-30;
-                htmldettaglio ="<h3>"+materiale.didascalia+"</h3>";
-                htmldettaglio+="<img width='"+width+"' src='http://www.diamondsclub.it/"+materiale.immagine+"'>";
-                htmldettaglio+="<p><strong>"+materiale.autore+"</strong></p>";
-                htmldettaglio+="<p>"+materiale.didascalia+"</p>";
-                if (materiale.tipo=='audio') {
-                    var urlaudio="http://www.diamondsclub.it/"+materiale.risorsa;
-                    var encodedUrl=Base64.encode(urlaudio);
-                    htmldettaglio+="<a href='#' class='ui-btn ui-btn-d' onclick='playAudio(\""+encodedUrl+"\");'>Ascolta Audio</a>";
-
-                    //htmldettaglio+="<audio id='successSound' src='http://www.diamondsclub.it/"+materiale.risorsa+"' type='audio/mpeg'> Your browser does not support the <code>audio</code> element </audio>";
-                }
-                $("#dettaglio-materiale-content").html(htmldettaglio);
-                $.mobile.navigate("#page-materiali-dettaglio");
-            }
-
-        });
 
         $('body').on('change', '.impostazioni-checkbox', function() {
             if ($(this).prop('checked')) {
