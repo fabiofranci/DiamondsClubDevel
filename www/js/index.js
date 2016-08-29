@@ -124,6 +124,24 @@ var app = {
 
     inizializzazione_variabili: function() {
         console.log("Dentro inizializzazione_variabili");
+
+        //global vars (?)
+        var secret="";
+        var nomeUtenteLoggato="";
+        var idUser="";
+        var idOspite="";
+
+        var md5_eventi      ="";
+        var md5_leader      ="";
+        var md5_viaggi      ="";
+        var md5_materiali   ="";
+        var md5_incaricati  ="";
+        var md5_ospiti      ="";
+        var leader_first_time=0;
+        var viaggi_first_time=0;
+        var ospiti_first_time=0;
+        var materiali_first_time=0;
+
         secret="jk08lasit76hnjvm98hnj46ukjbfadksdfas";
         nomeUtenteLoggato=window.localStorage.getItem('nome');
         $(".iduserval").html(nomeUtenteLoggato);
@@ -150,23 +168,6 @@ var app = {
 
         console.log("05 - Dentro lanciaApp");
         //------- (i) start app here -----//
-
-        //global vars (?)
-        var secret="";
-        var nomeUtenteLoggato="";
-        var idUser="";
-        var idOspite="";
-
-        var md5_eventi      ="";
-        var md5_leader      ="";
-        var md5_viaggi      ="";
-        var md5_materiali   ="";
-        var md5_incaricati  ="";
-        var md5_ospiti      ="";
-        var leader_first_time=0;
-        var viaggi_first_time=0;
-        var ospiti_first_time=0;
-        var materiali_first_time=0;
 
         var initial = '#page-index';
         if(window.localStorage.getItem('idUser')>0) {
@@ -1156,9 +1157,9 @@ var app = {
         $("#btn-submit-login").click(function(){
             var txt_email=$("#txt-email").val();
             var txt_password=$("#txt-password").val();
-            //alert(txt_email);
-            //alert(txt_password);
-            //alert(secret);
+            console.log("login email:"+txt_email);
+            console.log("login password:"+txt_password);
+            console.log("secret:"+secret);
 
             if (checkConnessione()) {
                 $.mobile.loading( 'show', {
