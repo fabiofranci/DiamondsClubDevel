@@ -719,7 +719,7 @@ var app = {
                                 var urlaudio="http://www.diamondsclub.it"+materiale.risorsa;
                                 var encodedUrl=Base64.encode(urlaudio);
                                 var riga="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='playAudio(\""+encodedUrl+"\");'>";
-                                console.log(riga);
+                                //console.log(riga);
                                 htmlcalendario+=riga;
                             }
                             if (materiale.tipo=='link' || materiale.tipo=='pdf') {
