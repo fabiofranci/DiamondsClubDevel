@@ -751,11 +751,6 @@ var app = {
 
         $("#page-materiali").on( "pageshow", function(event){
             $.mobile.loading( 'hide');
-            var pageleaderoffset=window.localStorage.getItem("pageleaderoffsetMateriali");
-            if (pageleaderoffset>80) {
-                //alert(pageleaderoffset);
-                $.mobile.silentScroll(pageleaderoffset-80);
-            }
         });
 
 // ---------------------------------------------------------------------------------------------------------------
