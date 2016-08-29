@@ -103,7 +103,7 @@ var app = {
             // data.registrationId
             console.log(data);
             //ora devo scrivere sul db in remoto il codice di registrazione, poi posso lanciare l'app
-            app.lanciaApp('deviceready');
+            app.aspettaMobileInit('deviceready');
         });
         push.on('notification', function(data) {
             console.log(data);
@@ -116,11 +116,51 @@ var app = {
     },
 
 
+    aspettaMobileInit: function(id) {
+        console.log("04 - Dentro aspettaMobileInit");
+
+        $(document).on("mobileinit", function (event, ui) {
+            $.mobile.defaultPageTransition = "slide";
+
+            $('#page-index').on('pageshow',function() {
+                inizializzazione_variabili();
+                app.lanciaApp('deviceready');
+
+            });
+        });
+    }
+
     // Update DOM on a Received Event
     lanciaApp: function(id) {
-        console.log("04 - Dentro lanciaApp");
-
+        console.log("05 - Dentro lanciaApp");
         //------- (i) start app here -----//
+
+        //global vars (?)
+        var secret="";
+        var nomeUtenteLoggato="";
+        var idUser="";
+        var idOspite="";
+
+        var md5_eventi      ="";
+        var md5_leader      ="";
+        var md5_viaggi      ="";
+        var md5_materiali   ="";
+        var md5_incaricati  ="";
+        var md5_ospiti      ="";
+        var leader_first_time=0;
+        var viaggi_first_time=0;
+        var ospiti_first_time=0;
+        var materiali_first_time=0;
+
+        var initial = '#page-index';
+        if(window.localStorage.getItem('idUser')>0) {
+            initial = '#page-index-logged';
+        }
+        if(window.localStorage.getItem('idOspite')>0) {
+            initial = '#page-index-logged';
+        }
+        $.mobile.navigate(initial);
+
 
 //(i) inizializzazione
         if (device.platform=='iOS') {
@@ -148,37 +188,7 @@ var app = {
             }
         }
 
-//global vars
-
-
-        var secret="";
-        var nomeUtenteLoggato="";
-        var idUser="";
-        var idOspite="";
-
-        var md5_eventi      ="";
-        var md5_leader      ="";
-        var md5_viaggi      ="";
-        var md5_materiali   ="";
-        var md5_incaricati  ="";
-        var md5_ospiti      ="";
-        var leader_first_time=0;
-        var viaggi_first_time=0;
-        var ospiti_first_time=0;
-        var materiali_first_time=0;
-
-
-// Define the string
-        var string = 'Hello World!';
-
-// Encode the String
-        var encodedString = Base64.encode(string);
-        console.log(encodedString); // Outputs: "SGVsbG8gV29ybGQh"
-
-// Decode the String
-        var decodedString = Base64.decode(encodedString);
-        console.log(decodedString); // Outputs: "Hello World!"
-
+        //controllo che ci sia in memoria il codiceUtente altrimenti forzo il logout
         if (window.localStorage.getItem('codiceUtente')>0) {
         } else {
             logoutfunction();
@@ -206,96 +216,7 @@ var app = {
 
         }
 
-// End boilerplate code.
-
 //(f) inizializzazione
-
-        $(document).on("mobileinit", function (event, ui) {
-            $.mobile.defaultPageTransition = "slide";
-
-            $('#page-index').on('pageshow',function() {
-                inizializzazione_variabili();
-
-                var initial = '#page-index';
-                if(window.localStorage.getItem('idUser')>0) {
-                    initial = '#page-index-logged';
-                }
-                if(window.localStorage.getItem('idOspite')>0) {
-                    initial = '#page-index-logged';
-                }
-                $.mobile.navigate(initial);
-            });
-        });
-
-// ---------------------------------------------------------------------------------------------------------------
-//(i) menu delle pagine, funzioni particolari per le singole pagine
-// ---------------------------------------------------------------------------------------------------------------
-        $(document).on("pagecontainerbeforeshow", function (event, ui) {
-            if (typeof ui.toPage == "object") {
-                switch (ui.toPage.attr("id")) {
-                    case "page-index":
-                        var idUser=window.localStorage.getItem('idUser');
-                        var idOspite=window.localStorage.getItem('idOspite');
-                        var initial = '#page-index';
-                        if(idUser>0) {
-                            initial = '#page-index-logged';
-                            $.mobile.navigate(initial);
-                        }
-                        if(idOspite>0) {
-                            initial = '#page-index-logged';
-                            $.mobile.navigate(initial);
-                        }
-                        break;
-                    case "page-index-logged":
-                        var idUser=window.localStorage.getItem('idUser');
-                        var idOspite=window.localStorage.getItem('idOspite');
-                        var initial = '#page-index';
-                        if (idUser>0) {
-                            initial = '#page-index-logged';
-                        } else if (idOspite>0) {
-                            initial = '#page-index-logged';
-                        } else {
-                            $.mobile.navigate(initial);
-                        }
-                        break;
-                    case "page-n21":
-                        $( "#popupMap iframe" )
-                            .attr( "width", 0 )
-                            .attr( "height", 0 );
-
-                        $( "#popupMap iframe" ).contents().find( "#map_canvas" )
-                            .css( { "width" : 0, "height" : 0 } );
-
-                        $( "#popupMap" ).on({
-                            popupbeforeposition: function() {
-                                var size = scale( 480, 320, 0, 1 ),
-                                    w = size.width,
-                                    h = size.height;
-
-                                $( "#popupMap iframe" )
-                                    .attr( "width", w )
-                                    .attr( "height", h );
-
-                                $( "#popupMap iframe" ).contents().find( "#map_canvas" )
-                                    .css( { "width": w, "height" : h } );
-                            },
-                            popupafterclose: function() {
-                                $( "#popupMap iframe" )
-                                    .attr( "width", 0 )
-                                    .attr( "height", 0 );
-
-                                $( "#popupMap iframe" ).contents().find( "#map_canvas" )
-                                    .css( { "width": 0, "height" : 0 } );
-                            }
-                        });
-
-                        break;
-                }
-            }
-        });
-// ---------------------------------------------------------------------------------------------------------------
-//(f) menu delle pagine, funzioni particolari per le singole pagine
-// ---------------------------------------------------------------------------------------------------------------
 
 
 // ---------------------------------------------------------------------------------------------------------------
