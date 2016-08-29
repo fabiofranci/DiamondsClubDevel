@@ -88,7 +88,7 @@ var app = {
         console.log("02 - Dentro iniettajquery2");
         $.getScript( "js/jqm.page.params.js" )
             .done(function( script, textStatus ) {
-                app.lanciaApp('deviceready');
+                app.inizializzaPush('deviceready');
             })
             .fail(function( jqxhr, settings, exception ) {
                 alert("Errore caricamento jquery page params");
@@ -111,6 +111,7 @@ var app = {
             console.log(e);
 // e.message
         });
+        app.lanciaApp('deviceready');
     },
 
 
