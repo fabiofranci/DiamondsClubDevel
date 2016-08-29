@@ -708,14 +708,12 @@ var app = {
                                 htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a class='youtube-media' href='http://www.youtube.com/embed/"+materiale.videocode+"?autoplay=1&wmode=opaque&fs=1'> ";
                             }
                             if  (materiale.tipo=='audio') {
-
                                 var urlaudio="http://www.diamondsclub.it"+materiale.risorsa;
                                 var encodedUrl=Base64.encode(urlaudio);
                                 htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='playAudio(\""+encodedUrl+"\");'>";
                             }
-                            if (materiale.tipo=='link' || materiale.tipo=='pdf') { 
-//                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' datasottocat='"+sottocat[i]+"' datamateriale='"+j+"' class='btn-materiale-dettaglio'>";
-                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='window.open(materiale.risorsa, \'_system\')'>";
+                            if (materiale.tipo=='link' || materiale.tipo=='pdf') {
+                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='window.open(\'materiale.risorsa\', \'_system\')'>";
                             }
                             htmlcalendario+="<img src='http://www.diamondsclub.it/"+materiale.immagine+"'>";
                             htmlcalendario+="<p><strong>"+materiale.autore+"</strong></p>";
