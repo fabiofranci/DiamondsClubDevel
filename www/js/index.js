@@ -716,7 +716,9 @@ var app = {
                             if (materiale.tipo=='link' || materiale.tipo=='pdf') {
                                 var DClink=materiale.risorsa;
                                 var DCtarget='_system';
-                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='window.open("+DClink+", "+DCtarget+")'>";
+                                var riga="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='window.open(\'"+DClink+"\', \'"+DCtarget+"\')'>"
+                                console.log(riga);
+                                htmlcalendario+=riga;
                             }
                             htmlcalendario+="<img src='http://www.diamondsclub.it/"+materiale.immagine+"'>";
                             htmlcalendario+="<p><strong>"+materiale.autore+"</strong></p>";
