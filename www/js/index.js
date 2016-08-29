@@ -126,18 +126,20 @@ var app = {
     // Update DOM on a Received Event
     lanciaApp: function(id) {
         function playAudio(encodedUrl) {
+            url=Base64.decode(encodedUrl);
+            my_media = new Media(url,
+                // success callback
+                function () { console.log("playAudio():Audio Success"); },
+                // error callback
+                function (err) { console.log("playAudio():Audio Error: " + err); }
+            );
             if (my_media) {
+                alert("pausa");
                 my_media.pause();
             } else {
-                url=Base64.decode(encodedUrl);
-                console.log("playAudio on "+url);
-                my_media = new Media(url,
-                    // success callback
-                    function () { console.log("playAudio():Audio Success"); },
-                    // error callback
-                    function (err) { console.log("playAudio():Audio Error: " + err); }
-                );
+                //console.log("playAudio on "+url);
                 // Play audio
+                alert("play");
                 my_media.play();
             }
         }
