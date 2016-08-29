@@ -118,12 +118,36 @@ var app = {
     prelancio: function(id) {
         console.log("04 - Dentro prelancio");
             $.mobile.defaultPageTransition = "slide";
-                inizializzazione_variabili();
+                app.inizializzazione_variabili();
                 app.lanciaApp('deviceready');
     },
 
+    inizializzazione_variabili: function() {
+        console.log("Dentro inizializzazione_variabili");
+        secret="jk08lasit76hnjvm98hnj46ukjbfadksdfas";
+        nomeUtenteLoggato=window.localStorage.getItem('nome');
+        $(".iduserval").html(nomeUtenteLoggato);
+        idUser=window.localStorage.getItem('idUser');
+        idOspite=window.localStorage.getItem('idOspite');
+
+        md5_eventi      =window.localStorage.getItem('md5_eventi');
+        md5_leader      =window.localStorage.getItem('md5_leader');
+        md5_viaggi      =window.localStorage.getItem('md5_viaggi');
+        md5_incaricati  =window.localStorage.getItem('md5_incaricati');
+        md5_ospiti      =window.localStorage.getItem('md5_ospiti');
+        md5_materiali   =window.localStorage.getItem('md5_materiali');
+
+        if (window.localStorage.getItem('platino')=='si') {
+            $("#btn-incaricati").show();
+        } else {
+            $("#btn-incaricati").hide();
+        }
+    },
+
+
     // Update DOM on a Received Event
     lanciaApp: function(id) {
+
         console.log("05 - Dentro lanciaApp");
         //------- (i) start app here -----//
 
@@ -186,28 +210,6 @@ var app = {
             logoutfunction();
         }
 
-        function inizializzazione_variabili(){
-            secret="jk08lasit76hnjvm98hnj46ukjbfadksdfas";
-            nomeUtenteLoggato=window.localStorage.getItem('nome');
-            $(".iduserval").html(nomeUtenteLoggato);
-            idUser=window.localStorage.getItem('idUser');
-            idOspite=window.localStorage.getItem('idOspite');
-
-            md5_eventi      =window.localStorage.getItem('md5_eventi');
-            md5_leader      =window.localStorage.getItem('md5_leader');
-            md5_viaggi      =window.localStorage.getItem('md5_viaggi');
-            md5_incaricati  =window.localStorage.getItem('md5_incaricati');
-            md5_ospiti      =window.localStorage.getItem('md5_ospiti');
-            md5_materiali   =window.localStorage.getItem('md5_materiali');
-
-            if (window.localStorage.getItem('platino')=='si') {
-                $("#btn-incaricati").show();
-            } else {
-                $("#btn-incaricati").hide();
-            }
-
-        }
-
 //(f) inizializzazione
 
 
@@ -237,7 +239,7 @@ var app = {
             window.localStorage.removeItem('md5_ospiti');
             window.localStorage.removeItem('ospiti_memoria');
             window.localStorage.removeItem('pageleaderoffset');
-            inizializzazione_variabili();
+            app.inizializzazione_variabili();
         }
 
         $(".logout-button").click(function(){
@@ -1185,7 +1187,7 @@ var app = {
                             $(".iduserval").html(nomeUtenteLoggato);
                             $.mobile.navigate("#page-index-logged");
                             $.mobile.loading( 'hide' );
-                            inizializzazione_variabili();
+                            app.inizializzazione_variabili();
                             return;
                         } else if (resp.id_ospite>0) {
                             nomeUtenteLoggato=resp.nome+' '+resp.cognome+' (o)';
@@ -1200,7 +1202,7 @@ var app = {
                             $(".iduserval").html(nomeUtenteLoggato);
                             $.mobile.navigate("#page-index-logged");
                             $.mobile.loading( 'hide' );
-                            inizializzazione_variabili();
+                            app.inizializzazione_variabili();
                             return;
                         } else {
                             $.mobile.loading( 'hide' );
