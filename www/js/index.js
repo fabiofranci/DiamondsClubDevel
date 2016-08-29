@@ -82,7 +82,7 @@ var app = {
             .fail(function( jqxhr, settings, exception ) {
                 alert("Errore caricamento jquery mobile");
             });
-    }
+    },
 
     iniettajquery2: function(id) {
         console.log("02 - Dentro iniettajquery2");
@@ -93,7 +93,7 @@ var app = {
             .fail(function( jqxhr, settings, exception ) {
                 alert("Errore caricamento jquery page params");
             });
-    }
+    },
 
     inizializzaPush: function(id) {
         console.log("03 - Dentro inizializzaPush");
@@ -111,7 +111,7 @@ var app = {
             console.log(e);
 // e.message
         });
-    }
+    },
 
 
     // Update DOM on a Received Event
