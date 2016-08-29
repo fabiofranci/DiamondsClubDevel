@@ -1,7 +1,5 @@
     var my_media=null;
 
-    inizializzazione_variabili();
-
     function playAudio(encodedUrl) {
         url=Base64.decode(encodedUrl);
         console.log(my_media);
