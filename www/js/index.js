@@ -102,6 +102,7 @@ var app = {
         push.on('registration', function(data) {
             // data.registrationId
             console.log(data);
+            //ora devo scrivere sul db in remoto il codice di registrazione, poi posso lanciare l'app
             app.lanciaApp('deviceready');
         });
         push.on('notification', function(data) {
