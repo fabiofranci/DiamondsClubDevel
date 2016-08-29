@@ -714,7 +714,9 @@ var app = {
                                 htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='playAudio(\""+encodedUrl+"\");'>";
                             }
                             if (materiale.tipo=='link' || materiale.tipo=='pdf') {
-                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='window.open(\'materiale.risorsa\', \'_system\')'>";
+                                var DClink=materiale.risorsa;
+                                var DCtarget='_system';
+                                htmlcalendario+="<li class='"+tipodato+" "+classedato+"'><a href='#' onclick='window.open(DClink, DCtarget)'>";
                             }
                             htmlcalendario+="<img src='http://www.diamondsclub.it/"+materiale.immagine+"'>";
                             htmlcalendario+="<p><strong>"+materiale.autore+"</strong></p>";
