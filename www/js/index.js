@@ -626,6 +626,7 @@ var app = {
                 data: jQuery.param(params) ,
                 success: function (data) {
                     console.log("SUCCESS!");
+                    console.log(data);
                     resp=data.resp;
                     sottocat=data.sottocategorie;
                     md5_materiali=data.md5;
