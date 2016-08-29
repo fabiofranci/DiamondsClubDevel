@@ -118,29 +118,11 @@ var app = {
     prelancio: function(id) {
         console.log("04 - Dentro prelancio");
             $.mobile.defaultPageTransition = "slide";
-                app.inizializzazione_variabili();
                 app.lanciaApp('deviceready');
     },
 
     inizializzazione_variabili: function() {
         console.log("Dentro inizializzazione_variabili");
-
-        //global vars (?)
-        var secret="";
-        var nomeUtenteLoggato="";
-        var idUser="";
-        var idOspite="";
-
-        var md5_eventi      ="";
-        var md5_leader      ="";
-        var md5_viaggi      ="";
-        var md5_materiali   ="";
-        var md5_incaricati  ="";
-        var md5_ospiti      ="";
-        var leader_first_time=0;
-        var viaggi_first_time=0;
-        var ospiti_first_time=0;
-        var materiali_first_time=0;
 
         secret="jk08lasit76hnjvm98hnj46ukjbfadksdfas";
         nomeUtenteLoggato=window.localStorage.getItem('nome');
@@ -165,9 +147,26 @@ var app = {
 
     // Update DOM on a Received Event
     lanciaApp: function(id) {
-
         console.log("05 - Dentro lanciaApp");
         //------- (i) start app here -----//
+        //global vars (?)
+        var secret="";
+        var nomeUtenteLoggato="";
+        var idUser="";
+        var idOspite="";
+
+        var md5_eventi      ="";
+        var md5_leader      ="";
+        var md5_viaggi      ="";
+        var md5_materiali   ="";
+        var md5_incaricati  ="";
+        var md5_ospiti      ="";
+        var leader_first_time=0;
+        var viaggi_first_time=0;
+        var ospiti_first_time=0;
+        var materiali_first_time=0;
+
+        app.inizializzazione_variabili();
 
         var initial = '#page-index';
         if(window.localStorage.getItem('idUser')>0) {
