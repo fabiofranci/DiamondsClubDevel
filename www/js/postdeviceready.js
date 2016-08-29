@@ -3,7 +3,8 @@
         console.log(my_media);
         if (my_media) {
             my_media.pause();
-        } 
+        }
+        if (encodedUrl!=audioAttuale) {
             my_media = new Media(url,
                 // success callback
                 function () { console.log("playAudio():Audio Success"); },
@@ -11,5 +12,7 @@
                 function (err) { console.log("playAudio():Audio Error: " + err); }
             );
             my_media.play();
+            audioAttuale=encodedUrl;
+        }
     }
 
