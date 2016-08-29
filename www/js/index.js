@@ -74,6 +74,7 @@ var app = {
 
     iniettajquerymobile: function(id) {
         console.log(device);
+        console.log(Media);
         console.log("01 - Dentro iniettajquerymobile");
         $.getScript( "lib/jqm/jquery.mobile-1.4.5.js" )
             .done(function( script, textStatus ) {
