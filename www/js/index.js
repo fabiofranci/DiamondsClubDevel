@@ -125,7 +125,7 @@ var app = {
 
     // Update DOM on a Received Event
     lanciaApp: function(id) {
-        function playAudio(encodedUrl) { 
+        function playAudio(encodedUrl) {
             url=Base64.decode(encodedUrl);
             console_log(my_media);
             if (my_media) {
@@ -202,6 +202,8 @@ var app = {
             var numb=device.version;
             if (parseFloat(numb)>=7.0) {
                 console.log("bingo! IOS versione "+numb);
+                $('[data-role="header"]').addClass("ios7");
+                $('.ui-btn-left').addClass("ios7-header-button");
                 //$(".ui-header-fixed").addClass("ios7header");
             }
         }
