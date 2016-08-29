@@ -127,19 +127,16 @@ var app = {
     lanciaApp: function(id) {
         function playAudio(encodedUrl) {
             url=Base64.decode(encodedUrl);
-            my_media = new Media(url,
-                // success callback
-                function () { console.log("playAudio():Audio Success"); },
-                // error callback
-                function (err) { console.log("playAudio():Audio Error: " + err); }
-            );
+            console_log(my_media);
             if (my_media) {
-                alert("pausa");
                 my_media.pause();
             } else {
-                //console.log("playAudio on "+url);
-                // Play audio
-                alert("play");
+                my_media = new Media(url,
+                    // success callback
+                    function () { console.log("playAudio():Audio Success"); },
+                    // error callback
+                    function (err) { console.log("playAudio():Audio Error: " + err); }
+                );
                 my_media.play();
             }
         }
