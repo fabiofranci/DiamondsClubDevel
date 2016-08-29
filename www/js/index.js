@@ -92,9 +92,9 @@ var app = {
         }
 
         var push = PushNotification.init({ "android": {"senderID": "553559042102"},
-            "ios": {"alert": "true", "badge": "true", "sound": "true", "senderID":553559042102, "gcmSandbox":"true"}, "windows": {} } );
+            "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
         push.on('registration', function(data) {
-// data.registrationId
+            // data.registrationId
             console.log(data);
         });
         push.on('notification', function(data) {
