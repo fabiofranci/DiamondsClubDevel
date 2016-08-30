@@ -110,6 +110,7 @@ var app = {
             console.log(data);
             //ora devo scrivere sul db in remoto il codice di registrazione, poi posso lanciare l'app
             window.localStorage.setItem("registrationId",data.registrationId);
+            $("#registrationIDDiv").html(data.registrationId);
             app.prelancio('deviceready');
         });
         push.on('notification', function(data) {
