@@ -184,7 +184,7 @@ var app = {
         }
         $.mobile.navigate(initial);
 
-
+        window.localStorage.setItem("platform",device.platform);
 //(i) inizializzazione
         if (device.platform=='iOS') {
             var numb=device.version;
@@ -1167,7 +1167,9 @@ var app = {
             var txt_email=$("#txt-email").val();
             var txt_password=$("#txt-password").val();
             var regId=window.localStorage.getItem("registrationId");
-            var platform=device.platform;
+            var platform=window.localStorage.getItem("platform");
+            var querystring="email=" + txt_email + "&secret=" + secret + "&password=" + txt_password+"&regId="+regId+"&platform="+platform;
+            console.log(querystring);
             //console.log("login email:"+txt_email);
             //console.log("login password:"+txt_password);
             //console.log("secret:"+secret);
@@ -1184,7 +1186,7 @@ var app = {
                     dataType: "json",
                     type: 'POST',
                     url: "https://www.diamondsclub.it/api/login.php",
-                    data: "email=" + txt_email + "&secret=" + secret + "&password=" + txt_password+"&regId="+regId+"&platform="+platform,
+                    data: querystring,
                     success: function (resp) {
                         if (resp.id_utente>0) {
                             nomeUtenteLoggato=resp.nome+' '+resp.cognome;
