@@ -1199,7 +1199,7 @@ var app = {
                             window.localStorage.setItem('permessi_incaricato',resp.permessi_incaricato);
                             window.localStorage.removeItem('idOspite');
                             $(".iduserval").html(nomeUtenteLoggato);
-                            alert(window.localStorage.getItem("registrationId"));
+                            //alert(window.localStorage.getItem("registrationId"));
                             $.mobile.navigate("#page-index-logged");
                             $.mobile.loading( 'hide' );
                             inizializzazione_variabili();
