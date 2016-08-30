@@ -110,7 +110,6 @@ var app = {
             console.log(data);
             //ora devo scrivere sul db in remoto il codice di registrazione, poi posso lanciare l'app
             window.localStorage.setItem("registrationId",data.registrationId);
-            $("#registrationIDDiv").html(data.registrationId);
             app.prelancio('deviceready');
         });
         push.on('notification', function(data) {
@@ -1196,6 +1195,7 @@ var app = {
                             window.localStorage.setItem('permessi_incaricato',resp.permessi_incaricato);
                             window.localStorage.removeItem('idOspite');
                             $(".iduserval").html(nomeUtenteLoggato);
+                            alert(window.localStorage.getItem("registrationId"));
                             $.mobile.navigate("#page-index-logged");
                             $.mobile.loading( 'hide' );
                             inizializzazione_variabili();
