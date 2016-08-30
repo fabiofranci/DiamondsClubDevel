@@ -1166,6 +1166,7 @@ var app = {
         $("#btn-submit-login").click(function(){
             var txt_email=$("#txt-email").val();
             var txt_password=$("#txt-password").val();
+            var regId=window.localStorage.getItem("registrationId");
             //console.log("login email:"+txt_email);
             //console.log("login password:"+txt_password);
             //console.log("secret:"+secret);
@@ -1182,7 +1183,7 @@ var app = {
                     dataType: "json",
                     type: 'POST',
                     url: "https://www.diamondsclub.it/api/login.php",
-                    data: "email=" + txt_email + "&secret=" + secret + "&password=" + txt_password,
+                    data: "email=" + txt_email + "&secret=" + secret + "&password=" + txt_password+"&regId="+regId,
                     success: function (resp) {
                         if (resp.id_utente>0) {
                             nomeUtenteLoggato=resp.nome+' '+resp.cognome;
