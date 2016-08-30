@@ -114,7 +114,7 @@ var app = {
         });
         push.on('notification', function(data) {
             console.log(data);
-            alert(data.title+" Message: " +data.message);
+            alert(data.message);
         });
         push.on('error', function(e) {
             console.log(e);
