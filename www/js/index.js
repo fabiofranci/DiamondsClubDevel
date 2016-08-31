@@ -260,6 +260,39 @@ var app = {
 
         $(".logout-button").click(function(){
             logoutfunction();
+
+            if (window.localStorage.getItem("idUser")>0) {
+
+            }
+            var id_utente=window.localStorage.getItem("idUser");
+            var querystring="id_utente=" + id_utente + "&secret=" + secret;
+            console.log(querystring);
+
+            if (checkConnessione()) {
+                $.mobile.loading( 'show', {
+                    text: 'Loading',
+                    textVisible: true,
+                    theme: 'a',
+                    textonly: false,
+                    html: ''
+                });
+                $.ajax({
+                    dataType: "json",
+                    type: 'POST',
+                    url: "https://www.diamondsclub.it/api/logout.php",
+                    data: querystring,
+                    success: function (resp) {
+                        $.mobile.loading( 'hide' );
+                    },
+                    error: function (e) {
+                        $.mobile.loading( 'hide' );
+                        alert("Errore: logout remoto non andato a buon fine!");
+                        console.log(e.message);
+                    }
+                });
+            } else {
+                alert("Nessuna connessione internet, non posso fare l'autenticazione!");
+            }
         });
 // ---------------------------------------------------------------------------------------------------------------
 // (f) bottone logout
