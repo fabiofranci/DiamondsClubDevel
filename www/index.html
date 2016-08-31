@@ -431,6 +431,7 @@
     <div data-role="page" id="page-ospiti">
         <div data-role="header" data-theme="b" data-position="fixed" >
             <h1>Ospiti</h1>
+            <a href="#nav-panel-ospiti" data-iconpos="notext" data-theme="a" class="ui-btn-icon-notext ui-btn ui-btn-b ui-btn-right ui-icon-bars ui-btn-icon-left"></a>
         </div><!-- /header -->
         <div role="main" class="ui-content">
             <div data-role="content">
@@ -443,6 +444,17 @@
                         </ul>
             </div><!-- /content -->
         </div>
+            <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="nav-panel-ospiti">
+                <div id="pannello-ospiti-impostazioni">
+                    <form>
+                        <fieldset>
+                            <ul data-role="listview" data-inset="true" id="listview-pannello-ospiti-impostazioni">
+                            </ul>
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div><!-- /panel -->
         <div data-role="footer" class="ui-bar" data-id="DC-footer" data-theme="b" data-position="fixed" >
             <a href="#page-index-logged" data-role="button" ><i class="fa fa-home fa-2x"></i></a>
             <a href="#" data-role="button" ><i class="btn-ospiti fa fa-users fa-2x"></i></a>
