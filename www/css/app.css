@@ -110,3 +110,5 @@ h3.mc-text-danger  {
 {
     margin-top: 20px !important;
 }
+
+.ui-navbar li .ui-btn { background: rgba(255, 255, 255, 0.6); }
