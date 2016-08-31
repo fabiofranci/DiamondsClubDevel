@@ -113,6 +113,7 @@ var app = {
         push.on('registration', function(data) {
             // data.registrationId
             console.log(data);
+            cordova.plugins.notification.badge.set(0);
             //ora devo scrivere sul db in remoto il codice di registrazione, poi posso lanciare l'app
             window.localStorage.setItem("registrationId",data.registrationId);
             app.prelancio('deviceready');
@@ -120,7 +121,7 @@ var app = {
         push.on('notification', function(data) {
             console.log(data);
             alert(data.message);
-            cordova.plugins.notification.badge.increase();
+            //cordova.plugins.notification.badge.increase();
         });
         push.on('error', function(e) {
             console.log(e);
