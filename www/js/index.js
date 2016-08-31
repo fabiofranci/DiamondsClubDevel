@@ -83,6 +83,9 @@ var app = {
         console.log(Media);
         console.log(window.localStorage.getItem("app-"+appId));
         console.log("01 - Dentro iniettajquerymobile");
+
+        
+
         $.getScript( "lib/jqm/jquery.mobile-1.4.5.js" )
             .done(function( script, textStatus ) {
                 app.iniettajquery2('deviceready');
@@ -117,6 +120,7 @@ var app = {
         push.on('notification', function(data) {
             console.log(data);
             alert(data.message);
+            cordova.plugins.notification.badge.increase();
         });
         push.on('error', function(e) {
             console.log(e);
