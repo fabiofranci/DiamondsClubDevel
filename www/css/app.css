@@ -114,3 +114,27 @@ h3.mc-text-danger  {
 .dcfooter { background: #ffffff !important; }
 
 .dcfootergrid {width:90%;text-align:center;}
+
+/* CSS code for the badge element */
+.app-btn-new-badge .ui-btn-inner:before {
+    content: 'new';
+    position: absolute;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    float: right;
+    width: 30px;
+    height: 30px;
+    right: 0px;
+    top: 0px;
+    margin-right: -15px;
+    margin-top:  -15px;
+    background-color: red;
+    background-image: -webkit-linear-gradient(top, #f7847e 0%,#f9363d 49%,#e8100e 50%,#c30910 100%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 30px;
+    border: black;
+    border-radius: 30px;
+    border: solid 2px white;
+    z-index: 2;
+}
