@@ -266,6 +266,7 @@ var app = {
 
             }
             var id_utente=window.localStorage.getItem("idUser");
+            var regId=window.localStorage.getItem("registrationId");
             var querystring="id_utente=" + id_utente + "&secret=" + secret +"&regId="+regId;
             console.log(querystring);
 
