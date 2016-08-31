@@ -154,11 +154,21 @@ var app = {
             md5_ospiti      =window.localStorage.getItem('md5_ospiti');
             md5_materiali   =window.localStorage.getItem('md5_materiali');
 
+            if (idOspite) {
+                $("#btn-ospiti-idbutton").hide();
+                $("#btn-nuovo-prospect").hide();
+                $("#btn-statistiche-ospiti").hide();
+            } else {
+                $("#btn-ospiti-idbutton").show();
+                $("#btn-nuovo-prospect").show();
+                $("#btn-statistiche-ospiti").show();
+            }
             if (window.localStorage.getItem('platino')=='si') {
                 $("#btn-incaricati").show();
             } else {
                 $("#btn-incaricati").hide();
             }
+
         }
 
         console.log("05 - Dentro lanciaApp");
