@@ -263,37 +263,36 @@ var app = {
             logoutfunction();
 
             if (window.localStorage.getItem("idUser")>0) {
+                var id_utente=window.localStorage.getItem("idUser");
+                var regId=window.localStorage.getItem("registrationId");
+                var querystring="id_utente=" + id_utente + "&secret=" + secret +"&regId="+regId;
+                console.log(querystring);
 
-            }
-            var id_utente=window.localStorage.getItem("idUser");
-            var regId=window.localStorage.getItem("registrationId");
-            var querystring="id_utente=" + id_utente + "&secret=" + secret +"&regId="+regId;
-            console.log(querystring);
-
-            if (checkConnessione()) {
-                $.mobile.loading( 'show', {
-                    text: 'Loading',
-                    textVisible: true,
-                    theme: 'a',
-                    textonly: false,
-                    html: ''
-                });
-                $.ajax({
-                    dataType: "json",
-                    type: 'POST',
-                    url: "https://www.diamondsclub.it/api/logout.php",
-                    data: querystring,
-                    success: function (resp) {
-                        $.mobile.loading( 'hide' );
-                    },
-                    error: function (e) {
-                        $.mobile.loading( 'hide' );
-                        alert("Errore: logout remoto non andato a buon fine!");
-                        console.log(e.message);
-                    }
-                });
-            } else {
-                alert("Nessuna connessione internet, non posso fare l'autenticazione!");
+                if (checkConnessione()) {
+                    $.mobile.loading( 'show', {
+                        text: 'Loading',
+                        textVisible: true,
+                        theme: 'a',
+                        textonly: false,
+                        html: ''
+                    });
+                    $.ajax({
+                        dataType: "json",
+                        type: 'POST',
+                        url: "https://www.diamondsclub.it/api/logout.php",
+                        data: querystring,
+                        success: function (resp) {
+                            $.mobile.loading( 'hide' );
+                        },
+                        error: function (e) {
+                            $.mobile.loading( 'hide' );
+                            alert("Errore: logout remoto non andato a buon fine!");
+                            console.log(e.message);
+                        }
+                    });
+                } else {
+                    alert("Nessuna connessione internet, non posso fare l'autenticazione!");
+                }
             }
         });
 // ---------------------------------------------------------------------------------------------------------------
