@@ -265,7 +265,7 @@ var app = {
 
             }
             var id_utente=window.localStorage.getItem("idUser");
-            var querystring="secret=" + secret +"&regId="+regId;
+            var querystring="id_utente=" + id_utente + "&secret=" + secret +"&regId="+regId;
             console.log(querystring);
 
             if (checkConnessione()) {
