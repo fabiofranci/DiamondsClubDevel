@@ -966,7 +966,6 @@ var app = {
                 complete: function () {
                     $('#ospiti_listview').listview();
                     $('#ospiti_listview').html('');
-                    $("#ospiti-esiti").html('');
 
                     $('#listview-pannello-ospiti-impostazioni').listview();
                     $('#listview-pannello-ospiti-impostazioni').html('');
@@ -976,31 +975,36 @@ var app = {
 
                     htmlpopup+="<li>";
                     htmlpopup+="<a href='#' class='custom'>";
-                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Prospect' id='classe-Prospect' value='classe-Prospect' checked />";
+                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Prospect' id='classe-Prospect' value='Ospiti_Prospect' checked />";
                     htmlpopup+="<label for='classe-Prospect'>Prospect</label>";
                     htmlpopup+="</a>";
                     htmlpopup+="</li>";
                     htmlpopup+="<li>";
                     htmlpopup+="<a href='#' class='custom'>";
-                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Cliente' id='classe-Cliente' value='classe-Cliente' checked />";
+                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Cliente' id='classe-Cliente' value='Ospiti_Cliente' checked />";
                     htmlpopup+="<label for='classe-Cliente'>Cliente</label>";
                     htmlpopup+="</a>";
                     htmlpopup+="</li>";
                     htmlpopup+="<li>";
                     htmlpopup+="<a href='#' class='custom'>";
-                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Da_Richiamare' id='classe-Da_Richiamare' value='classe-Da_Richiamare' checked />";
+                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Da_Richiamare' id='classe-Da_Richiamare' value='Ospiti_Da_Richiamare' checked />";
                     htmlpopup+="<label for='classe-Da_Richiamare'>Da Richiamare</label>";
                     htmlpopup+="</a>";
                     htmlpopup+="</li>";
                     htmlpopup+="<li>";
                     htmlpopup+="<a href='#' class='custom'>";
-                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Incaricato' id='classe-Non_Interessato' value='classe-Non_Interessato' checked />";
+                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Incaricato' id='classe-Non_Interessato' value='Ospiti_Non_Interessato' checked />";
                     htmlpopup+="<label for='classe-Non_Interessato'>Non Interessato</label>";
                     htmlpopup+="</a>";
                     htmlpopup+="</li>";
                     htmlpopup+="<a href='#' class='custom'>";
-                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Incaricato' id='classe-Incaricato' value='classe-Incaricato' checked />";
+                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Incaricato' id='classe-Incaricato' value='Ospiti_Incaricato' checked />";
                     htmlpopup+="<label for='classe-Incaricato'>Incaricato</label>";
+                    htmlpopup+="</a>";
+                    htmlpopup+="</li>";
+                    htmlpopup+="<a href='#' class='custom'>";
+                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-null' id='classe-null' value='Ospiti_null' checked />";
+                    htmlpopup+="<label for='classe-null'>tutti gli altri</label>";
                     htmlpopup+="</a>";
                     htmlpopup+="</li>";
 
@@ -1038,17 +1042,8 @@ var app = {
                         htmlcalendario+="</a></li>";
                         $('#ospiti_listview').append(htmlcalendario);
                     }
-                    htmlesiti='<a href="#" class="btn-ospiti-esiti" datavalore="Ospiti_Tutti" data-theme="b" data-role="button">Tutti</a>';
-                    for (i=0;i<esiti.length;i++) {
-                        tmp_esito="Ospiti_"+esiti[i];
-                        tmp_esito=tmp_esito.replace(/ /g,"_");
-                        htmlesiti+='<a href="#" class="btn-ospiti-esiti" datavalore="'+tmp_esito+'" data-role="button">'+esiti[i]+'</a>';
-                    }
-                    $('#ospiti-esiti').append(htmlesiti);
-                    if (ospiti_first_time>1) { $('#ospiti-esiti').enhanceWithin(); }
 
                     $('#ospiti_listview').listview('refresh');
-                    $('#ospiti-esiti').enhanceWithin();
 
                     $("#listview-pannello-ospiti-impostazioni").append(htmlpopup);
                     $('#listview-pannello-ospiti-impostazioni').listview('refresh');
