@@ -968,6 +968,42 @@ var app = {
                     $('#ospiti_listview').html('');
                     $("#ospiti-esiti").html('');
 
+                    $('#listview-pannello-ospiti-impostazioni').listview();
+                    $('#listview-pannello-ospiti-impostazioni').html('');
+                    var htmlcalendario='';
+                    var htmlpopup='';
+                    htmlpopup+="<li data-role='list-divider'>Tipo</li>";
+
+                    htmlpopup+="<li>";
+                    htmlpopup+="<a href='#' class='custom'>";
+                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Prospect' id='classe-Prospect' value='classe-Prospect' checked />";
+                    htmlpopup+="<label for='classe-Prospect'>Prospect</label>";
+                    htmlpopup+="</a>";
+                    htmlpopup+="</li>";
+                    htmlpopup+="<li>";
+                    htmlpopup+="<a href='#' class='custom'>";
+                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Cliente' id='classe-Cliente' value='classe-Cliente' checked />";
+                    htmlpopup+="<label for='classe-Cliente'>Cliente</label>";
+                    htmlpopup+="</a>";
+                    htmlpopup+="</li>";
+                    htmlpopup+="<li>";
+                    htmlpopup+="<a href='#' class='custom'>";
+                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Da_Richiamare' id='classe-Da_Richiamare' value='classe-Da_Richiamare' checked />";
+                    htmlpopup+="<label for='classe-Da_Richiamare'>Da Richiamare</label>";
+                    htmlpopup+="</a>";
+                    htmlpopup+="</li>";
+                    htmlpopup+="<li>";
+                    htmlpopup+="<a href='#' class='custom'>";
+                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Incaricato' id='classe-Non_Interessato' value='classe-Non_Interessato' checked />";
+                    htmlpopup+="<label for='classe-Non_Interessato'>Non Interessato</label>";
+                    htmlpopup+="</a>";
+                    htmlpopup+="</li>";
+                    htmlpopup+="<a href='#' class='custom'>";
+                    htmlpopup+="<input type='checkbox' class='impostazioni-checkbox' name='classe-Incaricato' id='classe-Incaricato' value='classe-Incaricato' checked />";
+                    htmlpopup+="<label for='classe-Incaricato'>Incaricato</label>";
+                    htmlpopup+="</a>";
+                    htmlpopup+="</li>";
+
                     //alert("FATTO!");
                     var htmlcalendario='';
                     var tmp_esito='';
@@ -1013,6 +1049,10 @@ var app = {
 
                     $('#ospiti_listview').listview('refresh');
                     $('#ospiti-esiti').enhanceWithin();
+
+                    $("#listview-pannello-ospiti-impostazioni").append(htmlpopup);
+                    $('#listview-pannello-ospiti-impostazioni').listview('refresh');
+                    $("[data-role=panel]").panel().enhanceWithin();
                     $.mobile.navigate("#page-ospiti");
                 }
             });
@@ -1022,11 +1062,14 @@ var app = {
             $.mobile.loading( 'hide');
         });
 
-        $('body').on('click', 'a.btn-ospiti-esiti', function() {
-            esiti=JSON.parse(window.localStorage.getItem("esiti_memoria"));
-            var valoreesito=$(this).attr('datavalore');
-            $(".Ospiti_Tutti").hide();
-            $("."+valoreesito).show();
+        $('body').on('change', '.impostazioni-checkbox', function() {
+            if ($(this).prop('checked')) {
+                $("."+$(this).attr('value')).show();
+                $("."+$(this).attr('value')).removeClass('nascosto');
+            } else {
+                $("."+$(this).attr('value')).hide();
+                $("."+$(this).attr('value')).addClass('nascosto');
+            }
         });
 
 
