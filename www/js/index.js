@@ -143,21 +143,23 @@ var app = {
 
     prelancio: function(id) {
         console.log("04 - Dentro prelancio");
-        var notifichecount=cordova.plugins.notification.badge.get();
+
+        cordova.plugins.notification.badge.get(showToast);
+
         console.log(notifichecount);
-        $("#notifiche-footer-button").mobileBadge({
-            count: notifichecount, //what number you want appearing on the badge
-            position: "topright", //where the badge should appear relative to button
-            //takes values "topleft" and "topright"
-            classnames: "my_special_class" //to apply custom styling to the button
-            //can also be an array of class names
-        });
         $.mobile.defaultPageTransition = "slide";
         app.lanciaApp('deviceready');
     },
 
     // Update DOM on a Received Event
     lanciaApp: function(id) {
+
+        showToast = function (text) {
+            setTimeout(function () {
+                    alert(text);
+            }, 100);
+        };
+
 
         function inizializzazione_variabili() {
             console.log("Dentro inizializzazione_variabili");
