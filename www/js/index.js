@@ -1285,7 +1285,7 @@ var app = {
                 success: function (data) {
                     //alert("SUCCESS!");
                     resp=data.resp;
-                    window.localStorage.setItem("tipinotifiche_memoria",JSON.stringify(tipi));
+                    window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
                 },
                 error: function (e) {
                     //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
