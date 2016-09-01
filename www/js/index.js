@@ -113,14 +113,14 @@ var app = {
         push.on('registration', function(data) {
             // data.registrationId
             console.log(data);
-            cordova.plugins.notification.badge.set(0);
-            //ora devo scrivere sul db in remoto il codice di registrazione, poi posso lanciare l'app
+            //cordova.plugins.notification.badge.set(0);
             window.localStorage.setItem("registrationId",data.registrationId);
             app.prelancio('deviceready');
         });
         push.on('notification', function(data) {
             console.log(data);
             alert(data.message);
+            //devo aggiornare i messaggiapp, sincronizzando con il server
             //cordova.plugins.notification.badge.increase();
         });
         push.on('error', function(e) {
@@ -189,6 +189,7 @@ var app = {
         var viaggi_first_time=0;
         var ospiti_first_time=0;
         var materiali_first_time=0;
+        var notifiche_first_time=0;
 
         inizializzazione_variabili();
 
@@ -266,6 +267,7 @@ var app = {
             window.localStorage.removeItem('md5_ospiti');
             window.localStorage.removeItem('ospiti_memoria');
             window.localStorage.removeItem('pageleaderoffset');
+            window.localStorage.removeItem('pagenotificheoffset');
             inizializzazione_variabili();
         }
 
@@ -1245,6 +1247,170 @@ var app = {
 // ---------------------------------------------------------------------------------------------------------------
 // (f) pagina nuovo prospect, retrieve and deploy
 // ---------------------------------------------------------------------------------------------------------------
+
+
+
+// ---------------------------------------------------------------------------------------------------------------
+// (i) pagina leader, retrieve and deploy
+// ---------------------------------------------------------------------------------------------------------------
+        $(".btn-page-notifiche").click(function(){
+            window.localStorage.removeItem('pagenotificheoffset');
+            $.mobile.loading( 'show', {
+                text: 'Loading',
+                textVisible: true,
+                theme: 'a',
+                textonly: false,
+                html: ''
+            });
+            var resp=[];
+            var params={};
+
+            if (window.localStorage.getItem("idUser")>0) {
+                params.id_utente=window.localStorage.getItem("idUser");
+            } else {
+                return false;
+            }
+            if (window.localStorage.getItem("registrationId")) {
+                params.regId=window.localStorage.getItem("registrationId");
+            }
+            params.secret=secret;
+
+            $.ajax({
+                dataType: "json",
+                type: 'POST',
+                url: "https://www.diamondsclub.it/api/getmessaggiapp.php",
+                data: jQuery.param(params) ,
+                success: function (data) {
+                    //alert("SUCCESS!");
+                    resp=data.resp;
+                    tipi=data.tipi;
+                    window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
+                    window.localStorage.setItem("tipinotifiche_memoria",JSON.stringify(tipi));
+                },
+                error: function (e) {
+                    //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
+                    resp=JSON.parse(window.localStorage.getItem("notifiche_memoria"));
+                    tipi=JSON.parse(window.localStorage.getItem("tipinotifiche_memoria"));
+                },
+                complete: function () {
+                    $('#notifiche_listview').listview();
+                    $('#notifiche_listview').html('');
+                    //$('#leader_popups').html('');
+                    //alert("FATTO!");
+                    //print_r(tipi);
+                    //print_r(resp);
+                    var htmlcalendario='';
+                    var htmlpopup='';
+
+                    for (j=0;j<tipi.length;j++) {
+                        var tipo=tipi[j];
+                        //alert(tipo);
+                        if (resp[tipo]) {
+                            var notifica=resp[tipo];
+                            //print_r(leader);
+                            for (i=0;i<notifica.length;i++) {
+                                messaggio=notifica[i];
+                                console.log(messaggio);
+                                //print_r(lead);
+                                htmlcalendario ="<li data-role='list-divider'><h3>"+messaggio.titolo+"</h3></li>";
+                                //htmlcalendario+="<li><a data-rel='popup' href='#popupLeader"+j+"-"+i+"'>";
+                                htmlcalendario+="<li><a href='#' datatipo='"+j+"' datamessaggio='"+i+"' class='btn-notifiche-dettaglio'>";
+                                if (messaggio.letto=='no') {
+                                    htmlcalendario+="<p><strong>"+messaggio.timestamp+"</strong></p>";
+                                } else {
+                                    htmlcalendario+="<p>"+messaggio.timestamp+"</p>";
+                                }
+                                htmlcalendario+="</a></li>";
+                                //htmlcalendario+="</a></li>";
+                                //htmlpopup ="<div data-role='popup' id='popupLeader"+j+"-"+i+"'>";
+
+                                //htmlpopup+="<div data-role='header'><h5>"+lead.titolo_leader+"</h5><a href='#' data-rel='back' class='ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right'>Close</a></div>";
+                                //htmlpopup+="<div data-role='main' class='ui-content'><p class='fontsize12'>"+lead.descrizione_leader+"</p></div>";
+                                //htmlpopup+="</div>";
+
+                                $('#notifiche_listview').append(htmlcalendario);
+                                //$('#leader_popups').append(htmlpopup);
+
+                            }
+                        } else {
+                            continue;
+                        }
+
+                    }
+                    $('#notifiche_listview').listview('refresh');
+                    //if (leader_first_time>1) { $('#leader_popups').enhanceWithin(); }
+                    $.mobile.navigate("#page-notifiche");
+                }
+            });
+        });
+
+        $("#page-notifiche").on( "pageshow", function(event){
+            $.mobile.loading( 'hide');
+            var pagenotificheoffset=window.localStorage.getItem("pagenotificheoffset");
+            if (pagenotificheoffset>80) {
+                //alert(pageleaderoffset);
+                $.mobile.silentScroll(pagenotificheoffset-80);
+            }
+        });
+
+// ---------------------------------------------------------------------------------------------------------------
+// (f) pagina notifiche, retrieve and deploy
+// ---------------------------------------------------------------------------------------------------------------
+
+        $('body').on('click', 'a.btn-notifiche-dettaglio', function() {
+            var pagenotificheoffset=$(this).offset().top;
+            window.localStorage.setItem("pagenotificheoffset",pagenotificheoffset);
+            var htmldettaglio="";
+            var i=$(this).attr('datamessaggio');
+            var j=$(this).attr('datatipo');
+            resp=JSON.parse(window.localStorage.getItem("notifiche_memoria"));
+            tipi=JSON.parse(window.localStorage.getItem("tipinotifiche_memoria"));
+            var lead=resp[tipi[j]][i];
+            htmldettaglio ="<h3>"+lead.titolo+"</h3>";
+            htmldettaglio+="<p><strong>"+lead.tipo_messaggio+"</strong></p>";
+            htmldettaglio+="<p><i class='fa fa-calendar'></i> "+lead.timestamp+"</p>";
+            htmldettaglio+="<p>"+lead.messaggio+"</p>";
+            $("#dettaglio-notifica-content").html(htmldettaglio);
+
+            params.idmessaggio=lead.id;
+            params.id_utente=window.localStorage.getItem("idUser");
+            params.secret=secret;
+
+            if (checkConnessione()) {
+                $.mobile.loading( 'show', {
+                    text: 'Loading',
+                    textVisible: true,
+                    theme: 'a',
+                    textonly: false,
+                    html: ''
+                });
+                $.ajax({
+                    dataType: "json",
+                    type: 'POST',
+                    url: "https://www.diamondsclub.it/api/aggiornamessaggiapp.php",
+                    data: jQuery.param(params) ,
+                    success: function (resp) {
+
+                        cordova.plugins.notification.badge.decrease();
+                    } else {
+                        $.mobile.loading( 'hide' );
+                //alert("Errore di qualche tipo!");
+                    }
+            },
+                error: function (e) {
+                    $.mobile.loading( 'hide' );
+                    //alert("Errore: credenziali errate!");
+                    console.log(e.message);
+                }
+            });
+    } else {
+        //alert("Nessuna connessione internet, non posso fare l'autenticazione!");
+    }
+
+
+            $.mobile.navigate("#page-notifica-dettaglio");
+        });
+
 
 
 // ---------------------------------------------------------------------------------------------------------------
