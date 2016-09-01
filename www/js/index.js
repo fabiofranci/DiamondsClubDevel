@@ -52,10 +52,10 @@ showToast = function (text) {
     var notifichecount=1*text;
     if (notifichecount>0) {
         $(".btn-page-notifiche").each(function(){
-            $(this).attr("data-theme")='f';
-        }
+            $(this).attr("data-theme", "f");
+        });
     }
-});
+};
 
 var app = {
     // Application Constructor
