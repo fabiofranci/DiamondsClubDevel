@@ -104,17 +104,6 @@ var app = {
         console.log("02 - Dentro iniettajquery2");
         $.getScript( "js/jqm.page.params.js" )
             .done(function( script, textStatus ) {
-                app.iniettajquery2b('deviceready');
-            })
-            .fail(function( jqxhr, settings, exception ) {
-                alert("Errore caricamento jquery page params");
-            });
-    },
-
-    iniettajquery2b: function(id) {
-        console.log("02b - Dentro iniettajquery2b");
-        $.getScript( "js/badge.js" )
-            .done(function( script, textStatus ) {
                 app.inizializzaPush('deviceready');
             })
             .fail(function( jqxhr, settings, exception ) {
