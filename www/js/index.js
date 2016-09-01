@@ -1409,6 +1409,8 @@ var app = {
                     url: "https://www.diamondsclub.it/api/aggiornamessaggiapp.php",
                     data: jQuery.param(params) ,
                     success: function (data) {
+                        cordova.plugins.notification.badge.set(data.badge);
+                        cordova.plugins.notification.badge.get(showToast);
                         //console.log("aggiornamessaggiapp SUCCESS!");
                     },
                     error: function (e) {
