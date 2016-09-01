@@ -47,6 +47,13 @@ var my_media=null;
 var audioAttuale='';
 var appId=2235454;
 
+
+showToast = function (text) {
+    setTimeout(function () {
+        alert(text);
+    }, 100);
+};
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -153,13 +160,6 @@ var app = {
 
     // Update DOM on a Received Event
     lanciaApp: function(id) {
-
-        showToast = function (text) {
-            setTimeout(function () {
-                    alert(text);
-            }, 100);
-        };
-
 
         function inizializzazione_variabili() {
             console.log("Dentro inizializzazione_variabili");
