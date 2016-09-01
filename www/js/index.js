@@ -1389,25 +1389,20 @@ var app = {
                     type: 'POST',
                     url: "https://www.diamondsclub.it/api/aggiornamessaggiapp.php",
                     data: jQuery.param(params) ,
-                    success: function (resp) {
-
+                    success: function (data) {
+                        //alert("SUCCESS!");
                         cordova.plugins.notification.badge.decrease();
-                    } else {
-                        $.mobile.loading( 'hide' );
-                //alert("Errore di qualche tipo!");
+                    },
+                    error: function (e) {
+                        //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
+                    },
+                    complete: function () {
+
                     }
-            },
-                error: function (e) {
-                    $.mobile.loading( 'hide' );
-                    //alert("Errore: credenziali errate!");
-                    console.log(e.message);
-                }
-            });
-    } else {
-        //alert("Nessuna connessione internet, non posso fare l'autenticazione!");
-    }
-
-
+                });
+            } else {
+                //alert("Nessuna connessione internet, non posso fare l'autenticazione!");
+            }
             $.mobile.navigate("#page-notifica-dettaglio");
         });
 
