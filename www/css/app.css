@@ -138,3 +138,6 @@ h3.mc-text-danger  {
     border: solid 2px white;
     z-index: 2;
 }
+
+
+a.ui-li-has-count span span.ui-btn-text{ padding-right:0; position:static; }
