@@ -1270,7 +1270,7 @@ var app = {
 // ---------------------------------------------------------------------------------------------------------------
 // (i) pagina leader, retrieve and deploy
 // ---------------------------------------------------------------------------------------------------------------
-        $(".btn-page-notifiche").click(function(){
+        $(".btn-page-notifiche .btn-page-notifiche-back").click(function(){
             //console.log("dentro notifiche");
 
             window.localStorage.removeItem('pagenotificheoffset');
@@ -1401,7 +1401,7 @@ var app = {
                     data: jQuery.param(params) ,
                     success: function (data) {
                         //console.log("aggiornamessaggiapp SUCCESS!");
-                        cordova.plugins.notification.badge.decrease();
+                        cordova.plugins.notification.badge.decrease(1,showToast);
                     },
                     error: function (e) {
                         alert("Connessione assente, non aggiorno il badge!");
