@@ -55,7 +55,7 @@ showToast = function (text) {
         $(".btn-page-notifiche").each(function(){
             console.log("Modifico data theme al bottone ");
             $(this).attr("data-theme", "f");
-            $(this).attr('class', 'ui-btn ui-btn-corner-all ui-shadow ui-btn-up-f');
+            $(this).attr('class', 'ui-link ui-btn ui-btn-f ui-shadow ui-corner-all');
         });
     }
 };
