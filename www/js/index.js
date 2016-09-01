@@ -1254,7 +1254,7 @@ var app = {
 // (i) pagina leader, retrieve and deploy
 // ---------------------------------------------------------------------------------------------------------------
         $(".btn-page-notifiche").click(function(){
-            console.log("dentro notifiche");
+            //console.log("dentro notifiche");
 
             window.localStorage.removeItem('pagenotificheoffset');
             $.mobile.loading( 'show', {
