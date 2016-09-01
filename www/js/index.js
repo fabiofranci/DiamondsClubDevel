@@ -59,7 +59,7 @@ showToast = function (text) {
         });
     } else {
         $(".btn-page-notifiche").each(function(){
-            console.log("Modifico data theme al bottone ");
+            console.log("Ripristino data theme al bottone ");
             $(this).attr("data-theme", "a");
             $(this).attr('class', 'ui-link ui-btn ui-btn-a ui-shadow ui-corner-all');
         });
