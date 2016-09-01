@@ -1265,7 +1265,6 @@ var app = {
                 html: ''
             });
             var resp=[];
-            var tipi=[];
             var params={};
 
             if (window.localStorage.getItem("idUser")>0) {
@@ -1286,14 +1285,11 @@ var app = {
                 success: function (data) {
                     //alert("SUCCESS!");
                     resp=data.resp;
-                    tipi=data.tipi;
-                    window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
                     window.localStorage.setItem("tipinotifiche_memoria",JSON.stringify(tipi));
                 },
                 error: function (e) {
                     //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
                     resp=JSON.parse(window.localStorage.getItem("notifiche_memoria"));
-                    tipi=JSON.parse(window.localStorage.getItem("tipinotifiche_memoria"));
                 },
                 complete: function () {
                     $('#notifiche_listview').listview();
@@ -1307,18 +1303,14 @@ var app = {
 
                     console.log(tipi);
 
-                    for (j=0;j<tipi.length;j++) {
-                        var tipo=tipi[j];
-                        if (resp[tipo]) {
-                            var notifica=resp[tipo];
+                    for (j=0;j<resp.length;j++) {
+                            var messaggio=resp[j];
                             //print_r(leader);
-                            for (i=0;i<notifica.length;i++) {
-                                messaggio=notifica[i];
                                 console.log(messaggio);
                                 //print_r(lead);
                                 htmlcalendario ="<li data-role='list-divider'><h3>"+messaggio.titolo+"</h3></li>";
                                 //htmlcalendario+="<li><a data-rel='popup' href='#popupLeader"+j+"-"+i+"'>";
-                                htmlcalendario+="<li><a href='#' datatipo='"+j+"' datamessaggio='"+i+"' class='btn-notifiche-dettaglio'>";
+                                htmlcalendario+="<li><a href='#' datamessaggio='"+j+"' class='btn-notifiche-dettaglio'>";
                                 if (messaggio.letto=='no') {
                                     htmlcalendario+="<p><strong>"+messaggio.timestamp+"</strong></p>";
                                 } else {
@@ -1334,11 +1326,6 @@ var app = {
 
                                 $('#notifiche_listview').append(htmlcalendario);
                                 //$('#leader_popups').append(htmlpopup);
-
-                            }
-                        } else {
-                            continue;
-                        }
 
                     }
                     $('#notifiche_listview').listview('refresh');
@@ -1365,11 +1352,9 @@ var app = {
             var pagenotificheoffset=$(this).offset().top;
             window.localStorage.setItem("pagenotificheoffset",pagenotificheoffset);
             var htmldettaglio="";
-            var i=$(this).attr('datamessaggio');
-            var j=$(this).attr('datatipo');
+            var j=$(this).attr('datamessaggio');
             resp=JSON.parse(window.localStorage.getItem("notifiche_memoria"));
-            tipi=JSON.parse(window.localStorage.getItem("tipinotifiche_memoria"));
-            var lead=resp[tipi[j]][i];
+            var lead=resp[j];
             htmldettaglio ="<h3>"+lead.titolo+"</h3>";
             htmldettaglio+="<p><strong>"+lead.tipo_messaggio+"</strong></p>";
             htmldettaglio+="<p><i class='fa fa-calendar'></i> "+lead.timestamp+"</p>";
