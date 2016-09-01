@@ -49,6 +49,7 @@ var appId=2235454;
 
 
 showToast = function (text) {
+
     setTimeout(function () {
         alert(text);
     }, 100);
@@ -152,6 +153,15 @@ var app = {
         console.log("04 - Dentro prelancio");
 
         cordova.plugins.notification.badge.get(showToast);
+
+
+        $("#notifiche-footer-button").mobileBadge({
+            count: 2, //what number you want appearing on the badge
+            position: "topright", //where the badge should appear relative to button
+            //takes values "topleft" and "topright"
+            classnames: "my_special_class" //to apply custom styling to the button
+            //can also be an array of class names
+        });
 
         $.mobile.defaultPageTransition = "slide";
         app.lanciaApp('deviceready');
