@@ -51,6 +51,7 @@ var appId=2235454;
 showToast = function (text) {
     var notifichecount=1*text;
     if (notifichecount>0) {
+        console.log("notifichecount="+notifichecount);
         $(".btn-page-notifiche").each(function(){
             $(this).attr("data-theme", "f");
         });
