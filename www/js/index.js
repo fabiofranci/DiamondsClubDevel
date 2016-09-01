@@ -1285,6 +1285,7 @@ var app = {
                 success: function (data) {
                     //alert("SUCCESS!");
                     resp=data.messaggiapp;
+                    console.log(resp);
                     window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
                 },
                 error: function (e) {
@@ -1315,7 +1316,7 @@ var app = {
                                     htmlcalendario+="<p>"+messaggio.timestamp+"</p>";
                                 }
                                 htmlcalendario+="</a></li>";
-                                
+
                                 //htmlcalendario+="</a></li>";
                                 //htmlpopup ="<div data-role='popup' id='popupLeader"+j+"-"+i+"'>";
 
