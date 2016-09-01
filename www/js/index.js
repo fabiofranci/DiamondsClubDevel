@@ -1305,7 +1305,7 @@ var app = {
                     for (j=0;j<resp.length;j++) {
                             var messaggio=resp[j];
                             //print_r(leader);
-                                console.log(messaggio);
+                                //console.log(messaggio);
                                 //print_r(lead);
                                 htmlcalendario ="<li data-role='list-divider'><h3>"+messaggio.titolo+"</h3></li>";
                                 //htmlcalendario+="<li><a data-rel='popup' href='#popupLeader"+j+"-"+i+"'>";
@@ -1323,12 +1323,12 @@ var app = {
                                 //htmlpopup+="<div data-role='header'><h5>"+lead.titolo_leader+"</h5><a href='#' data-rel='back' class='ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right'>Close</a></div>";
                                 //htmlpopup+="<div data-role='main' class='ui-content'><p class='fontsize12'>"+lead.descrizione_leader+"</p></div>";
                                 //htmlpopup+="</div>";
-                                console.log(htmlcalendario);
+                                //console.log(htmlcalendario);
 
                                 $('#notifiche_listview').append(htmlcalendario);
                                 //$('#leader_popups').append(htmlpopup);
                     }
-                    console.log("Eccoci qui");
+                    //console.log("Eccoci qui");
                     $('#notifiche_listview').listview('refresh');
                     //if (leader_first_time>1) { $('#leader_popups').enhanceWithin(); }
                     $.mobile.navigate("#page-notifiche");
@@ -1337,7 +1337,7 @@ var app = {
         });
 
         $("#page-notifiche").on( "pageshow", function(event){
-            console.log("eccomi alla page-notifiche pageshow");
+            //console.log("eccomi alla page-notifiche pageshow");
             $.mobile.loading( 'hide');
             var pagenotificheoffset=window.localStorage.getItem("pagenotificheoffset");
             if (pagenotificheoffset>80) {
@@ -1355,6 +1355,8 @@ var app = {
             window.localStorage.setItem("pagenotificheoffset",pagenotificheoffset);
             var htmldettaglio="";
             var j=$(this).attr('datamessaggio');
+            var resp=[];
+            var params={};
             resp=JSON.parse(window.localStorage.getItem("notifiche_memoria"));
             var lead=resp[j];
             htmldettaglio ="<h3>"+lead.titolo+"</h3>";
