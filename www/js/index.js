@@ -49,10 +49,8 @@ var appId=2235454;
 
 
 showToast = function (text) {
-
-    setTimeout(function () {
-        alert(text);
-    }, 100);
+    var notifichecount=1*text;
+    console.log(notifichecount);
 };
 
 var app = {
