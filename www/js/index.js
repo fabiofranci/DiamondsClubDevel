@@ -1302,6 +1302,9 @@ var app = {
                 success: function (data) {
                     //alert("SUCCESS!");
                     resp=data.resp;
+                    cordova.plugins.notification.badge.set(data.badge);
+                    cordova.plugins.notification.badge.get(showToast);
+
                     //console.log(resp);
                     window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
                 },
@@ -1401,7 +1404,6 @@ var app = {
                     data: jQuery.param(params) ,
                     success: function (data) {
                         //console.log("aggiornamessaggiapp SUCCESS!");
-                        cordova.plugins.notification.badge.decrease(1,showToast);
                     },
                     error: function (e) {
                         alert("Connessione assente, non aggiorno il badge!");
