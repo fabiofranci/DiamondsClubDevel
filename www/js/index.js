@@ -1337,6 +1337,7 @@ var app = {
         });
 
         $("#page-notifiche").on( "pageshow", function(event){
+            console.log("eccomi alla page-notifiche pageshow");
             $.mobile.loading( 'hide');
             var pagenotificheoffset=window.localStorage.getItem("pagenotificheoffset");
             if (pagenotificheoffset>80) {
