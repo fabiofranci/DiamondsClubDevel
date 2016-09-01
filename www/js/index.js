@@ -153,7 +153,6 @@ var app = {
 
         cordova.plugins.notification.badge.get(showToast);
 
-        console.log(notifichecount);
         $.mobile.defaultPageTransition = "slide";
         app.lanciaApp('deviceready');
     },
