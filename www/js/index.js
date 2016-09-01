@@ -1283,7 +1283,7 @@ var app = {
                 url: "https://www.diamondsclub.it/api/getmessaggiapp.php",
                 data: jQuery.param(params) ,
                 success: function (data) {
-                    alert("SUCCESS!");
+                    //alert("SUCCESS!");
                     resp=data.resp;
                     tipi=data.tipi;
                     window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
@@ -1304,9 +1304,10 @@ var app = {
                     var htmlcalendario='';
                     var htmlpopup='';
 
+                    console.log(tipi);
+
                     for (j=0;j<tipi.length;j++) {
                         var tipo=tipi[j];
-                        alert(tipo);
                         if (resp[tipo]) {
                             var notifica=resp[tipo];
                             //print_r(leader);
