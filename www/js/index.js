@@ -1265,6 +1265,7 @@ var app = {
                 html: ''
             });
             var resp=[];
+            var tipi=[];
             var params={};
 
             if (window.localStorage.getItem("idUser")>0) {
