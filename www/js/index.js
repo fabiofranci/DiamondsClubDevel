@@ -1300,9 +1300,7 @@ var app = {
                     //print_r(resp);
                     var htmlcalendario='';
                     var htmlpopup='';
-
-                    console.log(tipi);
-
+                    
                     for (j=0;j<resp.length;j++) {
                             var messaggio=resp[j];
                             //print_r(leader);
