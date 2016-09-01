@@ -1284,7 +1284,7 @@ var app = {
                 data: jQuery.param(params) ,
                 success: function (data) {
                     //alert("SUCCESS!");
-                    resp=data.messaggiapp;
+                    resp=data.resp;
                     console.log(resp);
                     window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
                 },
