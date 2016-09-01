@@ -1365,9 +1365,11 @@ var app = {
             htmldettaglio+="<p>"+lead.messaggio+"</p>";
             $("#dettaglio-notifica-content").html(htmldettaglio);
 
-            params.idmessaggio=lead.id;
+            params.id_messaggio=lead.id;
             params.id_utente=window.localStorage.getItem("idUser");
             params.secret=secret;
+
+            console.log(params);
 
             if (checkConnessione()) {
                 $.mobile.loading( 'show', {
