@@ -1300,11 +1300,11 @@ var app = {
                     //print_r(resp);
                     var htmlcalendario='';
                     var htmlpopup='';
-                    
+
                     for (j=0;j<resp.length;j++) {
                             var messaggio=resp[j];
                             //print_r(leader);
-                                console.log(messaggio);
+                                //console.log(messaggio);
                                 //print_r(lead);
                                 htmlcalendario ="<li data-role='list-divider'><h3>"+messaggio.titolo+"</h3></li>";
                                 //htmlcalendario+="<li><a data-rel='popup' href='#popupLeader"+j+"-"+i+"'>";
@@ -1315,6 +1315,7 @@ var app = {
                                     htmlcalendario+="<p>"+messaggio.timestamp+"</p>";
                                 }
                                 htmlcalendario+="</a></li>";
+                                
                                 //htmlcalendario+="</a></li>";
                                 //htmlpopup ="<div data-role='popup' id='popupLeader"+j+"-"+i+"'>";
 
