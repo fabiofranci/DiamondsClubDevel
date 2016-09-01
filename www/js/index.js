@@ -1383,7 +1383,7 @@ var app = {
                     url: "https://www.diamondsclub.it/api/aggiornamessaggiapp.php",
                     data: jQuery.param(params) ,
                     success: function (data) {
-                        //alert("SUCCESS!");
+                        console.log("aggiornamessaggiapp SUCCESS!");
                         cordova.plugins.notification.badge.decrease();
                     },
                     error: function (e) {
