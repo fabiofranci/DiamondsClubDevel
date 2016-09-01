@@ -1387,7 +1387,7 @@ var app = {
                         cordova.plugins.notification.badge.decrease();
                     },
                     error: function (e) {
-                        //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
+                        alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
                     },
                     complete: function () {
 
@@ -1396,7 +1396,7 @@ var app = {
             } else {
                 //alert("Nessuna connessione internet, non posso fare l'autenticazione!");
             }
-            $.mobile.navigate("#page-notifica-dettaglio");
+            $.mobile.navigate("#page-notifiche-dettaglio");
         });
 
 
