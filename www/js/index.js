@@ -1369,8 +1369,6 @@ var app = {
             params.id_utente=window.localStorage.getItem("idUser");
             params.secret=secret;
 
-            console.log(params);
-
             if (checkConnessione()) {
                 $.mobile.loading( 'show', {
                     text: 'Loading',
@@ -1385,11 +1383,11 @@ var app = {
                     url: "https://www.diamondsclub.it/api/aggiornamessaggiapp.php",
                     data: jQuery.param(params) ,
                     success: function (data) {
-                        console.log("aggiornamessaggiapp SUCCESS!");
+                        //console.log("aggiornamessaggiapp SUCCESS!");
                         cordova.plugins.notification.badge.decrease();
                     },
                     error: function (e) {
-                        alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
+                        alert("Connessione assente, non aggiorno il badge!");
                     },
                     complete: function () {
 
