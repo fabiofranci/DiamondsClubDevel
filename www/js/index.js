@@ -53,6 +53,7 @@ showToast = function (text) {
     if (notifichecount>0) {
         console.log("notifichecount="+notifichecount);
         $(".btn-page-notifiche").each(function(){
+            console.log("Modifico data theme al bottone ");
             $(this).attr("data-theme", "f");
         });
     }
