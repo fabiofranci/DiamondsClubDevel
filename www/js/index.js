@@ -1254,6 +1254,8 @@ var app = {
 // (i) pagina leader, retrieve and deploy
 // ---------------------------------------------------------------------------------------------------------------
         $(".btn-page-notifiche").click(function(){
+            console.log("dentro notifiche");
+
             window.localStorage.removeItem('pagenotificheoffset');
             $.mobile.loading( 'show', {
                 text: 'Loading',
@@ -1281,7 +1283,7 @@ var app = {
                 url: "https://www.diamondsclub.it/api/getmessaggiapp.php",
                 data: jQuery.param(params) ,
                 success: function (data) {
-                    //alert("SUCCESS!");
+                    alert("SUCCESS!");
                     resp=data.resp;
                     tipi=data.tipi;
                     window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
@@ -1304,7 +1306,7 @@ var app = {
 
                     for (j=0;j<tipi.length;j++) {
                         var tipo=tipi[j];
-                        //alert(tipo);
+                        alert(tipo);
                         if (resp[tipo]) {
                             var notifica=resp[tipo];
                             //print_r(leader);
