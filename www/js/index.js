@@ -124,14 +124,6 @@ var app = {
         push.on('registration', function(data) {
             // data.registrationId
             console.log(data);
-            var notifichecount=cordova.plugins.notification.badge.get();
-            $("#notifiche-footer-button").mobileBadge({
-                count: notifichecount, //what number you want appearing on the badge
-                position: "topright", //where the badge should appear relative to button
-                                     //takes values "topleft" and "topright"
-                classnames: "my_special_class" //to apply custom styling to the button
-                //can also be an array of class names
-            });
 
             //cordova.plugins.notification.badge.set(0);
             window.localStorage.setItem("registrationId",data.registrationId);
@@ -151,6 +143,15 @@ var app = {
 
     prelancio: function(id) {
         console.log("04 - Dentro prelancio");
+        var notifichecount=1*cordova.plugins.notification.badge.get();
+        console.log(notifichecount);
+        $("#notifiche-footer-button").mobileBadge({
+            count: notifichecount, //what number you want appearing on the badge
+            position: "topright", //where the badge should appear relative to button
+            //takes values "topleft" and "topright"
+            classnames: "my_special_class" //to apply custom styling to the button
+            //can also be an array of class names
+        });
         $.mobile.defaultPageTransition = "slide";
         app.lanciaApp('deviceready');
     },
