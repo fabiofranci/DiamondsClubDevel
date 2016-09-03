@@ -1532,6 +1532,11 @@ var app = {
 // (f) pagina chat, retrieve and deploy
 // ---------------------------------------------------------------------------------------------------------------
 
+        $('body').on('click', '#chatSendButton', function() {
+            alert("Mando via il messaggio con testo:"+$("#messageText").val());
+            $("#messageText").val("");
+        });
+
         $('body').on('click', 'a.btn-chat-dettaglio', function() {
             var pagechatoffset=$(this).offset().top;
             window.localStorage.setItem("pagechatoffset",pagechatoffset);
