@@ -1274,7 +1274,7 @@ var app = {
 
 
 // ---------------------------------------------------------------------------------------------------------------
-// (i) pagina leader, retrieve and deploy
+// (i) pagina notifiche, retrieve and deploy
 // ---------------------------------------------------------------------------------------------------------------
         $(".btn-page-notifiche, .btn-page-notifiche-back").click(function(){
             //console.log("dentro notifiche");
@@ -1427,6 +1427,162 @@ var app = {
         });
 
 
+
+
+// ---------------------------------------------------------------------------------------------------------------
+// (i) pagina chat, retrieve and deploy
+// ---------------------------------------------------------------------------------------------------------------
+        $(".btn-page-chat, .btn-page-chat-back").click(function(){
+            //console.log("dentro chat");
+
+            window.localStorage.removeItem('pagechatoffset');
+            $.mobile.loading( 'show', {
+                text: 'Loading',
+                textVisible: true,
+                theme: 'a',
+                textonly: false,
+                html: ''
+            });
+            var resp=[];
+            var params={};
+
+            if (window.localStorage.getItem("idUser")>0) {
+                params.id_utente=window.localStorage.getItem("idUser");
+            } else {
+                return false;
+            }
+            if (window.localStorage.getItem("registrationId")) {
+                params.regId=window.localStorage.getItem("registrationId");
+            }
+            params.secret=secret;
+
+            $.ajax({
+                dataType: "json",
+                type: 'POST',
+                url: "https://www.diamondsclub.it/api/getmessaggiapp.php",
+                data: jQuery.param(params) ,
+                success: function (data) {
+                    //alert("SUCCESS!");
+                    resp=data.resp;
+                    cordova.plugins.notification.badge.set(data.badge);
+                    cordova.plugins.notification.badge.get(showToast);
+
+                    //console.log(resp);
+                    window.localStorage.setItem("chat_memoria",JSON.stringify(resp));
+                },
+                error: function (e) {
+                    //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
+                    resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
+                },
+                complete: function () {
+                    $('#chat_listview').listview();
+                    $('#chat_listview').html('');
+                    //$('#leader_popups').html('');
+                    //alert("FATTO!");
+                    //print_r(tipi);
+                    //print_r(resp);
+                    var htmlcalendario='';
+                    var htmlpopup='';
+
+                    for (j=0;j<resp.length;j++) {
+                        var messaggio=resp[j];
+                        //print_r(leader);
+                        //console.log(messaggio);
+                        //print_r(lead);
+                        htmlcalendario ="<li data-role='list-divider'><h3>"+messaggio.titolo+"</h3></li>";
+                        //htmlcalendario+="<li><a data-rel='popup' href='#popupLeader"+j+"-"+i+"'>";
+                        htmlcalendario+="<li><a href='#' datamessaggio='"+j+"' class='btn-chat-dettaglio'>";
+                        if (messaggio.letto=='no') {
+                            htmlcalendario+="<p><strong>"+messaggio.timestamp+"</strong></p>";
+                        } else {
+                            htmlcalendario+="<p>"+messaggio.timestamp+"</p>";
+                        }
+                        htmlcalendario+="</a></li>";
+
+                        //htmlcalendario+="</a></li>";
+                        //htmlpopup ="<div data-role='popup' id='popupLeader"+j+"-"+i+"'>";
+
+                        //htmlpopup+="<div data-role='header'><h5>"+lead.titolo_leader+"</h5><a href='#' data-rel='back' class='ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right'>Close</a></div>";
+                        //htmlpopup+="<div data-role='main' class='ui-content'><p class='fontsize12'>"+lead.descrizione_leader+"</p></div>";
+                        //htmlpopup+="</div>";
+                        //console.log(htmlcalendario);
+
+                        $('#chat_listview').append(htmlcalendario);
+                        //$('#leader_popups').append(htmlpopup);
+                    }
+                    //console.log("Eccoci qui");
+                    $('#chat_listview').listview('refresh');
+                    //if (leader_first_time>1) { $('#leader_popups').enhanceWithin(); }
+                    $.mobile.navigate("#page-chat");
+                }
+            });
+        });
+
+        $("#page-chat").on( "pageshow", function(event){
+            //console.log("eccomi alla page-chat pageshow");
+            $.mobile.loading( 'hide');
+            var pagechatoffset=window.localStorage.getItem("pagechatoffset");
+            if (pagechatoffset>80) {
+                //alert(pageleaderoffset);
+                $.mobile.silentScroll(pagechatoffset-80);
+            }
+        });
+
+// ---------------------------------------------------------------------------------------------------------------
+// (f) pagina chat, retrieve and deploy
+// ---------------------------------------------------------------------------------------------------------------
+
+        $('body').on('click', 'a.btn-chat-dettaglio', function() {
+            var pagechatoffset=$(this).offset().top;
+            window.localStorage.setItem("pagechatoffset",pagechatoffset);
+            var htmldettaglio="";
+            var j=$(this).attr('datamessaggio');
+            var resp=[];
+            var params={};
+            resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
+            var lead=resp[j];
+            htmldettaglio ="<h3>"+lead.titolo+"</h3>";
+            htmldettaglio+="<p><strong>"+lead.tipo_messaggio+"</strong></p>";
+            htmldettaglio+="<p><i class='fa fa-calendar'></i> "+lead.timestamp+"</p>";
+            htmldettaglio+="<p>"+lead.messaggio+"</p>";
+            $("#dettaglio-notifica-content").html(htmldettaglio);
+
+            params.id_messaggio=lead.id;
+            params.id_utente=window.localStorage.getItem("idUser");
+            params.secret=secret;
+
+            if (checkConnessione()) {
+                $.mobile.loading( 'show', {
+                    text: 'Loading',
+                    textVisible: true,
+                    theme: 'a',
+                    textonly: false,
+                    html: ''
+                });
+                $.ajax({
+                    dataType: "json",
+                    type: 'POST',
+                    url: "https://www.diamondsclub.it/api/aggiornamessaggiapp.php",
+                    data: jQuery.param(params) ,
+                    success: function (data) {
+                        cordova.plugins.notification.badge.set(data.badge);
+                        cordova.plugins.notification.badge.get(showToast);
+                        //console.log("aggiornamessaggiapp SUCCESS!");
+                    },
+                    error: function (e) {
+                        alert("Connessione assente, non aggiorno il badge!");
+                    },
+                    complete: function () {
+
+                    }
+                });
+            } else {
+                //alert("Nessuna connessione internet, non posso fare l'autenticazione!");
+            }
+            $.mobile.navigate("#page-chat-dettaglio");
+        });
+        
+        
 
 // ---------------------------------------------------------------------------------------------------------------
 // (i) pagina login, login remoto e redirect
