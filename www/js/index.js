@@ -1547,18 +1547,21 @@ var app = {
                 url: "https://www.diamondsclub.it/api/sendmessaggioappchat.php",
                 data: jQuery.param(params) ,
                 success: function (data) {
-                    alert("Messaggio consegnato!");
+                    var idmessaggio=data.idmessaggio;
                     $("#messageText").val("");
-
+                    invianotifiche(idmessaggio);
                 },
                 error: function (e) {
-                    alert("Connessione assente messaggio non spedito!");
+                    alert("Messaggio non spedito!");
                     //resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
                 }
 
             });
         });
 
+        function invianotifiche(idmessaggio) {
+            alert("ora devo inviare le notifiche per: "+idmessaggio);
+        }
         
 
 // ---------------------------------------------------------------------------------------------------------------
