@@ -1585,6 +1585,11 @@ var app = {
             } else {
                 return false;
             }
+            if (idmessaggio>0) {
+
+            } else {
+                return false;
+            }
             params.secret=secret;
             params.id_messaggio=idmessaggio;
             $.ajax({
