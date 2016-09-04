@@ -1458,10 +1458,6 @@ var app = {
             params.secret=secret;
             params.chat='15planner';
 
-            if ($("#messageText").val()=='') {
-                return false;
-            }
-            
             $.ajax({
                 dataType: "json",
                 type: 'POST',
@@ -1538,6 +1534,11 @@ var app = {
             } else {
                 return false;
             }
+
+            if ($("#messageText").val()=='') {
+                return false;
+            }
+
             params.secret=secret;
             params.chat='15planner';
             params.msg=Base64.encode($("#messageText").val());
