@@ -1458,6 +1458,10 @@ var app = {
             params.secret=secret;
             params.chat='15planner';
 
+            if ($("#messageText").val()=='') {
+                return false;
+            }
+            
             $.ajax({
                 dataType: "json",
                 type: 'POST',
