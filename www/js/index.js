@@ -1583,10 +1583,10 @@ var app = {
             if (window.localStorage.getItem("idUser")>0) {
                 params.id_utente=window.localStorage.getItem("idUser");
             } else {
-                $.mobile.loading( 'hide');
                 return false;
             }
             params.secret=secret;
+            params.id_messaggio=idmessaggio;
             $.ajax({
                 dataType: "json",
                 type: 'POST',
