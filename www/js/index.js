@@ -1528,9 +1528,33 @@ var app = {
 // ---------------------------------------------------------------------------------------------------------------
 
         $('body').on('click', '#chatSendButton', function() {
+            if (window.localStorage.getItem("idUser")>0) {
+                params.id_utente=window.localStorage.getItem("idUser");
+            } else {
+                return false;
+            }
+            params.secret=secret;
+            params.chat='15planner';
+            params.msg=Base64.encode($("#messageText").val());
+            //alert("Mando via il messaggio con testo:"+$("#messageText").val());
 
-            alert("Mando via il messaggio con testo:"+$("#messageText").val());
-            $("#messageText").val("");
+
+            $.ajax({
+                dataType: "json",
+                type: 'POST',
+                url: "https://www.diamondsclub.it/api/sendmessaggioappchat.php",
+                data: jQuery.param(params) ,
+                success: function (data) {
+                    alert("Messaggio consegnato!");
+                    $("#messageText").val("");
+
+                },
+                error: function (e) {
+                    alert("Connessione assente messaggio non spedito!");
+                    //resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
+                }
+
+            });
         });
 
         
