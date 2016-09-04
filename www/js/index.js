@@ -1537,9 +1537,10 @@ var app = {
             params.secret=secret;
             params.chat='15planner';
             params.msg=Base64.encode($("#messageText").val());
+            console.log(params);
             //alert("Mando via il messaggio con testo:"+$("#messageText").val());
 
-            alert("MAndo via il messaggio "+$("#messageText").val());
+            //alert("MAndo via il messaggio "+$("#messageText").val());
             $.ajax({
                 dataType: "json",
                 type: 'POST',
