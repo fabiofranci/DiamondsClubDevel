@@ -1548,6 +1548,8 @@ var app = {
                 data: jQuery.param(params) ,
                 success: function (data) {
                     var idmessaggio=data.idmessaggio;
+                    var htmlmessaggio="<div class='msg-right'>"+$("#messageText").val()+"</div>";
+                    $("#incomingMessages").append(htmlmessaggio);
                     $("#messageText").val("");
                     invianotifiche(idmessaggio);
                 },
