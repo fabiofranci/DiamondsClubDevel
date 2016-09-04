@@ -1538,7 +1538,7 @@ var app = {
             params.msg=Base64.encode($("#messageText").val());
             //alert("Mando via il messaggio con testo:"+$("#messageText").val());
 
-
+            alert("MAndo via il messaggio "+$("#messageText").val());
             $.ajax({
                 dataType: "json",
                 type: 'POST',
