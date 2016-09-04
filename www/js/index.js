@@ -1528,14 +1528,23 @@ var app = {
 // ---------------------------------------------------------------------------------------------------------------
 
         $('body').on('click', '#chatSendButton', function() {
+            $.mobile.loading( 'show', {
+                text: 'Loading',
+                textVisible: true,
+                theme: 'a',
+                textonly: false,
+                html: ''
+            });
             var params={};
             if (window.localStorage.getItem("idUser")>0) {
                 params.id_utente=window.localStorage.getItem("idUser");
             } else {
+                $.mobile.loading( 'hide');
                 return false;
             }
 
             if ($("#messageText").val()=='') {
+                $.mobile.loading( 'hide');
                 return false;
             }
 
@@ -1554,12 +1563,14 @@ var app = {
                 success: function (data) {
                     var idmessaggio=data.idmessaggio;
                     var htmlmessaggio="<div class='msg-chat'><strong>IO:</strong> "+$("#messageText").val()+"</div>";
+                    $.mobile.loading( 'hide');
                     $("#incomingMessages").append(htmlmessaggio);
                     $("#messageText").val("");
                     invianotifiche(idmessaggio);
                 },
                 error: function (e) {
                     alert("Messaggio non spedito!");
+                    $.mobile.loading( 'hide');
                     //resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
                 }
 
@@ -1567,7 +1578,8 @@ var app = {
         });
 
         function invianotifiche(idmessaggio) {
-            alert("ora devo inviare le notifiche per: "+idmessaggio);
+            //alert("ora devo inviare le notifiche per: "+idmessaggio);
+
         }
         
 
