@@ -226,6 +226,7 @@ var app = {
         $.mobile.navigate(initial);
 
         window.localStorage.setItem("platform",device.platform);
+        window.localStorage.setItem("uuid",device.uuid);
 //(i) inizializzazione
         if (device.platform=='iOS') {
             var numb=device.version;
@@ -1455,11 +1456,12 @@ var app = {
                 params.regId=window.localStorage.getItem("registrationId");
             }
             params.secret=secret;
+            params.chat='15planner';
 
             $.ajax({
                 dataType: "json",
                 type: 'POST',
-                url: "https://www.diamondsclub.it/api/getmessaggiapp.php",
+                url: "https://www.diamondsclub.it/api/getmessaggiappchat.php",
                 data: jQuery.param(params) ,
                 success: function (data) {
                     //alert("SUCCESS!");
@@ -1475,8 +1477,7 @@ var app = {
                     resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
                 },
                 complete: function () {
-                    $('#chat_listview').listview();
-                    $('#chat_listview').html('');
+                    $('#incomingMessages').html('');
                     //$('#leader_popups').html('');
                     //alert("FATTO!");
                     //print_r(tipi);
@@ -1486,12 +1487,7 @@ var app = {
 
                     for (j=0;j<resp.length;j++) {
                         var messaggio=resp[j];
-                        //print_r(leader);
-                        //console.log(messaggio);
-                        //print_r(lead);
-                        htmlcalendario ="<li data-role='list-divider'><h3>"+messaggio.titolo+"</h3></li>";
-                        //htmlcalendario+="<li><a data-rel='popup' href='#popupLeader"+j+"-"+i+"'>";
-                        htmlcalendario+="<li><a href='#' datamessaggio='"+j+"' class='btn-chat-dettaglio'>";
+                        htmlcalendario="<li><a href='#' datamessaggio='"+j+"' class='btn-chat-dettaglio'>";
                         if (messaggio.letto=='no') {
                             htmlcalendario+="<p><strong>"+messaggio.timestamp+"</strong></p>";
                         } else {
@@ -1507,11 +1503,10 @@ var app = {
                         //htmlpopup+="</div>";
                         //console.log(htmlcalendario);
 
-                        $('#chat_listview').append(htmlcalendario);
+                        $('#incomingMessages').append(htmlcalendario);
                         //$('#leader_popups').append(htmlpopup);
                     }
                     //console.log("Eccoci qui");
-                    $('#chat_listview').listview('refresh');
                     //if (leader_first_time>1) { $('#leader_popups').enhanceWithin(); }
                     $.mobile.navigate("#page-chat");
                 }
@@ -1537,56 +1532,6 @@ var app = {
             $("#messageText").val("");
         });
 
-        $('body').on('click', 'a.btn-chat-dettaglio', function() {
-            var pagechatoffset=$(this).offset().top;
-            window.localStorage.setItem("pagechatoffset",pagechatoffset);
-            var htmldettaglio="";
-            var j=$(this).attr('datamessaggio');
-            var resp=[];
-            var params={};
-            resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
-            var lead=resp[j];
-            htmldettaglio ="<h3>"+lead.titolo+"</h3>";
-            htmldettaglio+="<p><strong>"+lead.tipo_messaggio+"</strong></p>";
-            htmldettaglio+="<p><i class='fa fa-calendar'></i> "+lead.timestamp+"</p>";
-            htmldettaglio+="<p>"+lead.messaggio+"</p>";
-            $("#dettaglio-notifica-content").html(htmldettaglio);
-
-            params.id_messaggio=lead.id;
-            params.id_utente=window.localStorage.getItem("idUser");
-            params.secret=secret;
-
-            if (checkConnessione()) {
-                $.mobile.loading( 'show', {
-                    text: 'Loading',
-                    textVisible: true,
-                    theme: 'a',
-                    textonly: false,
-                    html: ''
-                });
-                $.ajax({
-                    dataType: "json",
-                    type: 'POST',
-                    url: "https://www.diamondsclub.it/api/aggiornamessaggiapp.php",
-                    data: jQuery.param(params) ,
-                    success: function (data) {
-                        cordova.plugins.notification.badge.set(data.badge);
-                        cordova.plugins.notification.badge.get(showToast);
-                        //console.log("aggiornamessaggiapp SUCCESS!");
-                    },
-                    error: function (e) {
-                        alert("Connessione assente, non aggiorno il badge!");
-                    },
-                    complete: function () {
-
-                    }
-                });
-            } else {
-                //alert("Nessuna connessione internet, non posso fare l'autenticazione!");
-            }
-            $.mobile.navigate("#page-chat-dettaglio");
-        });
-        
         
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -1597,7 +1542,8 @@ var app = {
             var txt_password=$("#txt-password").val();
             var regId=window.localStorage.getItem("registrationId");
             var platform=window.localStorage.getItem("platform");
-            var querystring="email=" + txt_email + "&secret=" + secret + "&password=" + txt_password+"&regId="+regId+"&platform="+platform;
+            var uuid=window.localStorage.getItem("uuid");
+            var querystring="email=" + txt_email + "&secret=" + secret + "&password=" + txt_password+"&regId="+regId+"&platform="+platform+"&uuid="+uuid;
             console.log(querystring);
             //console.log("login email:"+txt_email);
             //console.log("login password:"+txt_password);
