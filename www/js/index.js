@@ -1464,7 +1464,7 @@ var app = {
                 url: "https://www.diamondsclub.it/api/getmessaggiappchat.php",
                 data: jQuery.param(params) ,
                 success: function (data) {
-                    alert("SUCCESS!");
+                    //alert("SUCCESS!");
                     resp=data.resp;
                     cordova.plugins.notification.badge.set(data.badge);
                     cordova.plugins.notification.badge.get(showToast);
@@ -1528,6 +1528,7 @@ var app = {
 // ---------------------------------------------------------------------------------------------------------------
 
         $('body').on('click', '#chatSendButton', function() {
+
             alert("Mando via il messaggio con testo:"+$("#messageText").val());
             $("#messageText").val("");
         });
