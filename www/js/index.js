@@ -1528,6 +1528,7 @@ var app = {
 // ---------------------------------------------------------------------------------------------------------------
 
         $('body').on('click', '#chatSendButton', function() {
+            var params={};
             if (window.localStorage.getItem("idUser")>0) {
                 params.id_utente=window.localStorage.getItem("idUser");
             } else {
