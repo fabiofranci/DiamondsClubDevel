@@ -1591,7 +1591,7 @@ var app = {
                 return false;
             }
             params.secret=secret;
-            params.id_messaggio=idmessaggio;
+            params.idmessaggio=idmessaggio;
             $.ajax({
                 dataType: "json",
                 type: 'POST',
