@@ -1551,7 +1551,7 @@ var app = {
             params.secret=secret;
             params.chat='15planner';
             params.msg=Base64.encode($("#messageText").val());
-            console.log(params);
+            //console.log(params);
             //alert("Mando via il messaggio con testo:"+$("#messageText").val());
 
             //alert("MAndo via il messaggio "+$("#messageText").val());
@@ -1579,7 +1579,27 @@ var app = {
 
         function invianotifiche(idmessaggio) {
             //alert("ora devo inviare le notifiche per: "+idmessaggio);
+            var params={};
+            if (window.localStorage.getItem("idUser")>0) {
+                params.id_utente=window.localStorage.getItem("idUser");
+            } else {
+                $.mobile.loading( 'hide');
+                return false;
+            }
+            params.secret=secret;
+            $.ajax({
+                dataType: "json",
+                type: 'POST',
+                url: "https://www.diamondsclub.it/api/sendmessaggioappchat_parte2.php",
+                data: jQuery.param(params) ,
+                success: function (data) {
 
+                },
+                error: function (e) {
+                    //resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
+                }
+
+            });
         }
         
 
