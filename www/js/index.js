@@ -1551,7 +1551,7 @@ var app = {
                     $('#incomingMessages').html('');
                     //recupero lo storico
                     var vecchiohtml=window.localStorage.getItem("incomingMessages_memoria");
-                    $('#incomingMessages').html('vecchiohtml');
+                    $('#incomingMessages').html(vecchiohtml);
 
                     var htmlcalendario='';
 
