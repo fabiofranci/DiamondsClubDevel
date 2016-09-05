@@ -1530,6 +1530,9 @@ var app = {
             var params={};
             params.secret=secret;
             params.idmessaggi=idmessaggiscaricati;
+            console.log("Dentro aggiornamessaggi");
+            console.log(params);
+
 
             $.ajax({
                 dataType: "json",
