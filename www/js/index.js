@@ -148,6 +148,12 @@ var app = {
                     var htmlcalendario="<div class='msg-chat'><strong>"+data.additionalData.nomeutente+":</strong> "+data.message+"</div>";
                     $('#incomingMessages').append(htmlcalendario);
                 }
+                var pagechatoffset=$("#segnapostoincomingMessages").offset().top;
+                window.localStorage.setItem("pagechatoffset",pagechatoffset);
+                if (pagechatoffset>80) {
+                    //alert(pageleaderoffset);
+                    $.mobile.silentScroll(pagechatoffset-80);
+                }
             } else {
                 alert(data.message);
             }
@@ -1503,6 +1509,8 @@ var app = {
 
                         $('#incomingMessages').append(htmlcalendario);
                     }
+                    var pagechatoffset=$("#segnapostoincomingMessages").offset().top;
+                    window.localStorage.setItem("pagechatoffset",pagechatoffset);
                     $.mobile.navigate("#page-chat");
                 }
             });
@@ -1560,6 +1568,12 @@ var app = {
                     var htmlmessaggio="<div class='msg-chat'><strong>IO:</strong> "+$("#messageText").val()+"</div>";
                     $.mobile.loading( 'hide');
                     $("#incomingMessages").append(htmlmessaggio);
+                    var pagechatoffset=$("#segnapostoincomingMessages").offset().top;
+                    window.localStorage.setItem("pagechatoffset",pagechatoffset);
+                    if (pagechatoffset>80) {
+                        //alert(pageleaderoffset);
+                        $.mobile.silentScroll(pagechatoffset-80);
+                    }
                     $("#messageText").val("");
                     invianotifiche(idmessaggio);
                 },
