@@ -309,6 +309,8 @@ var app = {
             window.localStorage.removeItem('ospiti_memoria');
             window.localStorage.removeItem('pageleaderoffset');
             window.localStorage.removeItem('pagenotificheoffset');
+            window.localStorage.removeItem('pagechatoffset');
+            window.localStorage.removeItem('incomingMessages_memoria');
             inizializzazione_variabili();
         }
 
