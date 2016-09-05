@@ -1551,7 +1551,7 @@ var app = {
             params.secret=secret;
             params.chat='15planner';
             params.msg=$("#messageText").val();
-            //console.log(params);
+            console.log(params);
             //alert("Mando via il messaggio con testo:"+$("#messageText").val());
 
             //alert("MAndo via il messaggio "+$("#messageText").val());
