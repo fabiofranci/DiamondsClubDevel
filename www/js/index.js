@@ -1487,27 +1487,11 @@ var app = {
 
                     for (j=0;j<resp.length;j++) {
                         var messaggio=resp[j];
-                        htmlcalendario="<li><a href='#' datamessaggio='"+j+"' class='btn-chat-dettaglio'>";
-                        if (messaggio.letto=='no') {
-                            htmlcalendario+="<p><strong>"+messaggio.timestamp+"</strong></p>";
-                        } else {
-                            htmlcalendario+="<p>"+messaggio.timestamp+"</p>";
-                        }
-                        htmlcalendario+="</a></li>";
 
-                        //htmlcalendario+="</a></li>";
-                        //htmlpopup ="<div data-role='popup' id='popupLeader"+j+"-"+i+"'>";
-
-                        //htmlpopup+="<div data-role='header'><h5>"+lead.titolo_leader+"</h5><a href='#' data-rel='back' class='ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right'>Close</a></div>";
-                        //htmlpopup+="<div data-role='main' class='ui-content'><p class='fontsize12'>"+lead.descrizione_leader+"</p></div>";
-                        //htmlpopup+="</div>";
-                        //console.log(htmlcalendario);
+                        var htmlcalendario="<div class='msg-chat'><strong>"+messaggio.nomeutente+":</strong> "+messaggio.messaggio+"</div>";
 
                         $('#incomingMessages').append(htmlcalendario);
-                        //$('#leader_popups').append(htmlpopup);
                     }
-                    //console.log("Eccoci qui");
-                    //if (leader_first_time>1) { $('#leader_popups').enhanceWithin(); }
                     $.mobile.navigate("#page-chat");
                 }
             });
