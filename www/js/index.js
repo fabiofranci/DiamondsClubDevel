@@ -1457,6 +1457,7 @@ var app = {
             }
             params.secret=secret;
             params.chat='15planner';
+            console.log(params);
 
             $.ajax({
                 dataType: "json",
@@ -1487,9 +1488,11 @@ var app = {
 
                     for (j=0;j<resp.length;j++) {
                         var messaggio=resp[j];
-
-                        var htmlcalendario="<div class='msg-chat'><strong>"+messaggio.nomeutente+":</strong> "+messaggio.messaggio+"</div>";
-
+                        if (window.localStorage.getItem('nome')==messaggio.nomeutente) {
+                            var htmlcalendario="<div class='msg-chat'><strong>IO:</strong> "+messaggio.messaggio+"</div>";
+                        } else {
+                            var htmlcalendario="<div class='msg-chat'><strong>"+messaggio.nomeutente+":</strong> "+messaggio.messaggio+"</div>";
+                        }
                         $('#incomingMessages').append(htmlcalendario);
                     }
                     $.mobile.navigate("#page-chat");
