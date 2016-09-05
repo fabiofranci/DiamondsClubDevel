@@ -1500,12 +1500,13 @@ var app = {
                     $('#incomingMessages').html(vecchiohtml);
 
                     var htmlcalendario='';
-
-                    for (j=0;j<resp.length;j++) {
-                        var messaggio=resp[j];
-                        htmlcalendario+="<div class='msg-chat'><strong>"+messaggio.nomeutente+":</strong> "+messaggio.messaggio+"</div>";
+                    if (resp.length>0) {
+                        for (j=0;j<resp.length;j++) {
+                            var messaggio=resp[j];
+                            htmlcalendario+="<div class='msg-chat'><strong>"+messaggio.nomeutente+":</strong> "+messaggio.messaggio+"</div>";
+                        }
+                        $('#incomingMessages').append(htmlcalendario);
                     }
-                    $('#incomingMessages').append(htmlcalendario);
 
                     window.localStorage.setItem("incomingMessages_memoria",$('#incomingMessages').html());
 
@@ -1537,35 +1538,15 @@ var app = {
                 data: jQuery.param(params) ,
                 success: function (data) {
                     //alert("SUCCESS!");
-                    resp=data.resp;
                     cordova.plugins.notification.badge.set(data.badge);
                     cordova.plugins.notification.badge.get(showToast);
-                    var idmessaggiscaricati=data.idmessaggiscaricati;
-                    aggiornamessaggi(idmessaggiscaricati);
                 },
                 error: function (e) {
                     //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
                     //resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
                 },
                 complete: function () {
-                    $('#incomingMessages').html('');
-                    //recupero lo storico
-                    var vecchiohtml=window.localStorage.getItem("incomingMessages_memoria");
-                    $('#incomingMessages').html(vecchiohtml);
 
-                    var htmlcalendario='';
-
-                    for (j=0;j<resp.length;j++) {
-                        var messaggio=resp[j];
-                        htmlcalendario+="<div class='msg-chat'><strong>"+messaggio.nomeutente+":</strong> "+messaggio.messaggio+"</div>";
-                    }
-                    $('#incomingMessages').append(htmlcalendario);
-
-                    window.localStorage.setItem("incomingMessages_memoria",$('#incomingMessages').html());
-
-                    var pagechatoffset=$("#segnapostoincomingMessages").offset().top;
-                    window.localStorage.setItem("pagechatoffset",pagechatoffset);
-                    $.mobile.navigate("#page-chat");
                 }
             });
 
