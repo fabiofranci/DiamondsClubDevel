@@ -1530,7 +1530,6 @@ var app = {
             params.secret=secret;
             params.idmessaggi=idmessaggiscaricati;
 
-
             $.ajax({
                 dataType: "json",
                 type: 'POST',
