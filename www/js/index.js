@@ -141,8 +141,13 @@ var app = {
             console.log(data);
             //alert(data.message);
             if (data.additionalData.chat !='') {
-                var htmlcalendario="<div class='msg-chat'><strong>"+messaggio.nomeutente+":</strong> "+messaggio.messaggio+"</div>";
-                $('#incomingMessages').append(htmlcalendario);
+                if (data.additionalData.Sender==window.localStorage.getItem('idUser')) {
+                    var htmlcalendario="<div class='msg-chat'><strong>IO:</strong> "+data.message+"</div>";
+                    $('#incomingMessages').append(htmlcalendario);
+                } else {
+                    var htmlcalendario="<div class='msg-chat'><strong>"+data.additionalData.nomeutente+":</strong> "+data.message+"</div>";
+                    $('#incomingMessages').append(htmlcalendario);
+                }
             } else {
                 alert(data.message);
             }
