@@ -1519,7 +1519,7 @@ var app = {
         $("#page-chat").on( "pageshow", function(event){
             //console.log("eccomi alla page-chat pageshow");
             $.mobile.loading( 'hide');
-            var pagechatoffset=window.localStorage.getItem("pagechatoffset");
+            var pagechatoffset=$("#segnapostoincomingMessages").offset().top;
             if (pagechatoffset>80) {
                 //alert(pageleaderoffset);
                 $.mobile.silentScroll(pagechatoffset-80);
