@@ -139,7 +139,13 @@ var app = {
         });
         push.on('notification', function(data) {
             console.log(data);
-            alert(data.message);
+            //alert(data.message);
+            if (data.additionalData.chat !='') {
+                var htmlcalendario="<div class='msg-chat'><strong>"+messaggio.nomeutente+":</strong> "+messaggio.messaggio+"</div>";
+                $('#incomingMessages').append(htmlcalendario);
+            } else {
+                alert(data.message);
+            }
             //devo aggiornare i messaggiapp, sincronizzando con il server
             //cordova.plugins.notification.badge.increase();
         });
