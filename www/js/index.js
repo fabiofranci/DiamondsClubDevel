@@ -140,6 +140,7 @@ var app = {
         push.on('notification', function(data) {
             console.log(data);
             alert(data.message);
+            alert(data.chat);
             //devo aggiornare i messaggiapp, sincronizzando con il server
             //cordova.plugins.notification.badge.increase();
         });
