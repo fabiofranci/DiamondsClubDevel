@@ -1487,6 +1487,7 @@ var app = {
                     cordova.plugins.notification.badge.set(data.badge);
                     cordova.plugins.notification.badge.get(showToast);
                     var idmessaggiscaricati=data.idmessaggiscaricati;
+                    console.log(data);
                     aggiornamessaggi(idmessaggiscaricati);
                 },
                 error: function (e) {
