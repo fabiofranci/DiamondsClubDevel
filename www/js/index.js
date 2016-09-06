@@ -223,6 +223,8 @@ var app = {
         }
 
         console.log("05 - Dentro lanciaApp");
+
+        $('#provabadge').badger('5');
         //------- (i) start app here -----//
         //global vars (?)
         var secret="";
