@@ -1282,7 +1282,7 @@ html head + body .ui-btn.ui-btn-g:visited {
 	background-color: #4d4d4d /*{g-bup-background-color}*/;
 	border-color: #4d4d4d /*{g-bup-border}*/;
 	color: #ffffff /*{g-bup-color}*/;
-	text-shadow: 0 /*{g-bup-shadow-x}*/ 1px /*{g-bup-shadow-y}*/ 0 /*{g-bup-shadow-radius}*/ #444444 /*{g-bup-shadow-color}*/;
+	text-shadow: 0 /*{g-bup-shadow-x}*/ 1px /*{g-bup-shadow-y}*/ 0 /*{g-bup-shadow-radius}*/ #4d4d4d /*{g-bup-shadow-color}*/;
 }
 /* Button hover */
 .ui-page-theme-g .ui-btn:hover,
@@ -1293,7 +1293,7 @@ html head + body .ui-btn.ui-btn-g:hover {
 	background-color: #4d4d4d /*{g-bhover-background-color}*/;
 	border-color: #4d4d4d /*{g-bhover-border}*/;
 	color: #ffffff /*{g-bhover-color}*/;
-	text-shadow: 0 /*{g-bhover-shadow-x}*/ 1px /*{g-bhover-shadow-y}*/ 0 /*{g-bhover-shadow-radius}*/ #444444 /*{g-bhover-shadow-color}*/;
+	text-shadow: 0 /*{g-bhover-shadow-x}*/ 1px /*{g-bhover-shadow-y}*/ 0 /*{g-bhover-shadow-radius}*/ #4d4d4d /*{g-bhover-shadow-color}*/;
 }
 /* Button down */
 .ui-page-theme-g .ui-btn:active,
@@ -1304,7 +1304,7 @@ html head + body .ui-btn.ui-btn-g:active {
 	background-color: #4d4d4d /*{g-bdown-background-color}*/;
 	border-color: #4d4d4d /*{g-bdown-border}*/;
 	color: #ffffff /*{g-bdown-color}*/;
-	text-shadow: 0 /*{g-bdown-shadow-x}*/ 1px /*{g-bdown-shadow-y}*/ 0 /*{g-bdown-shadow-radius}*/ #444444 /*{g-bdown-shadow-color}*/;
+	text-shadow: 0 /*{g-bdown-shadow-x}*/ 1px /*{g-bdown-shadow-y}*/ 0 /*{g-bdown-shadow-radius}*/ #4d4d4d /*{g-bdown-shadow-color}*/;
 }
 /* Active button */
 .ui-page-theme-g .ui-btn.ui-btn-active,
@@ -1330,10 +1330,10 @@ html .ui-bar-g .ui-slider-track .ui-btn-active,
 html .ui-body-g .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-g .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-g .ui-btn-active {
-	background-color: #3388cc /*{g-active-background-color}*/;
-	border-color: #1c4a70 /*{g-active-border}*/;
+	background-color: #4d4d4d /*{g-active-background-color}*/;
+	border-color: #4d4d4d /*{g-active-border}*/;
 	color: #ffffff /*{g-active-color}*/;
-	text-shadow: 0 /*{g-active-shadow-x}*/ 1px /*{g-active-shadow-y}*/ 0 /*{g-active-shadow-radius}*/ #005599 /*{g-active-shadow-color}*/;
+	text-shadow: 0 /*{g-active-shadow-x}*/ 1px /*{g-active-shadow-y}*/ 0 /*{g-active-shadow-radius}*/ #4d4d4d /*{g-active-shadow-color}*/;
 }
 /* Active radio button icon */
 .ui-page-theme-g .ui-radio-on:after,
@@ -1341,7 +1341,7 @@ html .ui-bar-g .ui-radio-on:after,
 html .ui-body-g .ui-radio-on:after,
 html body .ui-group-theme-g .ui-radio-on:after,
 .ui-btn.ui-radio-on.ui-btn-g:after {
-	border-color: #3388cc /*{g-active-background-color}*/;
+	border-color: #4d4d4d /*{g-active-background-color}*/;
 }
 /* Focus */
 .ui-page-theme-g .ui-btn:focus,
@@ -1356,9 +1356,9 @@ html .ui-body-g .ui-focus,
 html body .ui-group-theme-g .ui-focus,
 html head + body .ui-btn-g.ui-focus,
 html head + body .ui-body-g.ui-focus {
-	-webkit-box-shadow: 0 0 12px #3388cc /*{g-active-background-color}*/;
-	-moz-box-shadow: 0 0 12px #3388cc /*{g-active-background-color}*/;
-	box-shadow: 0 0 12px #3388cc /*{g-active-background-color}*/;
+	-webkit-box-shadow: 0 0 12px #4d4d4d /*{g-active-background-color}*/;
+	-moz-box-shadow: 0 0 12px #4d4d4d /*{g-active-background-color}*/;
+	box-shadow: 0 0 12px #4d4d4d /*{g-active-background-color}*/;
 }
 
 
