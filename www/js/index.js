@@ -196,15 +196,7 @@ var app = {
             md5_ospiti      =window.localStorage.getItem('md5_ospiti');
             md5_materiali   =window.localStorage.getItem('md5_materiali');
 
-            if (idOspite) {
-                $("#btn-ospiti-idbutton").hide();
-                $("#btn-nuovo-prospect").hide();
-                $("#btn-statistiche-ospiti").hide();
-                
-                $(".btn-ospiti").hide();
-                $(".btn-page-notifiche").hide();
-                $(".btn-page-chat").hide();
-            } else {
+            if (idUser) {
                 $("#btn-ospiti-idbutton").show();
                 $("#btn-nuovo-prospect").show();
                 $("#btn-statistiche-ospiti").show();
@@ -212,7 +204,16 @@ var app = {
                 $(".btn-ospiti").show();
                 $(".btn-page-notifiche").show();
                 $(".btn-page-chat").show();
+            } else  {
+                $("#btn-ospiti-idbutton").hide();
+                $("#btn-nuovo-prospect").hide();
+                $("#btn-statistiche-ospiti").hide();
+                
+                $(".btn-ospiti").hide();
+                $(".btn-page-notifiche").hide();
+                $(".btn-page-chat").hide();
             }
+            
             if (window.localStorage.getItem('platino')=='si') {
                 $("#btn-incaricati").show();
             } else {
@@ -228,6 +229,8 @@ var app = {
         var nomeUtenteLoggato="";
         var idUser="";
         var idOspite="";
+        idUser=window.localStorage.getItem('idUser');
+        idOspite=window.localStorage.getItem('idOspite');
 
         var md5_eventi      ="";
         var md5_leader      ="";
