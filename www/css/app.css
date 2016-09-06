@@ -115,3 +115,9 @@ h3.mc-text-danger  {
 
 .dcfootergrid {width:90%;text-align:center;}
 
+a.ui-nav-icon {
+    float: left
+}
+span.nav-icon {
+    font-size:11px
+}
