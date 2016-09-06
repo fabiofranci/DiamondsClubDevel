@@ -200,6 +200,7 @@ var app = {
                 $("#btn-ospiti-idbutton").hide();
                 $("#btn-nuovo-prospect").hide();
                 $("#btn-statistiche-ospiti").hide();
+                
                 $(".btn-ospiti").hide();
                 $(".btn-page-notifiche").hide();
                 $(".btn-page-chat").hide();
@@ -207,6 +208,7 @@ var app = {
                 $("#btn-ospiti-idbutton").show();
                 $("#btn-nuovo-prospect").show();
                 $("#btn-statistiche-ospiti").show();
+
                 $(".btn-ospiti").show();
                 $(".btn-page-notifiche").show();
                 $(".btn-page-chat").show();
@@ -248,6 +250,30 @@ var app = {
         console.log("Dopo inizializzazione");
         console.log("idUser:"+idUser);
         console.log("idOspite:"+idOspite);
+
+        if (idOspite) {
+            $("#btn-ospiti-idbutton").hide();
+            $("#btn-nuovo-prospect").hide();
+            $("#btn-statistiche-ospiti").hide();
+
+            $(".btn-ospiti").hide();
+            $(".btn-page-notifiche").hide();
+            $(".btn-page-chat").hide();
+        } else {
+            $("#btn-ospiti-idbutton").show();
+            $("#btn-nuovo-prospect").show();
+            $("#btn-statistiche-ospiti").show();
+
+            $(".btn-ospiti").show();
+            $(".btn-page-notifiche").show();
+            $(".btn-page-chat").show();
+        }
+        if (window.localStorage.getItem('platino')=='si') {
+            $("#btn-incaricati").show();
+        } else {
+            $("#btn-incaricati").hide();
+        }
+
 
         var initial = '#page-index';
         if(window.localStorage.getItem('idUser')>0) {
