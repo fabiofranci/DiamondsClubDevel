@@ -50,19 +50,21 @@ var appId=2235454;
 
 showToast = function (text) {
     var notifichecount=1*text;
-    if (notifichecount>0) {
-        console.log("notifichecount="+notifichecount);
-        $(".btn-page-notifiche").each(function(){
-            console.log("Modifico data theme al bottone ");
-            $(this).attr("data-theme", "f");
-            $(this).attr('class', 'ui-link ui-btn ui-btn-f ui-shadow ui-corner-all');
-        });
-    } else {
-        $(".btn-page-notifiche").each(function(){
-            console.log("Ripristino data theme al bottone ");
-            $(this).attr("data-theme", "a");
-            $(this).attr('class', 'ui-link ui-btn ui-btn-a ui-shadow ui-corner-all');
-        });
+    if (0) {
+        if (notifichecount>0) {
+            console.log("notifichecount="+notifichecount);
+            $(".btn-page-notifiche").each(function(){
+                console.log("Modifico data theme al bottone ");
+                $(this).attr("data-theme", "f");
+                $(this).attr('class', 'ui-link ui-btn ui-btn-f ui-shadow ui-corner-all');
+            });
+        } else {
+            $(".btn-page-notifiche").each(function(){
+                console.log("Ripristino data theme al bottone ");
+                $(this).attr("data-theme", "a");
+                $(this).attr('class', 'ui-link ui-btn ui-btn-a ui-shadow ui-corner-all');
+            });
+        }
     }
 };
 
