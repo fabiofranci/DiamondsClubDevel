@@ -239,7 +239,15 @@ var app = {
         var materiali_first_time=0;
         var notifiche_first_time=0;
 
+        console.log("Prima di inizializzazione");
+        console.log("idUser:"+idUser);
+        console.log("idOspite:"+idOspite);
+
         inizializzazione_variabili();
+
+        console.log("Dopo inizializzazione");
+        console.log("idUser:"+idUser);
+        console.log("idOspite:"+idOspite);
 
         var initial = '#page-index';
         if(window.localStorage.getItem('idUser')>0) {
