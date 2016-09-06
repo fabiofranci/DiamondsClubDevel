@@ -356,6 +356,7 @@ var app = {
             window.localStorage.removeItem('pagenotificheoffset');
             window.localStorage.removeItem('pagechatoffset');
             window.localStorage.removeItem('incomingMessages_memoria');
+            cordova.plugins.notification.badge.set(0);
             inizializzazione_variabili();
         }
 
