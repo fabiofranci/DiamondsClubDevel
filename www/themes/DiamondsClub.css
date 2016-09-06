@@ -24,7 +24,7 @@ button,
 .ui-btn {
 	font-size: 1em;
 	line-height: 1.3;
-	       font-family: sans-serif /*{global-font-family}*/;
+	 font-family: sans-serif /*{global-font-family}*/;
 }
 legend,
 .ui-input-text input,
@@ -386,7 +386,7 @@ html head + body .ui-body-a.ui-focus {
 html .ui-bar-b .ui-bar-inherit,
 html .ui-body-b .ui-bar-inherit,
 html body .ui-group-theme-b .ui-bar-inherit {
-	background-color: #616161 /*{b-bar-background-color}*/;
+	background-color: #4d4d4d /*{b-bar-background-color}*/;
 	border-color: #353535 /*{b-bar-border}*/;
 	color: #FFFFFF /*{b-bar-color}*/;
 	text-shadow: 0 /*{b-bar-shadow-x}*/ 0 /*{b-bar-shadow-y}*/ 0 /*{b-bar-shadow-radius}*/ #eeeeee /*{b-bar-shadow-color}*/;
@@ -839,7 +839,7 @@ html .ui-body-d .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-d .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-d .ui-btn-active {
 	background-color: #3388cc /*{d-active-background-color}*/;
-	border-color: #3388cc /*{d-active-border}*/;
+	border-color: #1c4a70 /*{d-active-border}*/;
 	color: #ffffff /*{d-active-color}*/;
 	text-shadow: 0 /*{d-active-shadow-x}*/ 1px /*{d-active-shadow-y}*/ 0 /*{d-active-shadow-radius}*/ #005599 /*{d-active-shadow-color}*/;
 }
@@ -1167,7 +1167,7 @@ html .ui-body-f .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-f .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-f .ui-btn-active {
 	background-color: #3388cc /*{f-active-background-color}*/;
-	border-color: #3388cc /*{f-active-border}*/;
+	border-color: #1c4a70 /*{f-active-border}*/;
 	color: #ffffff /*{f-active-color}*/;
 	text-shadow: 0 /*{f-active-shadow-x}*/ 1px /*{f-active-shadow-y}*/ 0 /*{f-active-shadow-radius}*/ #005599 /*{f-active-shadow-color}*/;
 }
@@ -1331,7 +1331,7 @@ html .ui-body-g .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-g .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-g .ui-btn-active {
 	background-color: #3388cc /*{g-active-background-color}*/;
-	border-color: #3388cc /*{g-active-border}*/;
+	border-color: #1c4a70 /*{g-active-border}*/;
 	color: #ffffff /*{g-active-color}*/;
 	text-shadow: 0 /*{g-active-shadow-x}*/ 1px /*{g-active-shadow-y}*/ 0 /*{g-active-shadow-radius}*/ #005599 /*{g-active-shadow-color}*/;
 }
