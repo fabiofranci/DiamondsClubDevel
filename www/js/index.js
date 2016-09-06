@@ -366,7 +366,6 @@ var app = {
                 var regId=window.localStorage.getItem("registrationId");
                 var querystring="id_utente=" + id_utente + "&secret=" + secret +"&regId="+regId;
                 console.log(querystring);
-                logoutfunction();
 
                 if (checkConnessione()) {
                     $.mobile.loading( 'show', {
@@ -383,15 +382,18 @@ var app = {
                         data: querystring,
                         success: function (resp) {
                             $.mobile.loading( 'hide' );
+                            logoutfunction();
                         },
                         error: function (e) {
                             $.mobile.loading( 'hide' );
                             alert("Errore: logout remoto non andato a buon fine!");
                             console.log(e.message);
+                            logoutfunction();
                         }
                     });
                 } else {
-                    alert("Nessuna connessione internet, non posso fare l'autenticazione!");
+                    alert("Nessuna connessione internet, non posso fare il logout sul sito!");
+                    logoutfunction();
                 }
             }
         });
