@@ -112,6 +112,10 @@ h3.mc-text-danger  {
 
 .dcfootergrid {width:90%;text-align:center;}
 
-.DCicon {
+.DCiconfooter {
     width:60px;
+}
+
+.DCicon {
+    width:90%;
 }
