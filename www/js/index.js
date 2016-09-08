@@ -297,8 +297,7 @@ var app = {
             if (parseFloat(numb)>=7.0) {
                 console.log("bingo! IOS versione "+numb);
                 $('[data-role="header"]').addClass("ios7");
-                $('.ui-btn-left').addClass("ios7-header-button");
-                $('.ui-btn-right').addClass("ios7-header-button");
+                $('.btn-header-custom').addClass("ios7-header-button");
                 //$(".ui-header-fixed").addClass("ios7header");
             }
         }
