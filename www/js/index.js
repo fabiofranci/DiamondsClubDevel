@@ -1209,7 +1209,7 @@ var app = {
             $.ajax({
                 dataType: "json",
                 type: 'POST',
-                url: "https://www.diamondsclub.it/api/elenco_ospiti.php",
+                url: "https://www.diamondsclub.it/api/get_ospite.php",
                 data: jQuery.param(params) ,
                 success: function (data) {
                     //alert("SUCCESS!");
