@@ -1136,12 +1136,14 @@ var app = {
                         htmlcalendario+="<p><i class='fa fa-map-marker'></i> "+ev.city+"</p>";
                         htmlcalendario+="</a>";
 
-                        htmlcalendario+="<div class='split-custom-wrapper'>";
-//                        htmlcalendario+="    <a href='#' data-role='button' class='split-custom-button' data-icon='gear' data-rel='dialog' data-theme='c' data-iconpos='notext'></a>";
-                        if (ev.tel!='') {
-                            htmlcalendario+="<a href='tel:"+ev.tel+"' class='split-custom-button'><i class='fa fa-phone'></i></a>";
-                        }
-                        htmlcalendario+="</div>";
+                        // htmlcalendario+="<div class='split-custom-wrapper'>";
+                        // htmlcalendario+="    <a href='#' data-role='button' class='split-custom-button' data-icon='gear' data-rel='dialog' data-theme='c' data-iconpos='notext'></a>";
+                        // htmlcalendario+="    <a href='#' data-role='button' class='split-custom-button' data-icon='delete' data-rel='dialog' data-theme='c' data-iconpos='notext'></a>";
+                        // htmlcalendario+="</div>";
+
+                         htmlcalendario+="<div class='split-custom-wrapper'>";
+                         htmlcalendario+="    <a href='#' data-role='button' class='split-custom-button' data-icon='phone' data-theme='c' data-iconpos='notext'></a>";
+                         htmlcalendario+="</div>";
 
 
 
