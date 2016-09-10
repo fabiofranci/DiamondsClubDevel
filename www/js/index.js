@@ -1244,9 +1244,18 @@ var app = {
                     $("#lat").val(ospite.latitudine);
                     $("#lon").val(ospite.longitudine);
 
-                    //diventaospite è un radio quindi?
-                    
-                    $("#professione").val(ospite.professione);
+
+                    //se è solo un prospect, niente altrimenti si prosegue
+                    if (ev.esito!='Prospect') {
+                        $(".diventaospiteriq").fadeOut("slow");
+                        $("#nuovo_prospect_submit").show();
+                        $("#nuovo_ospite_submit").hide();
+                        $("#emailnuovo").val(ospite.email);
+                        $("#password").val(ospite.password);
+                        $("#password2").val(ospite.password);
+                    }
+
+
 
 
 
@@ -1295,7 +1304,7 @@ var app = {
 
         $("#page-nuovo-prospect").on( "pageshow", function(event){
             $.mobile.loading( 'hide');
-            $(".diventaospiteriq").hide();
+            //$(".diventaospiteriq").hide();
         });
 
         $( "#diventaospitesi" ).on( "click", function()
