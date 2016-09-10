@@ -1142,7 +1142,11 @@ var app = {
                         // htmlcalendario+="</div>";
 
                          htmlcalendario+="<div class='split-custom-wrapper'>";
-                         htmlcalendario+="    <a href='tel:"+ev.tel+"' data-role='button' class='split-custom-button' data-icon='phone' data-theme='c' data-iconpos='notext'></a>";
+                         if (ev.tel=='') {
+                             htmlcalendario+="    <a href='#' data-role='button' class='split-custom-button ui-state-disabled' data-icon='phone' data-theme='c' data-iconpos='notext'></a>";
+                         } else {
+                             htmlcalendario+="    <a href='tel:"+ev.tel+"' data-role='button' class='split-custom-button' data-icon='phone' data-theme='b' data-iconpos='notext'></a>";
+                         }
                          htmlcalendario+="</div>";
 
 
