@@ -1114,7 +1114,7 @@ var app = {
                     var tmp_esito='';
                     for (i=0;i<resp.length;i++) {
                         ev=resp[i];
-                        consolo.log(ev);
+                        console.log(ev);
                         tmp_esito="Ospiti_"+ev.esito;
                         tmp_esito=tmp_esito.replace(/ /g,"_");
                         htmlcalendario ="<li class='Ospiti_Tutti "+tmp_esito+"'><a href='#' class='btnprofiloospiti'>";
