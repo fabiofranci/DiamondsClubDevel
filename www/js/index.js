@@ -1190,10 +1190,38 @@ var app = {
             //var pageleaderoffset=$(this).offset().top;
             //window.localStorage.setItem("pageleaderoffset",pageleaderoffset);
             var idospite=$(this).attr('data-idospite');
-            alert(idospite);
+            recuperadatiospite(idospite);
             //$.mobile.navigate("#page-nuovo-prospect");
         });
-        
+
+        function recuperadatiospite(idospite) {
+            var params={};
+            var ospite={};
+
+            if (window.localStorage.getItem("idUser")>0) {
+                params.id_utente=window.localStorage.getItem("idUser");
+            }
+            if (window.localStorage.getItem("idOspite")>0) {
+                params.id_ospite=window.localStorage.getItem("idOspite");
+            }
+            params.secret=secret;
+
+            $.ajax({
+                dataType: "json",
+                type: 'POST',
+                url: "https://www.diamondsclub.it/api/elenco_ospiti.php",
+                data: jQuery.param(params) ,
+                success: function (data) {
+                    //alert("SUCCESS!");
+                    ospite=data.ospite;
+                    console.log(ospite);
+                },
+                error: function (e) {
+                    //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
+                }
+            });
+        }
+
 // ---------------------------------------------------------------------------------------------------------------
 // (f) pagina elenco ospiti, retrieve and deploy
 // ---------------------------------------------------------------------------------------------------------------
