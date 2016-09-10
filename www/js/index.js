@@ -1220,6 +1220,7 @@ var app = {
 
 
                     $("#idospitedamodificare").val(idospite);
+                    $("#nuovo-prospect-title").html("Modifica Ospite");
                     $("#nuovoprospect").fadeIn();
                     $("#controlloindirizzo").fadeIn();
                     $(".diventaospiteriq").fadeOut("slow");
@@ -1286,7 +1287,7 @@ var app = {
         $("#btn-nuovo-prospect").click(function(){
             //alert("Eccomi premuto ospiti");
             //alert("id_utente:"+idUser);
-            $("#nuovo-prospect-title").val("Nuovo Prospect");
+            $("#nuovo-prospect-title").html("Nuovo Prospect");
             $.mobile.loading( 'show', {
                 text: 'Loading',
                 textVisible: true,
