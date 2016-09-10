@@ -1242,7 +1242,7 @@ var app = {
 
                     //diventaospite è un radio quindi?
                     
-                    
+
 
 
 
@@ -1387,9 +1387,18 @@ var app = {
             $("#secret").val(secret);
             $("#invitanteForm").val(window.localStorage.getItem("codiceUtente"));
             $("#nuovoprospect_id_utente").val(window.localStorage.getItem("idUser"));
+
+            var url="https://www.diamondsclub.it/api/nuovoospite.php";
+
+            if ($("#idospitedamodificare").val()>0) {
+                url="https://www.diamondsclub.it/api/modificaospite.php";
+            }
+            
+            alert(url);
+
             $.ajax({
                 type: "POST",
-                url: "https://www.diamondsclub.it/api/nuovoospite.php",
+                url: url,
                 data : $('#nuovoprospect').serialize(),
                 dataType: "html",
                 beforeSend: function()
