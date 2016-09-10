@@ -1220,7 +1220,7 @@ var app = {
 
 
                     $("#idospitedamodificare").val(idospite);
-
+                    $("#nuovo-prospect-title").val("Modifica Ospite");
                     $("#nuovoprospect").fadeIn();
                     $("#controlloindirizzo").fadeIn();
                     $(".diventaospiteriq").fadeOut("slow");
