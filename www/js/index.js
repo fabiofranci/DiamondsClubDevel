@@ -356,7 +356,6 @@ var app = {
             window.localStorage.removeItem('pageleaderoffset');
             window.localStorage.removeItem('pagenotificheoffset');
             window.localStorage.removeItem('pagechatoffset');
-            window.localStorage.removeItem('incomingMessages_memoria');
             cordova.plugins.notification.badge.set(0);
             inizializzazione_variabili();
         }
@@ -1548,7 +1547,7 @@ var app = {
                 complete: function () {
                     $('#incomingMessages').html('');
                     //recupero lo storico
-                    var vecchiohtml=window.localStorage.getItem("incomingMessages_memoria");
+                    var vecchiohtml=window.localStorage.getItem("incomingMessages_memoria"+idUser);
                     $('#incomingMessages').html(vecchiohtml);
 
                     var htmlcalendario='';
@@ -1560,7 +1559,7 @@ var app = {
                         $('#incomingMessages').append(htmlcalendario);
                     }
 
-                    window.localStorage.setItem("incomingMessages_memoria",$('#incomingMessages').html());
+                    window.localStorage.setItem("incomingMessages_memoria"+idUser,$('#incomingMessages').html());
 
                     var pagechatoffset=$("#segnapostoincomingMessages").offset().top;
                     window.localStorage.setItem("pagechatoffset",pagechatoffset);
