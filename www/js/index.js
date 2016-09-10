@@ -1144,9 +1144,7 @@ var app = {
                         if (ev.tel=='') {
 
                         } else {
-                            htmlcalendario+="<div class='split-custom-wrapper'>";
-                            htmlcalendario+="    <a href='tel:"+ev.tel+"' data-role='button' class='split-custom-button' data-icon='phone' data-theme='b' data-iconpos='notext'></a>";
-                            htmlcalendario+="</div>";
+                            htmlcalendario+="<a href='tel:"+ev.tel+"' data-role='button' class='split-custom-button' data-icon='phone' data-theme='b' data-iconpos='notext'></a>";
                         }
 
 
