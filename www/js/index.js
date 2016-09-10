@@ -1114,10 +1114,10 @@ var app = {
                     var tmp_esito='';
                     for (i=0;i<resp.length;i++) {
                         ev=resp[i];
-                        console.log(ev);
+                        //console.log(ev);
                         tmp_esito="Ospiti_"+ev.esito;
                         tmp_esito=tmp_esito.replace(/ /g,"_");
-                        htmlcalendario ="<li class='Ospiti_Tutti "+tmp_esito+"'><a href='#' class='btnprofiloospiti'>";
+                        htmlcalendario ="<li class='Ospiti_Tutti "+tmp_esito+"'><a href='#' data-idospite='"+ev.id_ospite+"' class='btnprofiloospiti'>";
                         if (ev.ultimo_accesso!='null') {
                             if (ev.stato=='attivo') {
                                 htmlcalendario+="<p><strong>"+ev.nome+"</strong> ("+ev.ultimo_accesso+") </p>";
@@ -1185,6 +1185,10 @@ var app = {
             }
         });
 
+        $(".btn-profilo-ospiti").click(function(){
+            var idospite=$("this").attr('data-idospite').val();
+            alert(idospite);
+        });
 
 // ---------------------------------------------------------------------------------------------------------------
 // (f) pagina elenco ospiti, retrieve and deploy
