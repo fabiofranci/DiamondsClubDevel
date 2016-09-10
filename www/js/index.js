@@ -1187,11 +1187,8 @@ var app = {
 
 
         $('body').on('click', 'a.btnprofiloospiti', function() {
-            //var pageleaderoffset=$(this).offset().top;
-            //window.localStorage.setItem("pageleaderoffset",pageleaderoffset);
             var idospite=$(this).attr('data-idospite');
             recuperadatiospite(idospite);
-            //$.mobile.navigate("#page-nuovo-prospect");
         });
 
         function recuperadatiospite(idospite) {
@@ -1213,6 +1210,39 @@ var app = {
                     //alert("SUCCESS!");
                     ospite=data.ospite;
                     console.log(ospite);
+                    $.mobile.loading( 'show', {
+                        text: 'Loading',
+                        textVisible: true,
+                        theme: 'a',
+                        textonly: false,
+                        html: ''
+                    });
+
+                    $("#nuovoprospect").fadeIn();
+                    $("#controlloindirizzo").fadeIn();
+                    $(".diventaospiteriq").fadeOut("slow");
+                    $("#nuovo_prospect_submit").show();
+                    $("#nuovo_ospite_submit").hide();
+                    $(".mexsistema").hide();
+                    $('#nuovoprospect')[0].reset();
+
+                    //ora inserisco i valori dell'ospite da modificare
+                    $("#nome").val(ospite.nome);
+                    $("#cognome").val(ospite.cognome);
+                    $("#prefisso_internazionale").val(ospite.prefisso_internazionale);
+                    
+
+
+
+
+                    $.mobile.navigate("#page-nuovo-prospect");
+
+
+
+
+
+
+
                 },
                 error: function (e) {
                     //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
