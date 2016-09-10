@@ -414,9 +414,13 @@
             <h1>Profilo personale</h1>
         </div><!-- /header -->
         <div role="main" class="ui-content">
-            <div class="ui-grid-b">
-                <div class="ui-block-b"><a href="#page-index" data-inline="true" class="logout-button ui-btn ui-btn-f" ><i class="fa fa-power-off fa-3x"></i><br /><span class="fontsize12">Logout</span></a></div>
-            </div><!-- /grid-b -->
+            <ul data-role="listview" data-inset="true" class="ui-alt-icon">
+                    <li><i class="fa fa-list-ul"><a href="#">Profilo Personale</a></li>
+                    <li><i class="fa fa-list-ul"><a href="#">Profilo Collaboratore</a></li>
+                    <li><i class="fa fa-comment-o"><a href="#">Chat</a></li>
+                    <li><i class="fa fa-bell-o"><a href="#">Notifiche</a></li>
+                    <li><i class="fa fa-power-off"></i><a href="#page-index">Logout</a></li>
+            </ul>
         </div><!-- /content -->
         <!--footer-->
         <div data-role="footer" class="ui-bar dcfooter" data-id="DC-footer" data-theme="b" data-position="fixed" >
@@ -488,7 +492,7 @@
         <div role="main" class="ui-content">
             <div data-role="content">
                         <form class="ui-filterable">
-                            <input id="ospiti-filterable-input" data-type="search" placeholder="Cerca nome incaricato...">
+                            <input id="ospiti-filterable-input" data-type="search" placeholder="Cerca nome ospite...">
                         </form>
                         <ul data-autodividers="true" data-theme="b" data-divider-theme="b" data-role="listview" data-filter="true" data-input="#ospiti-filterable-input" id="ospiti_listview">
                         </ul>
