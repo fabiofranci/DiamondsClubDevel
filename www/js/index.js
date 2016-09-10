@@ -1244,6 +1244,7 @@ var app = {
 
                     $("#lat").val(ospite.latitudine);
                     $("#lon").val(ospite.longitudine);
+                    $("#sponsorizzato").val(ospite.sponsorizzato);
 
 
                     //se è solo un prospect, niente altrimenti si prosegue
@@ -1268,10 +1269,6 @@ var app = {
                             $("#primoinvitono").prop("checked",true);
                         }
                     }
-
-
-
-
 
                     $.mobile.navigate("#page-nuovo-prospect");
 
