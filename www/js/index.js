@@ -1135,7 +1135,7 @@ var app = {
                         }
                         htmlcalendario+="<p><i class='fa fa-map-marker'></i> "+ev.city+"</p>";
                         if (ev.tel!='') {
-                            htmlcalendario+="<p><a href='tel:"+ev.tel+"'>"+ev.tel+"</a></p>";
+                            htmlcalendario+="<p><i class='fa fa-phone'></i><a href='tel:"+ev.tel+"'>"+ev.tel+"</a></p>";
                         }
                         //if (ev.email!='') {
                         //    htmlcalendario+="<p><a href='mailto:"+ev.email+"'>"+ev.email+"</a></p>";
