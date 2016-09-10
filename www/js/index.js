@@ -1232,7 +1232,7 @@ var app = {
                     //ora inserisco i valori dell'ospite da modificare
                     $("#nome").val(ospite.nome);
                     $("#cognome").val(ospite.cognome);
-                    $("#prefisso_internazionale").val(ospite.prefisso_internazionale);
+                    $('[name=prefisso_internazionale]').val(ospite.prefisso_internazionale);
                     $("#cellulare").val(ospite.cellulare);
                     $("#indirizzo").val(ospite.indirizzo);
                     $("#cittacerca").val(ospite.city);
@@ -1246,7 +1246,7 @@ var app = {
 
 
                     //se è solo un prospect, niente altrimenti si prosegue
-                    if (ev.esito!='Prospect') {
+                    if (ospite.esito!='Prospect') {
                         $(".diventaospiteriq").fadeIn("slow");
                         $("#nuovo_prospect_submit").show();
                         $("#nuovo_ospite_submit").hide();
@@ -1255,7 +1255,7 @@ var app = {
                         $("#password2").val(ospite.password);
                         $("#diventaospitesi").prop("checked", true);
                         $("#diventaospiteno").prop("checked", false);
-                        $('[name=esito]').val(ev.esito);
+                        $('[name=esito]').val(ospite.esito);
                     }
 
 
