@@ -1236,6 +1236,7 @@ var app = {
                     $("#cellulare").val(ospite.cellulare);
                     $("#indirizzo").val(ospite.indirizzo);
                     $("#cittacerca").val(ospite.city);
+                    $("[name=stato]").val(ospite.country);
                     $("#professione").val(ospite.professione);
                     $("#data_nascita").val(ospite.data_nascita);
                     $("#data_contatto").val(ospite.data_contatto);
@@ -1256,6 +1257,16 @@ var app = {
                         $("#diventaospitesi").prop("checked", true);
                         $("#diventaospiteno").prop("checked", false);
                         $('[name=esito]').val(ospite.esito);
+                        $("#data_pm").val(ospite.data_pm);
+                        $("#data_spons").val(ospite.data_spons);
+
+                        if (ospite.primoinvito=='si') {
+                            $("#primoinvitosi").prop("checked",true);
+                            $("#primoinvitono").prop("checked",false);
+                        } else {
+                            $("#primoinvitosi").prop("checked",false);
+                            $("#primoinvitono").prop("checked",true);
+                        }
                     }
 
 
