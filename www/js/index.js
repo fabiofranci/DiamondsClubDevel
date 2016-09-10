@@ -1247,7 +1247,7 @@ var app = {
 
                     //se è solo un prospect, niente altrimenti si prosegue
                     if (ev.esito!='Prospect') {
-                        $(".diventaospiteriq").fadeOut("slow");
+                        $(".diventaospiteriq").fadeIn("slow");
                         $("#nuovo_prospect_submit").show();
                         $("#nuovo_ospite_submit").hide();
                         $("#emailnuovo").val(ospite.email);
