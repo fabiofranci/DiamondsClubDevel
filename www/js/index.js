@@ -1230,7 +1230,11 @@ var app = {
                     $("#nome").val(ospite.nome);
                     $("#cognome").val(ospite.cognome);
                     $("#prefisso_internazionale").val(ospite.prefisso_internazionale);
-                    
+                    $("#cellulare").val(ospite.cellulare);
+                    $("#indirizzo").val(ospite.indirizzo);
+                    $("#citta").val(ospite.city);
+                    $("#cittacerca").val(ospite.city);
+
 
 
 
