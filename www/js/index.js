@@ -1253,6 +1253,9 @@ var app = {
                         $("#emailnuovo").val(ospite.email);
                         $("#password").val(ospite.password);
                         $("#password2").val(ospite.password);
+                        $("#diventaospitesi").prop("checked", true);
+                        $("#diventaospiteno").prop("checked", false);
+                        $('[name=esito]').val(ev.esito);
                     }
 
 
@@ -1284,6 +1287,7 @@ var app = {
         $("#btn-nuovo-prospect").click(function(){
             //alert("Eccomi premuto ospiti");
             //alert("id_utente:"+idUser);
+            alert("Cliccato btn-nuovo-prospect");
             $.mobile.loading( 'show', {
                 text: 'Loading',
                 textVisible: true,
