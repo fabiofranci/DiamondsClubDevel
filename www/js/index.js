@@ -1185,11 +1185,15 @@ var app = {
             }
         });
 
-        $(".btn-profilo-ospiti").click(function(){
-            var idospite=$("this").attr('data-idospite').val();
-            alert(idospite);
-        });
 
+        $('body').on('click', 'a.btnprofiloospiti', function() {
+            //var pageleaderoffset=$(this).offset().top;
+            //window.localStorage.setItem("pageleaderoffset",pageleaderoffset);
+            var idospite=$(this).attr('data-idospite');
+            alert(idospite);
+            //$.mobile.navigate("#page-nuovo-prospect");
+        });
+        
 // ---------------------------------------------------------------------------------------------------------------
 // (f) pagina elenco ospiti, retrieve and deploy
 // ---------------------------------------------------------------------------------------------------------------
