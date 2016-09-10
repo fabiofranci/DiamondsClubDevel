@@ -1110,8 +1110,8 @@ var app = {
                     htmlpopup+="</li>";
 
                     //alert("FATTO!");
-                    var htmlcalendario=';
-                    var tmp_esito=';
+                    var htmlcalendario="";
+                    var tmp_esito="";
                     for (i=0;i<resp.length;i++) {
                         ev=resp[i];
                         tmp_esito="Ospiti_"+ev.esito;
