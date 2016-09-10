@@ -1142,7 +1142,7 @@ var app = {
                         // htmlcalendario+="</div>";
 
                          htmlcalendario+="<div class='split-custom-wrapper'>";
-                         htmlcalendario+="    <a href='#' data-role='button' class='split-custom-button' data-icon='phone' data-theme='c' data-iconpos='notext'></a>";
+                         htmlcalendario+="    <a href='tel:"+ev.tel+"' data-role='button' class='split-custom-button' data-icon='phone' data-theme='c' data-iconpos='notext'></a>";
                          htmlcalendario+="</div>";
 
 
