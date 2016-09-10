@@ -1,6 +1,6 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="it.studioweb19.diamondsclubdevel" version="1.0.0">
-  <name>DiamondsClub Devel</name>
-  <description>Diamonds Club App Devel - Michele Tarulli</description>
+  <name>DiamondsClub</name>
+  <description>Diamonds Club App - Michele Tarulli</description>
   <author href="http://www.studioweb19.it" email="info@studioweb19.it">Studio Web 19</author>
   <content src="index.html"/>
   <preference name="phonegap-version" value="cli-6.3.0" />
