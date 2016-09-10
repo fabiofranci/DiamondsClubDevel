@@ -1287,7 +1287,6 @@ var app = {
         $("#btn-nuovo-prospect").click(function(){
             //alert("Eccomi premuto ospiti");
             //alert("id_utente:"+idUser);
-            alert("Cliccato btn-nuovo-prospect");
             $.mobile.loading( 'show', {
                 text: 'Loading',
                 textVisible: true,
