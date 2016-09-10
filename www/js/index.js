@@ -1240,7 +1240,9 @@ var app = {
                     $("#lat").val(ospite.latitudine);
                     $("#lon").val(ospite.longitudine);
 
-
+                    //diventaospite è un radio quindi?
+                    
+                    
 
 
 
