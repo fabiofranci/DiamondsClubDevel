@@ -1141,13 +1141,14 @@ var app = {
                         // htmlcalendario+="    <a href='#' data-role='button' class='split-custom-button' data-icon='delete' data-rel='dialog' data-theme='c' data-iconpos='notext'></a>";
                         // htmlcalendario+="</div>";
 
-                         htmlcalendario+="<div class='split-custom-wrapper'>";
-                         if (ev.tel=='') {
-                             htmlcalendario+="    <a href='#' data-role='button' class='split-custom-button' data-icon='phone' data-theme='b' data-iconpos='notext'></a>";
-                         } else {
-                             htmlcalendario+="    <a href='tel:"+ev.tel+"' data-role='button' class='split-custom-button' data-icon='phone' data-theme='g' data-iconpos='notext'></a>";
-                         }
-                         htmlcalendario+="</div>";
+                        if (ev.tel=='') {
+
+                        } else {
+                            htmlcalendario+="<div class='split-custom-wrapper'>";
+                            htmlcalendario+="    <a href='tel:"+ev.tel+"' data-role='button' class='split-custom-button' data-icon='phone' data-theme='b' data-iconpos='notext'></a>";
+                            htmlcalendario+="</div>";
+                        }
+
 
 
 
