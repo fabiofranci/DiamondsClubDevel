@@ -1232,8 +1232,13 @@ var app = {
                     $("#prefisso_internazionale").val(ospite.prefisso_internazionale);
                     $("#cellulare").val(ospite.cellulare);
                     $("#indirizzo").val(ospite.indirizzo);
-                    $("#citta").val(ospite.city);
                     $("#cittacerca").val(ospite.city);
+                    $("#professione").val(ospite.professione);
+                    $("#data_nascita").val(ospite.data_nascita);
+                    $("#data_contatto").val(ospite.data_contatto);
+
+                    $("#lat").val(ospite.latitudine);
+                    $("#lon").val(ospite.longitudine);
 
 
 
