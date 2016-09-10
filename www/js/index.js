@@ -44,7 +44,7 @@
 //super globals variables
 var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9+/=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/rn/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
 var my_media=null;
-var audioAttuale=';
+var audioAttuale='';
 var appId=2235454;
 
 
@@ -142,7 +142,7 @@ var app = {
         push.on('notification', function(data) {
             console.log(data);
             //alert(data.message);
-            if (data.additionalData.chat !=') {
+            if (data.additionalData.chat !='') {
                 if (data.additionalData.Sender==window.localStorage.getItem('idUser')) {
                     var htmlcalendario="<div class='msg-chat'><strong>IO:</strong> "+data.message+"</div>";
                     $('#incomingMessages').append(htmlcalendario);
@@ -303,7 +303,7 @@ var app = {
         }
 
         function print_r(printthis, returnoutput) {
-            var output = ';
+            var output = '';
 
             if($.isArray(printthis) || typeof(printthis) == 'object') {
                 for(var i in printthis) {
@@ -373,7 +373,7 @@ var app = {
                         textVisible: true,
                         theme: 'a',
                         textonly: false,
-                        html: '
+                        html: ''
                     });
                     $.ajax({
                         dataType: "json",
@@ -412,7 +412,7 @@ var app = {
                 textVisible: true,
                 theme: 'a',
                 textonly: false,
-                html: '
+                html: ''
             });
             var resp=[];
             var params={};
@@ -446,9 +446,9 @@ var app = {
                 },
                 complete: function () {
                     $('#eventi_listview').listview();
-                    $('#eventi_listview').html(');
+                    $('#eventi_listview').html('');
                     //alert("FATTO!");
-                    var htmlcalendario=';
+                    var htmlcalendario='';
                     for (i=0;i<resp.length;i++) {
                         ev=resp[i];
                         var arr = ev.data.split('-');
@@ -501,7 +501,7 @@ var app = {
                 textVisible: true,
                 theme: 'a',
                 textonly: false,
-                html: '
+                html: ''
             });
             var resp=[];
             var params={};
@@ -538,13 +538,13 @@ var app = {
                 },
                 complete: function () {
                     $('#leader_listview').listview();
-                    $('#leader_listview').html(');
-                    //$('#leader_popups').html(');
+                    $('#leader_listview').html('');
+                    //$('#leader_popups').html('');
                     //alert("FATTO!");
                     //print_r(tipi);
                     //print_r(resp);
-                    var htmlcalendario=';
-                    var htmlpopup=';
+                    var htmlcalendario='';
+                    var htmlpopup='';
 
                     for (j=0;j<tipi.length;j++) {
                         var tipo=tipi[j];
@@ -631,7 +631,7 @@ var app = {
                 textVisible: true,
                 theme: 'a',
                 textonly: false,
-                html: '
+                html: ''
             });
             var resp=[];
             var params={};
@@ -665,13 +665,13 @@ var app = {
                 },
                 complete: function () {
                     $('#viaggi_listview').listview();
-                    $('#viaggi_listview').html(');
-                    //$('#viaggi_popups').html(');
+                    $('#viaggi_listview').html('');
+                    //$('#viaggi_popups').html('');
                     //alert("FATTO!");
                     //print_r(tipi);
                     //print_r(resp);
-                    var htmlcalendario=';
-                    var htmlpopup=';
+                    var htmlcalendario='';
+                    var htmlpopup='';
 
                     for (j=0;j<resp.length;j++) {
                         var viaggio=resp[j];
@@ -746,7 +746,7 @@ var app = {
                 textVisible: true,
                 theme: 'a',
                 textonly: false,
-                html: '
+                html: ''
             });
             var resp=[];
             var sottocat=[];
@@ -787,15 +787,15 @@ var app = {
                     sottocat=JSON.parse(window.localStorage.getItem("sottocategorie_materiali_memoria"));
                 },
                 complete: function () {
-                    $('#materiali_content').html(');
-                    //$('#materiali_popups').html(');
+                    $('#materiali_content').html('');
+                    //$('#materiali_popups').html('');
                     //alert("FATTO!");
                     //print_r(tipi);
                     //print_r(sottocat);
                     $('#listview-pannello-materiali-impostazioni').listview();
-                    $('#listview-pannello-materiali-impostazioni').html(');
-                    var htmlcalendario=';
-                    var htmlpopup=';
+                    $('#listview-pannello-materiali-impostazioni').html('');
+                    var htmlcalendario='';
+                    var htmlpopup='';
                     htmlpopup+="<li data-role='list-divider'>Tipo Media</li>";
 
                     htmlpopup+="<li>";
@@ -936,7 +936,7 @@ var app = {
                 textVisible: true,
                 theme: 'a',
                 textonly: false,
-                html: '
+                html: ''
             });
             var resp=[];
             var params={};
@@ -970,9 +970,9 @@ var app = {
                 },
                 complete: function () {
                     $('#incaricati_listview').listview();
-                    $('#incaricati_listview').html(');
+                    $('#incaricati_listview').html('');
                     //alert("FATTO!");
-                    var htmlcalendario=';
+                    var htmlcalendario='';
                     for (i=0;i<resp.length;i++) {
                         ev=resp[i];
                         htmlcalendario ="<li><a href='#' class='btnprofiloincaricati'>";
@@ -989,10 +989,10 @@ var app = {
                                 htmlcalendario+="<p>"+ev.nome+" </p>";
                             }
                         }
-//                        if (ev.tel!=') {
+//                        if (ev.tel!='') {
 //                            htmlcalendario+="<p><a href='tel:"+ev.tel+"'>"+ev.tel+"</a></p>";
 //                        }
-//                        if (ev.email!=') {
+//                        if (ev.email!='') {
 //                            htmlcalendario+="<p><a href='mailto:"+ev.email+"'>"+ev.email+"</a></p>";
 //                        }
 //                        if (ev.city!='Scegli Comune' && ev.city!='null') {
@@ -1028,7 +1028,7 @@ var app = {
                 textVisible: true,
                 theme: 'a',
                 textonly: false,
-                html: '
+                html: ''
             });
             var resp=[];
             var esiti=[];
@@ -1066,12 +1066,12 @@ var app = {
                 },
                 complete: function () {
                     $('#ospiti_listview').listview();
-                    $('#ospiti_listview').html(');
+                    $('#ospiti_listview').html('');
 
                     $('#listview-pannello-ospiti-impostazioni').listview();
-                    $('#listview-pannello-ospiti-impostazioni').html(');
-                    var htmlcalendario=';
-                    var htmlpopup=';
+                    $('#listview-pannello-ospiti-impostazioni').html('');
+                    var htmlcalendario='';
+                    var htmlpopup='';
                     htmlpopup+="<li data-role='list-divider'>Tipo</li>";
 
                     htmlpopup+="<li>";
@@ -1110,8 +1110,8 @@ var app = {
                     htmlpopup+="</li>";
 
                     //alert("FATTO!");
-                    var htmlcalendario="";
-                    var tmp_esito="";
+                    var htmlcalendario='';
+                    var tmp_esito='';
                     for (i=0;i<resp.length;i++) {
                         ev=resp[i];
                         tmp_esito="Ospiti_"+ev.esito;
@@ -1140,11 +1140,12 @@ var app = {
                         htmlcalendario+="    <a href='#' data-role='button' class='split-custom-button' data-icon='delete' data-rel='dialog' data-theme='c' data-iconpos='notext'></a>";
                         htmlcalendario+="</div>";
 
+
                         //htmlcalendario+="<p><i class='fa fa-map-marker'></i> "+ev.city+"</p>";
-                        //if (ev.tel!=') {
+                        //if (ev.tel!='') {
                         //    htmlcalendario+="<p><i class='fa fa-phone'></i><a href='tel:"+ev.tel+"'>"+ev.tel+"</a></p>";
                         //}
-                        //if (ev.email!=') {
+                        //if (ev.email!='') {
                         //    htmlcalendario+="<p><a href='mailto:"+ev.email+"'>"+ev.email+"</a></p>";
                         //}
                         htmlcalendario+="</li>";
@@ -1191,7 +1192,7 @@ var app = {
                 textVisible: true,
                 theme: 'a',
                 textonly: false,
-                html: '
+                html: ''
             });
             $("#nuovoprospect").fadeIn();
             $("#controlloindirizzo").fadeIn();
@@ -1207,9 +1208,9 @@ var app = {
         $("#page-nuovo-prospect").on( "pageshow", function(event){
             $.mobile.loading( 'hide');
             $(".diventaospiteriq").hide();
-            $("#data_nascita").val(');
-            $("#data_contatto").val(');
-            $("#data_PM").val(');
+            $("#data_nascita").val('');
+            $("#data_contatto").val('');
+            $("#data_PM").val('');
         });
 
         $( "#diventaospitesi" ).on( "click", function()
@@ -1360,7 +1361,7 @@ var app = {
                 textVisible: true,
                 theme: 'a',
                 textonly: false,
-                html: '
+                html: ''
             });
             var resp=[];
             var params={};
@@ -1395,13 +1396,13 @@ var app = {
                 },
                 complete: function () {
                     $('#notifiche_listview').listview();
-                    $('#notifiche_listview').html(');
-                    //$('#leader_popups').html(');
+                    $('#notifiche_listview').html('');
+                    //$('#leader_popups').html('');
                     //alert("FATTO!");
                     //print_r(tipi);
                     //print_r(resp);
-                    var htmlcalendario=';
-                    var htmlpopup=';
+                    var htmlcalendario='';
+                    var htmlpopup='';
 
                     for (j=0;j<resp.length;j++) {
                             var messaggio=resp[j];
@@ -1476,7 +1477,7 @@ var app = {
                     textVisible: true,
                     theme: 'a',
                     textonly: false,
-                    html: '
+                    html: ''
                 });
                 $.ajax({
                     dataType: "json",
@@ -1516,7 +1517,7 @@ var app = {
                 textVisible: true,
                 theme: 'a',
                 textonly: false,
-                html: '
+                html: ''
             });
             var resp=[];
             var params={};
@@ -1552,12 +1553,12 @@ var app = {
                     //resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
                 },
                 complete: function () {
-                    $('#incomingMessages').html(');
+                    $('#incomingMessages').html('');
                     //recupero lo storico
                     var vecchiohtml=window.localStorage.getItem("incomingMessages_memoria"+idUser);
                     $('#incomingMessages').html(vecchiohtml);
 
-                    var htmlcalendario=';
+                    var htmlcalendario='';
                     if (resp.length>0) {
                         for (j=0;j<resp.length;j++) {
                             var messaggio=resp[j];
@@ -1623,7 +1624,7 @@ var app = {
                 textVisible: true,
                 theme: 'a',
                 textonly: false,
-                html: '
+                html: ''
             });
             var params={};
             if (window.localStorage.getItem("idUser")>0) {
@@ -1633,7 +1634,7 @@ var app = {
                 return false;
             }
 
-            if ($("#messageText").val()==') {
+            if ($("#messageText").val()=='') {
                 $.mobile.loading( 'hide');
                 return false;
             }
@@ -1725,7 +1726,7 @@ var app = {
                     textVisible: true,
                     theme: 'a',
                     textonly: false,
-                    html: '
+                    html: ''
                 });
                 $.ajax({
                     dataType: "json",
