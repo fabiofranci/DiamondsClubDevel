@@ -1218,6 +1218,9 @@ var app = {
                         html: ''
                     });
 
+
+                    $("#idospitedamodificare").val(idospite);
+
                     $("#nuovoprospect").fadeIn();
                     $("#controlloindirizzo").fadeIn();
                     $(".diventaospiteriq").fadeOut("slow");
