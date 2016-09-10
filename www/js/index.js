@@ -1201,9 +1201,7 @@ var app = {
             if (window.localStorage.getItem("idUser")>0) {
                 params.id_utente=window.localStorage.getItem("idUser");
             }
-            if (window.localStorage.getItem("idOspite")>0) {
-                params.id_ospite=window.localStorage.getItem("idOspite");
-            }
+            params.idospite=idospite;
             params.secret=secret;
 
             $.ajax({
