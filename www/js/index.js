@@ -1296,9 +1296,6 @@ var app = {
         $("#page-nuovo-prospect").on( "pageshow", function(event){
             $.mobile.loading( 'hide');
             $(".diventaospiteriq").hide();
-            $("#data_nascita").val('');
-            $("#data_contatto").val('');
-            $("#data_PM").val('');
         });
 
         $( "#diventaospitesi" ).on( "click", function()
