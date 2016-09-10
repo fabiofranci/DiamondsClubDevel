@@ -1239,13 +1239,14 @@ var app = {
                     $("#professione").val(ospite.professione);
                     $("#data_nascita").val(ospite.data_nascita);
                     $("#data_contatto").val(ospite.data_contatto);
+                    $("#note").val(ospite.note);
 
                     $("#lat").val(ospite.latitudine);
                     $("#lon").val(ospite.longitudine);
 
                     //diventaospite è un radio quindi?
                     
-
+                    $("#professione").val(ospite.professione);
 
 
 
