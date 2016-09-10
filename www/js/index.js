@@ -1220,7 +1220,6 @@ var app = {
 
 
                     $("#idospitedamodificare").val(idospite);
-                    $("#nuovo-prospect-title").val("Modifica Ospite");
                     $("#nuovoprospect").fadeIn();
                     $("#controlloindirizzo").fadeIn();
                     $(".diventaospiteriq").fadeOut("slow");
@@ -1248,8 +1247,8 @@ var app = {
                     //se è solo un prospect, niente altrimenti si prosegue
                     if (ospite.esito!='Prospect') {
                         $(".diventaospiteriq").fadeIn("slow");
-                        $("#nuovo_prospect_submit").show();
-                        $("#nuovo_ospite_submit").hide();
+                        $("#nuovo_prospect_submit").hide();
+                        $("#nuovo_ospite_submit").show();
                         $("#emailnuovo").val(ospite.email);
                         $("#password").val(ospite.password);
                         $("#password2").val(ospite.password);
@@ -1287,6 +1286,7 @@ var app = {
         $("#btn-nuovo-prospect").click(function(){
             //alert("Eccomi premuto ospiti");
             //alert("id_utente:"+idUser);
+            $("#nuovo-prospect-title").val("Nuovo Prospect");
             $.mobile.loading( 'show', {
                 text: 'Loading',
                 textVisible: true,
