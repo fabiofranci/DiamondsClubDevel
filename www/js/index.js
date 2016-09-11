@@ -1227,6 +1227,8 @@ var app = {
                 },
                 success: function(msg)
                 {
+                    console.log("SUCCESS invio email");
+                    console.log(msg);
                     $.mobile.loading( 'hide');
                     if(msg.search("errore"))
                     {
