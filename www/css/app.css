@@ -160,3 +160,5 @@ h3.mc-text-danger  {
     border:1px solid #0071bc;
     padding:5px;
 }
+
+.countBubl {float:left;margin-top:-42px;margin-left:35px;background:#ed1d24;color:#fff;padding:2px;}
