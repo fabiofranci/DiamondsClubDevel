@@ -1261,6 +1261,8 @@ var app = {
                         $("#data_pm").val(ospite.data_pm);
                         if (ospite.esito=='Incaricato') {
                             $(".data_spons").show();
+                        } else {
+                            $(".data_spons").hide();
                         }
                         $("#data_spons").val(ospite.data_spons);
 
