@@ -1314,7 +1314,6 @@ var app = {
             $("#nuovo_prospect_submit").show();
             $("#nuovo_ospite_submit").hide();
             $(".mexsistema").hide();
-            $(".data_spons").hide();
             $('#nuovoprospect')[0].reset();
             $.mobile.navigate("#page-nuovo-prospect");
 
@@ -1322,6 +1321,14 @@ var app = {
 
         $("#page-nuovo-prospect").on( "pageshow", function(event){
             $.mobile.loading( 'hide');
+            if ($('[name=esito]').val()=='Incaricato') {
+                $(".data_spons").show();
+                console.log("mostro data_spons");
+            } else {
+                $(".data_spons").hide();
+                console.log("nascondo data_spons");
+            }
+
             //$(".diventaospiteriq").hide();
         });
 
