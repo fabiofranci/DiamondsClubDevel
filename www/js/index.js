@@ -1191,6 +1191,12 @@ var app = {
             recuperadatiospite(idospite);
         });
 
+        $('body').on('click', 'a.modificaospiteback', function (){
+            $(".mexsistema").fadeOut("slow");
+            $("#nuovoprospect").fadeIn("slow");
+
+        });
+
         function recuperadatiospite(idospite) {
             var params={};
             var ospite={};
