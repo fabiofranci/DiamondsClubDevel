@@ -155,3 +155,8 @@ h3.mc-text-danger  {
     left:-12px;
     height:40%; /* stay within boundaries of list item */
 }
+
+.invio_email_ospite {
+    border:1 px dotted #0071bc;
+    padding:5px;
+}
