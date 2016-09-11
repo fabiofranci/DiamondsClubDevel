@@ -182,6 +182,13 @@ var app = {
         console.log("04 - Dentro prelancio");
 
         cordova.plugins.notification.badge.get(showToast);
+        badgechat=window.localStorage.getItem("badgechat") || 0;
+        $(".chat-badge").html(badgechat);
+        window.localStorage.setItem("badgechat",badgechat);
+        var notifichebadge=0;
+        notifichebadge=window.localStorage.getItem("notifichebadge") || 0;
+        $(".notifiche-badge").html(notifichebadge);
+        window.localStorage.setItem("notifichebadge",notifichebadge);
 
         $.mobile.defaultPageTransition = "slide";
         app.lanciaApp('deviceready');
