@@ -1309,6 +1309,7 @@ var app = {
             $("#nuovo_prospect_submit").show();
             $("#nuovo_ospite_submit").hide();
             $(".mexsistema").hide();
+            $("#data_spons").hide();
             $('#nuovoprospect')[0].reset();
             $.mobile.navigate("#page-nuovo-prospect");
 
