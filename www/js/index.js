@@ -1220,6 +1220,7 @@ var app = {
 
 
                     $("#idospitedamodificare").val(idospite);
+                    $("#codice_ospite").val(codice_ospite);
                     $("#nuovo-prospect-title").html("Modifica Ospite");
                     $("#nuovoprospect").fadeIn();
                     $("#controlloindirizzo").fadeIn();
