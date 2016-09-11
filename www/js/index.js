@@ -1227,6 +1227,9 @@ var app = {
                 },
                 success: function(msg)
                 {
+                    $.mobile.loading('stop');
+                    console.log(msg);
+                    alert("SUCCESS!");
                     $("#loading3").hide();
                     $('.mexsistema2').hide();
                     $(".messaggioerr2").hide();
