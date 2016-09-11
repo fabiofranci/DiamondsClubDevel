@@ -161,8 +161,6 @@ h3.mc-text-danger  {
     padding:5px;
 }
 
-.countBubl {float:left;margin-top:-42px;margin-left:35px;background:#ed1d24;color:#fff;padding:2px;}
-
 .ui-badge-container {
     position: relative;
 }
@@ -171,8 +169,8 @@ h3.mc-text-danger  {
     color: #fff;
     padding: 1px 7px;
     position: absolute;
-    right: 4px;
-    top: -12px;
+    right: 0px;
+    top: 0px;
     z-index: 999;
     border-radius: .8em;
     border: 2px solid #fff;
