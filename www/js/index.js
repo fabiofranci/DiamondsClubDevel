@@ -1227,7 +1227,6 @@ var app = {
                 },
                 success: function(msg)
                 {
-                    console.log("SUCCESS invio email");
                     console.log(msg);
                     $.mobile.loading( 'hide');
                     if(msg.search("errore"))
@@ -1235,6 +1234,8 @@ var app = {
                         $(".mexsistema").empty();
                         $(".mexsistema").html(msg);
                         $('.mexsistema').show();
+                        $("#nuovoprospect").fadeOut();
+                        $("#controlloindirizzo").fadeOut();
                     }
                     else
                     {
