@@ -1191,6 +1191,86 @@ var app = {
             recuperadatiospite(idospite);
         });
 
+
+        $("#invio_mail_submit").click(function(){
+            var testo=$('#editor1').val();
+            var idospitedamodificare=$("#idospitedamodificare").val();
+            console.log("idospite a cui spedire email:"+idospitedamodificare);
+            $.confirm({
+                text: "Vuoi inviare la mail con i dati per accedere a questo ospite?",
+                confirmButton: "Si",
+                cancelButton: "No",
+                confirm: function() {
+
+                    var params={};
+
+                    if (window.localStorage.getItem("idUser")>0) {
+                        params.id_utente=window.localStorage.getItem("idUser");
+                    }
+                    params.idospite=idospitedamodificare;
+                    params.secret=secret;
+                    params.testo=testo;
+
+                    $.ajax({
+                        dataType: "html",
+                        type: 'POST',
+                        url: "https://www.diamondsclub.it/api/inviaemailospite.php",
+                        data: jQuery.param(params) ,
+                        beforeSend: function()
+                        {
+                            //$("#modificaospite").fadeOut();
+                            //$("#controlloindirizzo").fadeOut();
+                            $("#invio_mail").fadeOut("fast");
+                            $.mobile.loading( 'show', {
+                                text: 'Loading',
+                                textVisible: true,
+                                theme: 'a',
+                                textonly: false,
+                                html: ''
+                            });
+                            $(".messaggioerr2").hide();
+                            $("#compila_testo_mail").hide();
+                        },
+                        success: function(msg)
+                        {
+                            $("#loading3").hide();
+                            $('.mexsistema2').hide();
+                            $(".messaggioerr2").hide();
+                            if(msg.search("errore"))
+                            {
+                                $(".messaggio").empty();
+                                $(".messaggio").html(msg);
+                                $('.messaggio').show();
+                                $('#messaggiosistema').modal();
+                                $(".mexsistema2").empty();
+                                $(".mexsistema2").html(msg);
+                                $('.mexsistema2').show();
+
+                            }
+                            else
+                            {
+                                $("#modificaospite").fadeIn();
+                                $("#controlloindirizzo").fadeIn();
+                                var msgnew=msg.replace("errore,", "");
+                                $(".messaggioerr2").empty();
+                                $(".messaggioerr2").html(msgnew);
+                                $(".messaggioerr2").fadeIn();
+                                $("#invio_mail").fadeIn("fast");
+                            }
+                        },
+                        error: function()
+                        {
+                            $(".messaggioerr").empty();
+                            $(".messaggioerr").html("Si è verificato un errore!");
+                        },
+                    });
+                },
+                cancel: function() {
+                    // nothing to do
+                }
+            });
+        });
+
         $('body').on('click', 'a.modificaospiteback', function (){
             $(".mexsistema").fadeOut("slow");
             $("#nuovoprospect").fadeIn("slow");
@@ -1292,13 +1372,6 @@ var app = {
                     }
 
                     $.mobile.navigate("#page-nuovo-prospect");
-
-
-
-
-
-
-
                 },
                 error: function (e) {
                     //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
