@@ -1227,31 +1227,21 @@ var app = {
                 },
                 success: function(msg)
                 {
-                    $.mobile.loading('stop');
-                    console.log(msg);
-                    alert("SUCCESS!");
-                    $("#loading3").hide();
-                    $('.mexsistema2').hide();
-                    $(".messaggioerr2").hide();
+                    $.mobile.loading( 'hide');
                     if(msg.search("errore"))
                     {
-                        $(".messaggio").empty();
-                        $(".messaggio").html(msg);
-                        $('.messaggio').show();
-                        $('#messaggiosistema').show();
-                        $(".mexsistema2").empty();
-                        $(".mexsistema2").html(msg);
-                        $('.mexsistema2').show();
-
+                        $(".mexsistema").empty();
+                        $(".mexsistema").html(msg);
+                        $('.mexsistema').show();
                     }
                     else
                     {
-                        $("#modificaospite").fadeIn();
+                        $("#nuovoprospect").fadeIn();
                         $("#controlloindirizzo").fadeIn();
                         var msgnew=msg.replace("errore,", "");
-                        $(".messaggioerr2").empty();
-                        $(".messaggioerr2").html(msgnew);
-                        $(".messaggioerr2").fadeIn();
+                        $(".messaggioerr").empty();
+                        $(".messaggioerr").html(msgnew);
+                        $(".messaggioerr").fadeIn();
                         $("#invio_mail").fadeIn("fast");
                     }
                 },
