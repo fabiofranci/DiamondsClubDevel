@@ -1259,6 +1259,9 @@ var app = {
                         $("#diventaospiteno").prop("checked", false);
                         $('[name=esito]').val(ospite.esito);
                         $("#data_pm").val(ospite.data_pm);
+                        if (ospite.esito=='Incaricato') {
+                            $("#data_spons").show();
+                        }
                         $("#data_spons").val(ospite.data_spons);
 
                         if (ospite.primoinvito=='si') {
@@ -1331,6 +1334,14 @@ var app = {
             $(".diventaospiteriq").fadeOut("slow");
             $("#nuovo_prospect_submit").show();
             $("#nuovo_ospite_submit").hide();
+        });
+
+        $('#esito').on('change', function() {
+            if( this.value =='Incaricato') {
+                $("#data_spons").show();
+            } else {
+                $("#data_spons").hide();
+            }
         });
 
 
