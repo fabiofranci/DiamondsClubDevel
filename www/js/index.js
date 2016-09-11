@@ -1235,7 +1235,7 @@ var app = {
                         $(".messaggio").empty();
                         $(".messaggio").html(msg);
                         $('.messaggio').show();
-                        $('#messaggiosistema').modal();
+                        $('#messaggiosistema').show();
                         $(".mexsistema2").empty();
                         $(".mexsistema2").html(msg);
                         $('.mexsistema2').show();
