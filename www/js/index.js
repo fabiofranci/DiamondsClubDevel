@@ -1249,6 +1249,9 @@ var app = {
                     $("#data_contatto").val(ospite.data_contatto);
                     $("#note").val(ospite.note);
 
+                    $("#nomeutenteinvitante").html(window.localStorage.getItem("nome"));
+                    $("#emailospite").html(ospite.email);
+
                     $("#lat").val(ospite.latitudine);
                     $("#lon").val(ospite.longitudine);
                     $("#sponsorizzato").val(ospite.sponsorizzato);
