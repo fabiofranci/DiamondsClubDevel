@@ -162,3 +162,24 @@ h3.mc-text-danger  {
 }
 
 .countBubl {float:left;margin-top:-42px;margin-left:35px;background:#ed1d24;color:#fff;padding:2px;}
+
+.ui-badge-container {
+    position: relative;
+    border: 2px solid #000;
+    color: #fff;
+    padding: 10px;
+    width: 140px;
+    margin: 20px;
+    background: green;
+}
+.badge {
+    background: #BA070F;
+    color: #fff;
+    padding: 1px 7px;
+    position: absolute;
+    right: 4px;
+    top: -12px;
+    z-index: 999;
+    border-radius: .8em;
+    border: 2px solid #fff;
+}
