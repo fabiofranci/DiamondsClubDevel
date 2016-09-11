@@ -1245,7 +1245,7 @@ var app = {
                     $("#lat").val(ospite.latitudine);
                     $("#lon").val(ospite.longitudine);
                     $("#sponsorizzato").val(ospite.sponsorizzato);
-
+                    $(".invio_email_ospite").hide();
 
                     //se è solo un prospect, niente altrimenti si prosegue
                     if (ospite.esito!='Prospect') {
@@ -1253,6 +1253,11 @@ var app = {
                         $("#nuovo_prospect_submit").hide();
                         $("#nuovo_ospite_submit").show();
                         $("#emailnuovo").val(ospite.email);
+                        if (ospite.email!='') {
+                            $(".invio_email_ospite").show();
+                            $("#compila_testo_mail").hide();
+
+                        }
                         $("#password").val(ospite.password);
                         $("#password2").val(ospite.password);
                         $("#diventaospitesi").prop("checked", true);
@@ -1316,6 +1321,7 @@ var app = {
             $(".mexsistema").hide();
             $('#nuovoprospect')[0].reset();
             $.mobile.navigate("#page-nuovo-prospect");
+            $(".invio_email_ospite").hide();
 
         });
 
@@ -1421,6 +1427,11 @@ var app = {
                 $("#messcercaind").html("<span style='border:1px solid red;color:red;padding:5px;font-weight:bold;'>Inserire Città e Stato!</span><br><br>");
                 $("#messcercaind").show();
             }
+        });
+
+
+        $("#invio_mail").click(function(){
+            $("#compila_testo_mail").toggle();
         });
 
         $(".nuovo_prospect_submit").click(function(e){
