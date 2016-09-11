@@ -46,22 +46,6 @@ h3.mc-text-danger  {
     font-size:12px;
 }
 
-.badge {
-  background: #BA070F;
-  color: #fff;
-  padding: 1px 7px;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  z-index: 999;
-  border-radius: .8em;
-  border: 2px solid #fff;
-}
-
-.ui-badge-container {
-  position: relative;
-}
-
 .wrap {
     white-space: normal !important;
 }
