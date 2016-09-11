@@ -142,7 +142,7 @@ var app = {
         push.on('notification', function(data) {
             console.log(data);
             //alert(data.message);
-            if (data.additionalData.chat !='') {
+            if (data.additionalData.chat =='15planner') {
                 if (data.additionalData.Sender==window.localStorage.getItem('idUser')) {
                     var htmlcalendario="<div class='msg-chat'><strong>IO:</strong> "+data.message+"</div>";
                     $('#incomingMessages').append(htmlcalendario);
@@ -150,7 +150,7 @@ var app = {
                     var htmlcalendario="<div class='msg-chat'><strong>"+data.additionalData.nomeutente+":</strong> "+data.message+"</div>";
                     $('#incomingMessages').append(htmlcalendario);
                     var badgechat=0;
-                    badgechat=window.localStorage.getItem("badgechat");
+                    badgechat=window.localStorage.getItem("badgechat") || 0;
                     badgechat=badgechat+1;
                     $(".chat-badge").html(badgechat);
                     window.localStorage.setItem("badgechat",badgechat);
@@ -164,7 +164,7 @@ var app = {
             } else {
                 alert(data.message);
                 var notifichebadge=0;
-                notifichebadge=window.localStorage.getItem("notifichebadge");
+                notifichebadge=window.localStorage.getItem("notifichebadge") || 0;
                 notifichebadge=notifichebadge+1;
                 $(".notifiche-badge").html(notifichebadge);
                 window.localStorage.setItem("notifichebadge",notifichebadge);
