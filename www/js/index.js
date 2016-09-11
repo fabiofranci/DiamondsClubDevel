@@ -1220,7 +1220,6 @@ var app = {
 
 
                     $("#idospitedamodificare").val(idospite);
-                    $("#codice_ospite").val(codice_ospite);
                     $("#nuovo-prospect-title").html("Modifica Ospite");
                     $("#nuovoprospect").fadeIn();
                     $("#controlloindirizzo").fadeIn();
@@ -1231,6 +1230,7 @@ var app = {
                     $('#nuovoprospect')[0].reset();
 
                     //ora inserisco i valori dell'ospite da modificare
+                    $("#codice_ospite").val(ospite.codice_ospite);
                     $("#nome").val(ospite.nome);
                     $("#cognome").val(ospite.cognome);
                     $('[name=prefisso_internazionale]').val(ospite.prefisso_internazionale);
