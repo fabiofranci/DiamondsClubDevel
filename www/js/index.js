@@ -1323,10 +1323,8 @@ var app = {
             $.mobile.loading( 'hide');
             if ($('[name=esito]').val()=='Incaricato') {
                 $(".data_spons").show();
-                console.log("mostro data_spons");
             } else {
                 $(".data_spons").hide();
-                console.log("nascondo data_spons");
             }
 
             //$(".diventaospiteriq").hide();
