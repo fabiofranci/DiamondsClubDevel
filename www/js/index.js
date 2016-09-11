@@ -1260,7 +1260,7 @@ var app = {
                         $('[name=esito]').val(ospite.esito);
                         $("#data_pm").val(ospite.data_pm);
                         if (ospite.esito=='Incaricato') {
-                            $("#data_spons").show();
+                            $(".data_spons").show();
                         }
                         $("#data_spons").val(ospite.data_spons);
 
@@ -1312,7 +1312,7 @@ var app = {
             $("#nuovo_prospect_submit").show();
             $("#nuovo_ospite_submit").hide();
             $(".mexsistema").hide();
-            $("#data_spons").hide();
+            $(".data_spons").hide();
             $('#nuovoprospect')[0].reset();
             $.mobile.navigate("#page-nuovo-prospect");
 
@@ -1338,9 +1338,9 @@ var app = {
 
         $('#esito').on('change', function() {
             if( this.value =='Incaricato') {
-                $("#data_spons").show();
+                $(".data_spons").show();
             } else {
-                $("#data_spons").hide();
+                $(".data_spons").hide();
             }
         });
 
