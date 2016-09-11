@@ -149,6 +149,11 @@ var app = {
                 } else {
                     var htmlcalendario="<div class='msg-chat'><strong>"+data.additionalData.nomeutente+":</strong> "+data.message+"</div>";
                     $('#incomingMessages').append(htmlcalendario);
+                    var badgechat=0;
+                    badgechat=window.localStorage.getItem("badgechat");
+                    badgechat=badgechat+1;
+                    $(".chat-badge").html(badgechat);
+                    window.localStorage.setItem("badgechat",badgechat);
                 }
                 var pagechatoffset=$("#segnapostoincomingMessages").offset().top;
                 window.localStorage.setItem("pagechatoffset",pagechatoffset);
@@ -158,6 +163,11 @@ var app = {
                 }
             } else {
                 alert(data.message);
+                var notifichebadge=0;
+                notifichebadge=window.localStorage.getItem("notifichebadge");
+                notifichebadge=notifichebadge+1;
+                $(".notifiche-badge").html(notifichebadge);
+                window.localStorage.setItem("notifichebadge",notifichebadge);
             }
             //devo aggiornare i messaggiapp, sincronizzando con il server
             //cordova.plugins.notification.badge.increase();
@@ -1600,6 +1610,12 @@ var app = {
                     resp=data.resp;
                     cordova.plugins.notification.badge.set(data.badge);
                     cordova.plugins.notification.badge.get(showToast);
+                    var badgechat=data.badgechat;
+                    $(".chat-badge").html(badgechat);
+                    window.localStorage.setItem("badgechat",badgechat);
+                    var notifichechat=data.notifichechat;
+                    $(".notifiche-badge").html(notifichechat);
+                    window.localStorage.setItem("notifichechat",notifichechat);
 
                     //console.log(resp);
                     window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
@@ -1701,6 +1717,7 @@ var app = {
                     success: function (data) {
                         cordova.plugins.notification.badge.set(data.badge);
                         cordova.plugins.notification.badge.get(showToast);
+
                         //console.log("aggiornamessaggiapp SUCCESS!");
                     },
                     error: function (e) {
