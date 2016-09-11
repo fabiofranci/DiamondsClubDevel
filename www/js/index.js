@@ -1265,6 +1265,7 @@ var app = {
                         $("#diventaospiteno").prop("checked", false);
                         $('[name=esito]').val(ospite.esito);
                         $("#data_pm").val(ospite.data_pm);
+
                         if (ospite.esito=='Incaricato') {
                             $(".data_spons").show();
                         } else {
@@ -1272,7 +1273,7 @@ var app = {
                         }
                         $("#data_spons").val(ospite.data_spons);
 
-                        if (ospite.primoinvito=='si') {
+                        if (ospite.primo_invito=='si') {
                             $("#primoinvitosi").prop("checked",true);
                             $("#primoinvitono").prop("checked",false);
                         } else {
