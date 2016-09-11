@@ -1249,7 +1249,7 @@ var app = {
                     $("#data_contatto").val(ospite.data_contatto);
                     $("#note").val(ospite.note);
 
-                    $("#nomeutenteinvitante").html(window.localStorage.getItem("nome"));
+                    $("#nomeutenteinvitante").html("<b>"+window.localStorage.getItem("nome")+"</b>");
                     $("#emailospite").html(ospite.email);
 
                     $("#lat").val(ospite.latitudine);
