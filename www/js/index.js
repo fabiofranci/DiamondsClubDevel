@@ -1447,7 +1447,7 @@ var app = {
                 url="https://www.diamondsclub.it/api/modificaospite.php";
             }
             
-            alert(url);
+            //alert(url);
 
             $.ajax({
                 type: "POST",
