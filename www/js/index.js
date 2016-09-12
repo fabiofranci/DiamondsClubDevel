@@ -221,11 +221,12 @@ var app = {
             },
             error: function (e) {
                 console.log("Errore in chiamata getbadges.php");
+            },
+            complete: function () {
+                $.mobile.defaultPageTransition = "slide";
+                app.lanciaApp('deviceready');
             }
         });
-
-        $.mobile.defaultPageTransition = "slide";
-        app.lanciaApp('deviceready');
     },
 
     // Update DOM on a Received Event
