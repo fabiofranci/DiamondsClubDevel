@@ -171,6 +171,7 @@ var app = {
     lanciaApp: function(id) {
 
         function aggiornabadgenotifiche(notifichebadge) {
+            console.log('aggiornabadgenotifiche:'+notifichebadge);
             $(".notifiche-badge").html(notifichebadge);
             if (notifichebadge>0) {
                 $(".notifiche-badge").show();
@@ -181,6 +182,7 @@ var app = {
         }
 
         function aggiornabadgechat(chatbadge) {
+            console.log('aggiornabadgechat:'+chatbadge);
             $(".chat-badge").html(chatbadge);
             window.localStorage.setItem("chatbadge",chatbadge);
             if (chatbadge>0) {
