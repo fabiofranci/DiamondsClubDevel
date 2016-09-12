@@ -1615,12 +1615,6 @@ var app = {
                     cordova.plugins.notification.badge.set(data.badge);
                     aggiornabadgenotifiche(data.notifichebadge);
                     aggiornabadgechat(data.chatbadge);
-                    var badgechat=data.badgechat;
-                    $(".chat-badge").html(badgechat);
-                    window.localStorage.setItem("badgechat",badgechat);
-                    var notifichechat=data.notifichechat;
-                    $(".notifiche-badge").html(notifichechat);
-                    window.localStorage.setItem("notifichechat",notifichechat);
 
                     //console.log(resp);
                     window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
