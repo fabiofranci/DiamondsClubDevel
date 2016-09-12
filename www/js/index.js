@@ -214,6 +214,7 @@ var app = {
                     aggiornabadgenotifiche(data.notifichebadge);
                     aggiornabadgechat(data.chatbadge);
                     //console.log(data);
+                    console.log("Dentro success");
                     $.mobile.defaultPageTransition = "slide";
                     app.lanciaApp('deviceready');
                 },
@@ -224,6 +225,7 @@ var app = {
                 }
             });
         } else {
+            console.log("Dentro else");
             $.mobile.defaultPageTransition = "slide";
             app.lanciaApp('deviceready');
         }
