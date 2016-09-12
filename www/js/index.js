@@ -223,6 +223,9 @@ var app = {
                     app.lanciaApp('deviceready');
                 }
             });
+        } else {
+            $.mobile.defaultPageTransition = "slide";
+            app.lanciaApp('deviceready');
         }
     },
 
