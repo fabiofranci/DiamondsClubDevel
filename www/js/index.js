@@ -173,6 +173,9 @@ var app = {
                 notifichebadge++;
                 aggiornabadgenotifiche(notifichebadge);
             }
+            //infine aggiusto anche il badge generale, questo mi arriva col messaggio notificato, nella variabile count
+            cordova.plugins.notification.badge.set(data.count);
+
             //devo aggiornare i messaggiapp, sincronizzando con il server
             //cordova.plugins.notification.badge.increase();
         });
