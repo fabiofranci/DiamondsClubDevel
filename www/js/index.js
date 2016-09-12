@@ -50,22 +50,6 @@ var appId=2235454;
 
 showToast = function (text) {
     var notifichecount=1*text;
-    if (0) {
-        if (notifichecount>0) {
-            console.log("notifichecount="+notifichecount);
-            $(".btn-page-notifiche").each(function(){
-                console.log("Modifico data theme al bottone ");
-                $(this).attr("data-theme", "f");
-                $(this).attr('class', 'ui-link ui-btn ui-btn-f ui-shadow ui-corner-all');
-            });
-        } else {
-            $(".btn-page-notifiche").each(function(){
-                console.log("Ripristino data theme al bottone ");
-                $(this).attr("data-theme", "a");
-                $(this).attr('class', 'ui-link ui-btn ui-btn-a ui-shadow ui-corner-all');
-            });
-        }
-    }
 };
 
 var app = {
@@ -149,11 +133,10 @@ var app = {
                 } else {
                     var htmlcalendario="<div class='msg-chat'><strong>"+data.additionalData.nomeutente+":</strong> "+data.message+"</div>";
                     $('#incomingMessages').append(htmlcalendario);
-                    var badgechat=0;
-                    badgechat=+window.localStorage.getItem("badgechat") || 0;
-                    badgechat++;
-                    $(".chat-badge").html(badgechat);
-                    window.localStorage.setItem("badgechat",badgechat);
+                    var chatbadge=0;
+                    chatbadge=+window.localStorage.getItem("chatbadge") || 0;
+                    chatbadge++;
+                    aggiornabadgechat(chatbadge);
                 }
                 var pagechatoffset=$("#segnapostoincomingMessages").offset().top;
                 window.localStorage.setItem("pagechatoffset",pagechatoffset);
@@ -166,8 +149,7 @@ var app = {
                 var notifichebadge=0;
                 notifichebadge=+window.localStorage.getItem("notifichebadge") || 0;
                 notifichebadge++;
-                $(".notifiche-badge").html(notifichebadge);
-                window.localStorage.setItem("notifichebadge",notifichebadge);
+                aggiornabadgenotifiche(notifichebadge);
             }
             //devo aggiornare i messaggiapp, sincronizzando con il server
             //cordova.plugins.notification.badge.increase();
@@ -181,21 +163,34 @@ var app = {
     prelancio: function(id) {
         console.log("04 - Dentro prelancio");
 
-        cordova.plugins.notification.badge.get(showToast);
-        badgechat=+window.localStorage.getItem("badgechat") || 0;
-        $(".chat-badge").html(badgechat);
-        window.localStorage.setItem("badgechat",badgechat);
-        var notifichebadge=0;
-        notifichebadge=+window.localStorage.getItem("notifichebadge") || 0;
-        $(".notifiche-badge").html(notifichebadge);
-        window.localStorage.setItem("notifichebadge",notifichebadge);
-
         $.mobile.defaultPageTransition = "slide";
         app.lanciaApp('deviceready');
     },
 
     // Update DOM on a Received Event
     lanciaApp: function(id) {
+
+        function aggiornabadgenotifiche(notifichebadge) {
+            $(".notifiche-badge").html(notifichebadge);
+            if (notifichebadge>0) {
+                $(".notifiche-badge").show();
+            } else {
+                $(".notifiche-badge").hide();
+            }
+            window.localStorage.setItem("notifichebadge",notifichebadge);
+        }
+
+        function aggiornabadgechat(chatbadge) {
+            $(".chat-badge").html(chatbadge);
+            window.localStorage.setItem("chatbadge",chatbadge);
+            if (chatbadge>0) {
+                $(".chat-badge").show();
+            } else {
+                $(".chat-badge").hide();
+            }
+        }
+
+
 
         function inizializzazione_variabili() {
             console.log("Dentro inizializzazione_variabili");
@@ -1616,7 +1611,8 @@ var app = {
                     //alert("SUCCESS!");
                     resp=data.resp;
                     cordova.plugins.notification.badge.set(data.badge);
-                    cordova.plugins.notification.badge.get(showToast);
+                    aggiornabadgenotifiche(data.notifichebadge);
+                    aggiornabadgechat(data.chatbadge);
                     var badgechat=data.badgechat;
                     $(".chat-badge").html(badgechat);
                     window.localStorage.setItem("badgechat",badgechat);
@@ -1723,7 +1719,8 @@ var app = {
                     data: jQuery.param(params) ,
                     success: function (data) {
                         cordova.plugins.notification.badge.set(data.badge);
-                        cordova.plugins.notification.badge.get(showToast);
+                        aggiornabadgenotifiche(data.notifichebadge);
+                        aggiornabadgechat(data.chatbadge);
 
                         //console.log("aggiornamessaggiapp SUCCESS!");
                     },
@@ -1781,7 +1778,8 @@ var app = {
                     //alert("SUCCESS!");
                     resp=data.resp;
                     cordova.plugins.notification.badge.set(data.badge);
-                    cordova.plugins.notification.badge.get(showToast);
+                    aggiornabadgenotifiche(data.notifichebadge);
+                    aggiornabadgechat(data.chatbadge);
                     var idmessaggiscaricati=data.idmessaggiscaricati;
                     console.log(data);
                     aggiornamessaggi(idmessaggiscaricati);
@@ -1839,7 +1837,8 @@ var app = {
                 success: function (data) {
                     //alert("SUCCESS!");
                     cordova.plugins.notification.badge.set(data.badge);
-                    cordova.plugins.notification.badge.get(showToast);
+                    aggiornabadgenotifiche(data.notifichebadge);
+                    aggiornabadgechat(data.chatbadge);
                 },
                 error: function (e) {
                     //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
