@@ -146,6 +146,7 @@ var app = {
             window.localStorage.setItem("registrationId",data.registrationId);
             app.prelancio('deviceready');
         });
+
         push.on('notification', function(data) {
             console.log(data);
             //alert(data.message);
@@ -194,8 +195,6 @@ var app = {
 
         if (window.localStorage.getItem("idUser")>0) {
             params.id_utente=window.localStorage.getItem("idUser");
-        } else {
-            return false;
         }
         if (window.localStorage.getItem("registrationId")) {
             params.regId=window.localStorage.getItem("registrationId");
