@@ -202,6 +202,8 @@ var app = {
         }
         params.secret=secret;
 
+        console.log("chiamo getbadges, parametri:"+params);
+
         $.ajax({
             dataType: "json",
             type: 'POST',
