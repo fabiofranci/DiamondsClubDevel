@@ -202,26 +202,28 @@ var app = {
         }
         params.secret="jk08lasit76hnjvm98hnj46ukjbfadksdfas";
 
-        $.ajax({
-            dataType: "json",
-            type: 'POST',
-            url: "https://www.diamondsclub.it/api/getbadges.php",
-            data: jQuery.param(params) ,
-            success: function (data) {
-                //alert("SUCCESS!");
-                cordova.plugins.notification.badge.set(data.badge);
-                aggiornabadgenotifiche(data.notifichebadge);
-                aggiornabadgechat(data.chatbadge);
-                //console.log(data);
-            },
-            error: function (e) {
-                console.log("Errore in chiamata getbadges.php");
-            },
-            complete: function () {
-                $.mobile.defaultPageTransition = "slide";
-                app.lanciaApp('deviceready');
-            }
-        });
+        if (params.id_utente>0) {
+            $.ajax({
+                dataType: "json",
+                type: 'POST',
+                url: "https://www.diamondsclub.it/api/getbadges.php",
+                data: jQuery.param(params) ,
+                success: function (data) {
+                    //alert("SUCCESS!");
+                    cordova.plugins.notification.badge.set(data.badge);
+                    aggiornabadgenotifiche(data.notifichebadge);
+                    aggiornabadgechat(data.chatbadge);
+                    //console.log(data);
+                },
+                error: function (e) {
+                    console.log("Errore in chiamata getbadges.php");
+                },
+                complete: function () {
+                    $.mobile.defaultPageTransition = "slide";
+                    app.lanciaApp('deviceready');
+                }
+            });
+        }
     },
 
     // Update DOM on a Received Event
