@@ -1899,10 +1899,12 @@ var app = {
                         $.mobile.silentScroll(pagechatoffset-80);
                     }
                     $("#messageText").val("");
+                    console.log("ora lancio invianotifiche con idmessaggio:"+idmessaggio);
                     invianotifiche(idmessaggio);
                 },
                 error: function (e) {
                     alert("Messaggio non spedito!");
+                    console.log("Messaggio non spedito");
                     $.mobile.loading( 'hide');
                     //resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
                 }
@@ -1925,15 +1927,17 @@ var app = {
             }
             params.secret=secret;
             params.idmessaggio=idmessaggio;
+            console.log("invianotifiche lanciato con idmessaggio:"+idmessaggio);
             $.ajax({
                 dataType: "json",
                 type: 'POST',
                 url: "https://www.diamondsclub.it/api/sendmessaggioappchat_parte2.php",
                 data: jQuery.param(params) ,
                 success: function (data) {
-
+                    console.log("invianotifiche ritornato con successo");
                 },
                 error: function (e) {
+                    console.log("invianotifiche ritornato con errore");
                     //resp=JSON.parse(window.localStorage.getItem("chat_memoria"));
                 }
 
