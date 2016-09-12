@@ -214,11 +214,11 @@ var app = {
                     aggiornabadgenotifiche(data.notifichebadge);
                     aggiornabadgechat(data.chatbadge);
                     //console.log(data);
+                    $.mobile.defaultPageTransition = "slide";
+                    app.lanciaApp('deviceready');
                 },
                 error: function (e) {
                     console.log("Errore in chiamata getbadges.php");
-                },
-                complete: function () {
                     $.mobile.defaultPageTransition = "slide";
                     app.lanciaApp('deviceready');
                 }
