@@ -543,7 +543,11 @@
             <h1>Statistiche ospiti</h1>
         </div><!-- /header -->
         <div role="main" class="ui-content">
-            Pagina statistiche ospiti
+            <form class="ui-filterable">
+                <input id="ospiti-statistiche-filterable-input" data-type="search" placeholder="Cerca nome ospite...">
+            </form>
+            <ul data-split-icon="phone" data-theme="b" data-divider-theme="b" data-role="listview" data-filter="true" data-input="#ospiti-statistiche-filterable-input" id="ospiti_statistiche_listview">
+            </ul>
         </div><!-- /content -->
         <!--footer-->
         <div data-role="footer" class="ui-bar dcfooter" data-id="DC-footer" data-theme="b" data-position="fixed" >

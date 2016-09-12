@@ -1106,7 +1106,7 @@ var app = {
                     esiti=data.esiti;
                     resp=data.resp;
                     md5_ospiti=data.md5;
-                    window.localStorage.setItem("md5_eventi",md5_ospiti);
+                    window.localStorage.setItem("md5_ospiti",md5_ospiti);
                     window.localStorage.setItem("ospiti_memoria",JSON.stringify(resp));
                     window.localStorage.setItem("esiti_memoria",JSON.stringify(esiti));
                 },
@@ -1419,6 +1419,114 @@ var app = {
 // ---------------------------------------------------------------------------------------------------------------
 // (f) pagina elenco ospiti, retrieve and deploy
 // ---------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------------------------------
+// (i) pagina statistiche, retrieve and deploy
+// ---------------------------------------------------------------------------------------------------------------
+
+
+        $("#btn-statistiche-ospiti").click(function(){
+            //alert("Eccomi premuto ospiti");
+            //alert("id_utente:"+idUser);
+            $.mobile.loading( 'show', {
+                text: 'Loading',
+                textVisible: true,
+                theme: 'a',
+                textonly: false,
+                html: ''
+            });
+            var resp=[];
+            var params={};
+
+            if (window.localStorage.getItem("idUser")>0) {
+                params.id_utente=window.localStorage.getItem("idUser");
+            }
+            if (window.localStorage.getItem("idOspite")>0) {
+                params.id_ospite=window.localStorage.getItem("idOspite");
+            }
+            params.secret=secret;
+            if (window.localStorage.getItem("md5_statistiche_ospiti")) {
+                params.md5=window.localStorage.getItem("md5_statistiche_ospiti");
+            }
+
+            $.ajax({
+                dataType: "json",
+                type: 'POST',
+                url: "https://www.diamondsclub.it/api/statistiche_ospiti.php",
+                data: jQuery.param(params) ,
+                success: function (data) {
+                    //alert("SUCCESS!");
+                    esiti=data.esiti;
+                    resp=data.resp;
+                    md5_statistiche_ospiti=data.md5;
+                    window.localStorage.setItem("md5_statistiche_ospiti",md5_statistiche_ospiti);
+                    window.localStorage.setItem("statistiche_ospiti_memoria",JSON.stringify(resp));
+                },
+                error: function (e) {
+                    //alert("Connessione assente oppure nessun aggiornamento, uso i dati in memoria!");
+                    resp=JSON.parse(window.localStorage.getItem("statistiche_ospiti_memoria"));
+                },
+                complete: function () {
+                    $('#ospiti_statistiche_listview').listview();
+                    $('#ospiti_statistiche_listview').html('');
+
+                    var htmlcalendario='';
+
+                    //alert("FATTO!");
+                    var htmlcalendario='';
+                    for (i=0;i<resp.length;i++) {
+                        ev=resp[i];
+                        //console.log(ev);
+                        htmlcalendario ="<li><a href='#' data-idospite='"+ev.id_ospite+"' class='btnprofiloospiti'>";
+                        if (ev.ultimo_accesso!='null') {
+                            if (ev.stato=='attivo') {
+                                htmlcalendario+="<p><strong>"+ev.nome+"</strong> ("+ev.ultimo_accesso+") </p>";
+                            } else {
+                                htmlcalendario+="<p>"+ev.nome+" ("+ev.ultimo_accesso+") </p>";
+                            }
+                        } else {
+                            if (ev.stato=='attivo') {
+                                htmlcalendario+="<p><strong>"+ev.nome+"</strong> </p>";
+                            } else {
+                                htmlcalendario+="<p>"+ev.nome+" </p>";
+                            }
+                        }
+                        if (ev.city=="Scegli Comune") {
+                            ev.city="";
+                        }
+                        htmlcalendario+="<p><i class='fa fa-map-marker'></i> "+ev.city+"</p>";
+                        htmlcalendario+="</a>";
+
+                        // htmlcalendario+="<div class='split-custom-wrapper'>";
+                        // htmlcalendario+="    <a href='#' data-role='button' class='split-custom-button' data-icon='gear' data-rel='dialog' data-theme='c' data-iconpos='notext'></a>";
+                        // htmlcalendario+="    <a href='#' data-role='button' class='split-custom-button' data-icon='delete' data-rel='dialog' data-theme='c' data-iconpos='notext'></a>";
+                        // htmlcalendario+="</div>";
+
+                        if (ev.tel=='') {
+
+                        } else {
+                            htmlcalendario+="<a href='tel:"+ev.tel+"' data-role='button' class='split-custom-button' data-icon='phone' data-theme='b' data-iconpos='notext'></a>";
+                        }
+
+                        htmlcalendario+="</li>";
+                        $('#ospiti_statistiche_listview').append(htmlcalendario);
+                    }
+
+                    $('#ospiti_statistiche_listview').listview('refresh');
+
+                    $.mobile.navigate("#page-statistiche-ospiti");
+                }
+            });
+        });
+
+        $("#page-statistiche-ospiti").on( "pageshow", function(event){
+            $.mobile.loading( 'hide');
+        });
+
+// ---------------------------------------------------------------------------------------------------------------
+// (f) pagina statistiche, retrieve and deploy
+// ---------------------------------------------------------------------------------------------------------------
+
 
 // ---------------------------------------------------------------------------------------------------------------
 // (i) pagina nuovo prospect, retrieve and deploy
