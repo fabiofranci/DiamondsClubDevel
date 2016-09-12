@@ -203,6 +203,11 @@ var app = {
             idUser=window.localStorage.getItem('idUser');
             idOspite=window.localStorage.getItem('idOspite');
 
+            var chatbadge       =window.localStorage.getItem('chatbadge') || 0;
+            var notifichebadge  =window.localStorage.getItem('notifichebadge') || 0;
+            aggiornabadgechat(chatbadge);
+            aggiornabadgenotifiche(notifichebadge);
+            
             md5_eventi      =window.localStorage.getItem('md5_eventi');
             md5_leader      =window.localStorage.getItem('md5_leader');
             md5_viaggi      =window.localStorage.getItem('md5_viaggi');
@@ -1978,6 +1983,9 @@ var app = {
                             window.localStorage.setItem('permessi_incaricato',resp.permessi_incaricato);
                             window.localStorage.removeItem('idOspite');
                             $(".iduserval").html(nomeUtenteLoggato);
+                            cordova.plugins.notification.badge.set(resp.badge);
+                            aggiornabadgenotifiche(resp.notifichebadge);
+                            aggiornabadgechat(resp.chatbadge);
                             //alert(window.localStorage.getItem("registrationId"));
                             $.mobile.navigate("#page-index-logged");
                             $.mobile.loading( 'hide' );
