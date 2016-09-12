@@ -46,6 +46,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
 var my_media=null;
 var audioAttuale='';
 var appId=2235454;
+var secret="jk08lasit76hnjvm98hnj46ukjbfadksdfas";
 
 
 showToast = function (text) {
@@ -187,6 +188,39 @@ var app = {
 
     prelancio: function(id) {
         console.log("04 - Dentro prelancio");
+
+        var resp=[];
+        var params={};
+
+        if (window.localStorage.getItem("idUser")>0) {
+            params.id_utente=window.localStorage.getItem("idUser");
+        } else {
+            return false;
+        }
+        if (window.localStorage.getItem("registrationId")) {
+            params.regId=window.localStorage.getItem("registrationId");
+        }
+        params.secret=secret;
+
+        $.ajax({
+            dataType: "json",
+            type: 'POST',
+            url: "https://www.diamondsclub.it/api/getbadges.php",
+            data: jQuery.param(params) ,
+            success: function (data) {
+                //alert("SUCCESS!");
+                resp=data.resp;
+                cordova.plugins.notification.badge.set(data.badge);
+                aggiornabadgenotifiche(data.notifichebadge);
+                aggiornabadgechat(data.chatbadge);
+
+                //console.log(resp);
+                window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
+            },
+            error: function (e) {
+                console.log("Errore in chiamata getbadges.php");
+            }
+        });
 
         $.mobile.defaultPageTransition = "slide";
         app.lanciaApp('deviceready');
