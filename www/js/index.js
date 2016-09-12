@@ -52,6 +52,28 @@ showToast = function (text) {
     var notifichecount=1*text;
 };
 
+function aggiornabadgenotifiche(notifichebadge) {
+    console.log('aggiornabadgenotifiche:'+notifichebadge);
+    $(".notifiche-badge").html(notifichebadge);
+    if (notifichebadge>0) {
+        $(".notifiche-badge").show();
+    } else {
+        $(".notifiche-badge").hide();
+    }
+    window.localStorage.setItem("notifichebadge",notifichebadge);
+}
+
+function aggiornabadgechat(chatbadge) {
+    console.log('aggiornabadgechat:'+chatbadge);
+    $(".chat-badge").html(chatbadge);
+    window.localStorage.setItem("chatbadge",chatbadge);
+    if (chatbadge>0) {
+        $(".chat-badge").show();
+    } else {
+        $(".chat-badge").hide();
+    }
+}
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -170,30 +192,6 @@ var app = {
     // Update DOM on a Received Event
     lanciaApp: function(id) {
 
-        function aggiornabadgenotifiche(notifichebadge) {
-            console.log('aggiornabadgenotifiche:'+notifichebadge);
-            $(".notifiche-badge").html(notifichebadge);
-            if (notifichebadge>0) {
-                $(".notifiche-badge").show();
-            } else {
-                $(".notifiche-badge").hide();
-            }
-            window.localStorage.setItem("notifichebadge",notifichebadge);
-        }
-
-        function aggiornabadgechat(chatbadge) {
-            console.log('aggiornabadgechat:'+chatbadge);
-            $(".chat-badge").html(chatbadge);
-            window.localStorage.setItem("chatbadge",chatbadge);
-            if (chatbadge>0) {
-                $(".chat-badge").show();
-            } else {
-                $(".chat-badge").hide();
-            }
-        }
-
-
-
         function inizializzazione_variabili() {
             console.log("Dentro inizializzazione_variabili");
 
@@ -207,7 +205,7 @@ var app = {
             var notifichebadge  =window.localStorage.getItem('notifichebadge') || 0;
             aggiornabadgechat(chatbadge);
             aggiornabadgenotifiche(notifichebadge);
-            
+
             md5_eventi      =window.localStorage.getItem('md5_eventi');
             md5_leader      =window.localStorage.getItem('md5_leader');
             md5_viaggi      =window.localStorage.getItem('md5_viaggi');
