@@ -151,7 +151,7 @@ var app = {
                     $('#incomingMessages').append(htmlcalendario);
                     var badgechat=0;
                     badgechat=+window.localStorage.getItem("badgechat") || 0;
-                    badgechat=badgechat+1;
+                    badgechat++;
                     $(".chat-badge").html(badgechat);
                     window.localStorage.setItem("badgechat",badgechat);
                 }
@@ -165,7 +165,7 @@ var app = {
                 alert(data.message);
                 var notifichebadge=0;
                 notifichebadge=+window.localStorage.getItem("notifichebadge") || 0;
-                notifichebadge=notifichebadge+1;
+                notifichebadge++;
                 $(".notifiche-badge").html(notifichebadge);
                 window.localStorage.setItem("notifichebadge",notifichebadge);
             }
