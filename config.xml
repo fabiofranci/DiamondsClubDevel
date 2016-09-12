@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="it.studioweb19.diamondsclubdevel" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="it.studioweb19.diamondsclub" version="1.0.0">
   <name>DiamondsClub</name>
   <description>Diamonds Club App - Michele Tarulli</description>
   <author href="http://www.studioweb19.it" email="info@studioweb19.it">Studio Web 19</author>
