@@ -209,13 +209,10 @@ var app = {
             data: jQuery.param(params) ,
             success: function (data) {
                 //alert("SUCCESS!");
-                resp=data.resp;
                 cordova.plugins.notification.badge.set(data.badge);
                 aggiornabadgenotifiche(data.notifichebadge);
                 aggiornabadgechat(data.chatbadge);
-
-                //console.log(resp);
-                window.localStorage.setItem("notifiche_memoria",JSON.stringify(resp));
+                //console.log(data);
             },
             error: function (e) {
                 console.log("Errore in chiamata getbadges.php");
