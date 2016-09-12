@@ -200,9 +200,7 @@ var app = {
         if (window.localStorage.getItem("registrationId")) {
             params.regId=window.localStorage.getItem("registrationId");
         }
-        params.secret=secret;
-
-        console.log("chiamo getbadges, parametri:"+params);
+        params.secret="jk08lasit76hnjvm98hnj46ukjbfadksdfas";
 
         $.ajax({
             dataType: "json",
