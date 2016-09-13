@@ -161,9 +161,19 @@ h3.mc-text-danger  {
     size:10px;
 }
 
-.ui-page.ui-body-b {
-    background: url(../appicons/sfondobianco.png);
-    background-repeat:no-repeat;
-    background-position:center center;
-    background-size:cover;
+#background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    background: url(../appicons/sfondobianco.png) no-repeat center center fixed !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: -1;
+}
+.ui-page{
+    background:none;
 }
