@@ -2064,7 +2064,7 @@ var app = {
                         ii="0"+ii;
                     }
                     var adesso= dd+'/'+mm+'/'+yyyy+' '+hh+':'+ii;
-                    var htmlcalendario="<div class='rightmessage'><div class='message-bubble'><div class='message-text'>"+$("#messageText").val()+"<span class='message-meta'>"+adesso+"</span></div></div></div><div class='clearboth'></div>";
+                    var htmlmessaggio="<div class='rightmessage'><div class='message-bubble'><div class='message-text'>"+$("#messageText").val()+"<span class='message-meta'>"+adesso+"</span></div></div></div><div class='clearboth'></div>";
                     $.mobile.loading( 'hide');
                     $("#incomingMessages").append(htmlmessaggio);
                     var pagechatoffset=$("#segnapostoincomingMessages").offset().top;
