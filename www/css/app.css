@@ -204,6 +204,7 @@ h3.mc-text-danger  {
     margin-bottom:15px;
     font-size:14px;
     width:100%;
+    min-width:80px;
 }
 .message-sender {
     font-weight: bold;
