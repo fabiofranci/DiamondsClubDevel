@@ -153,11 +153,11 @@ var app = {
             if (data.additionalData.chat =='15planner') {
                 if (data.additionalData.Sender==window.localStorage.getItem('idUser')) {
 
-                    var htmlcalendario="<div class='rightmessage'><div class='message-bubble'><div class='message-text'>"+data.message+"<span class='message-meta'>"+data.timestamp+"</span></div></div></div><div class='clearboth'></div>";
+                    var htmlcalendario="<div class='rightmessage'><div class='message-bubble'><div class='message-text'>"+data.message+"<span class='message-meta'>"+data.additionalData.timestamp+"</span></div></div></div><div class='clearboth'></div>";
 
                     $('#incomingMessages').append(htmlcalendario);
                 } else {
-                    var htmlcalendario="<div class='leftmessage'><div class='message-bubble'><div class='message-sender'>"+data.additionalData.nomeutente+"</div><div class='message-text'>"+data.message+"<span class='message-meta'>"+data.timestamp+"</span></div></div></div><div class='clearboth'></div>";
+                    var htmlcalendario="<div class='leftmessage'><div class='message-bubble'><div class='message-sender'>"+data.additionalData.nomeutente+"</div><div class='message-text'>"+data.message+"<span class='message-meta'>"+data.additionalData.timestamp+"</span></div></div></div><div class='clearboth'></div>";
                     $('#incomingMessages').append(htmlcalendario);
                     var chatbadge=0;
                     chatbadge=+window.localStorage.getItem("chatbadge") || 0;
