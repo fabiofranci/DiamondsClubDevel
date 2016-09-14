@@ -2039,6 +2039,7 @@ var app = {
             params.chat='15planner';
             params.msg=$("#messageText").val();
             console.log(params);
+            $("#messageText").val('');
             //alert("Mando via il messaggio con testo:"+$("#messageText").val());
 
             //alert("MAndo via il messaggio "+$("#messageText").val());
