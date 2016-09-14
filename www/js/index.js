@@ -1900,15 +1900,18 @@ var app = {
 // ---------------------------------------------------------------------------------------------------------------
         $(".btn-page-chat, .btn-page-chat-back").click(function(){
             //console.log("dentro chat");
-            console.log($.mobile.pageContainer.pagecontainer( 'getActivePage' ).attr( 'id' ));
             window.localStorage.removeItem('pagechatoffset');
-            $.mobile.loading( 'show', {
-                text: 'Loading',
-                textVisible: true,
-                theme: 'a',
-                textonly: false,
-                html: ''
-            });
+            if ($.mobile.pageContainer.pagecontainer( 'getActivePage' ).attr( 'id' )=='page-chat') {
+
+            } else {
+                $.mobile.loading( 'show', {
+                    text: 'Loading',
+                    textVisible: true,
+                    theme: 'a',
+                    textonly: false,
+                    html: ''
+                });
+            }
             var resp=[];
             var params={};
 
