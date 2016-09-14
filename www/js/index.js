@@ -1953,7 +1953,11 @@ var app = {
                     if (resp.length>0) {
                         for (j=0;j<resp.length;j++) {
                             var messaggio=resp[j];
-                            htmlcalendario+="<div class='leftmessage'><div class='message-bubble'><div class='message-sender'>"+messaggio.nomeutente+"</div><div class='message-text'>"+messaggio.messaggio+"<span class='message-meta'>"+messaggio.timestamp+"</span></div></div></div><div class='clearboth'></div>";
+                            if (messaggio.nomeutente=='IO') {
+                                htmlcalendario+="<div class='rightmessage'><div class='message-bubble'><div class='message-text'>"+messaggio.messaggio+"<span class='message-meta'>"+messaggio.timestamp+"</span></div></div></div><div class='clearboth'></div>";
+                            } else {
+                                htmlcalendario+="<div class='leftmessage'><div class='message-bubble'><div class='message-sender'>"+messaggio.nomeutente+"</div><div class='message-text'>"+messaggio.messaggio+"<span class='message-meta'>"+messaggio.timestamp+"</span></div></div></div><div class='clearboth'></div>";
+                            }
                         }
                         $('#incomingMessages').append(htmlcalendario);
                     }
