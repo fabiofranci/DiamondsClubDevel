@@ -2039,7 +2039,7 @@ var app = {
             params.chat='15planner';
             params.msg=$("#messageText").val();
             console.log(params);
-            $("#messageText").val('');
+
             //alert("Mando via il messaggio con testo:"+$("#messageText").val());
 
             //alert("MAndo via il messaggio "+$("#messageText").val());
@@ -2070,6 +2070,7 @@ var app = {
                     }
                     var adesso= dd+'/'+mm+'/'+yyyy+' '+hh+':'+ii;
                     var htmlmessaggio="<div class='rightmessage'><div class='message-bubble'><div class='message-text'>"+$("#messageText").val()+"<span class='message-meta'>"+adesso+"</span></div></div></div><div class='clearboth'></div>";
+                    $("#messageText").val('');
                     $.mobile.loading( 'hide');
                     $("#incomingMessages").append(htmlmessaggio);
                     var pagechatoffset=$("#segnapostoincomingMessages").offset().top;
