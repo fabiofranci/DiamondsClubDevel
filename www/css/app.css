@@ -179,7 +179,7 @@ h3.mc-text-danger  {
 }
 
 .leftmessage {
-    margin-right:20px;
+    margin-right:50px;
     text-align:left;
     float:left;
     background-color:#efefef;
@@ -189,7 +189,7 @@ h3.mc-text-danger  {
 }
 
 .rightmessage {
-    margin-left:20px;
+    margin-left:50px;
     text-align:right;
     float:right;
     background-color:#3399cc;
@@ -206,7 +206,7 @@ h3.mc-text-danger  {
     margin-bottom:15px;
     font-size:14px;
     width:100%;
-    min-width:120px;
+    min-width:100px;
 }
 .message-sender {
     font-weight: bold;
