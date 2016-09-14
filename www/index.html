@@ -599,11 +599,6 @@
             <a class="btn-header-custom" href="#page-index-logged" data-icon="back" data-iconpos="notext" data-transition="slide" data-direction="reverse"></a>
         </div><!-- /header -->
         <div role="main" class="ui-content">
-            <div id="incomingMessages" name="incomingMessages" class="msgContainerDiv" ></div>
-            <div id="segnapostoincomingMessages"></div><br/><br/><br/><br/><br/>
-        </div>
-        <div data-role="footer" class="ui-bar" data-theme="b" data-position="fixed" >
-
             <fieldset class="ui-grid-a">
                 <div class="ui-block-a">
                     <textarea name="messageText" id="messageText"></textarea>
@@ -612,6 +607,18 @@
                     <button data-theme="a" id="chatSendButton" name="chatSendButton">invia</button>
                 </div>
             </fieldset>
+            <hr/>
+            <div id="incomingMessages" name="incomingMessages" class="msgContainerDiv" ></div>
+            <div id="segnapostoincomingMessages"></div><br/><br/><br/><br/><br/>
+        </div>
+        <div data-role="footer" class="ui-bar dcfooter" data-id="DC-footer" data-theme="b" data-position="fixed" >
+            <div class="dcfootergrid ui-grid-d">
+                <div  class="ui-block-a"><a href="#page-index-logged"><img class="DCiconfooter" src="appicons/home_bottone_b.png"></a></div>
+                <div class="ui-block-b btn-ospiti"><a href="#" ><img class="DCiconfooter" src="appicons/ospiti_bottone_b.png"></a></div>
+                <div class="ui-block-c btn-page-notifiche"><div class="ui-badge-container"><span class="badge notifiche-badge"></span><a href="#" ><img class="DCiconfooter" src="appicons/notifiche_bottone_b.png"></a></div></div>
+                <div class="ui-block-d btn-page-chat"><div class="ui-badge-container"><span class="badge chat-badge"></span><a href="#"  ><img class="DCiconfooter" src="appicons/chat_bottone_dark.png"></a></div></div>
+                <div class="ui-block-e"><a href="#page-profilo-personale" ><img class="DCiconfooter" src="appicons/profilo_bottone_b.png"></a></div>
+            </div><!-- /grid-b -->
         </div>
     </div><!-- /page -->
 
