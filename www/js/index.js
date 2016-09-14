@@ -117,6 +117,13 @@ var app = {
         $.getScript( "lib/jqm/jquery.mobile-1.4.5.js" )
             .done(function( script, textStatus ) {
                 app.iniettajquery2('deviceready');
+                $.mobile.loading( 'show', {
+                    text: 'Loading',
+                    textVisible: true,
+                    theme: 'a',
+                    textonly: false,
+                    html: ''
+                });
             })
             .fail(function( jqxhr, settings, exception ) {
                 alert("Errore caricamento jquery mobile");
@@ -351,6 +358,7 @@ var app = {
         if(window.localStorage.getItem('idOspite')>0) {
             initial = '#page-index-logged';
         }
+        $.mobile.loading( 'hide');
         $.mobile.navigate(initial);
 
         window.localStorage.setItem("platform",device.platform);
