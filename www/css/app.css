@@ -177,3 +177,44 @@ h3.mc-text-danger  {
 .ui-page{
     background:none;
 }
+
+.leftmessage {
+    text-align:left;
+    float:left;
+    background-color:#efefef;
+    border-radius: .8em;
+    border: 2px solid #efefef;
+    padding:10px;
+}
+
+.rightmessage {
+    text-align:right;
+    float:right;
+    background-color:#3399cc;
+    border-radius: .8em;
+    border: 2px solid #3399cc;
+    padding:10px;
+    color:white;
+}
+.clearboth {
+    clear:both;
+    margin-bottom:10px;
+}
+.message-bubble {
+    margin-bottom:15px;
+    font-size:14px;
+    width:100%;
+}
+.message-sender {
+    font-weight: bold;
+}
+.message-text {
+    position:relative;
+}
+.message-meta {
+    font-size:10px;
+    position:absolute;
+    right:0px;
+    bottom:-14px;
+    text-align:right;
+}

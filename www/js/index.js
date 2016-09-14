@@ -152,10 +152,12 @@ var app = {
             //alert(data.message);
             if (data.additionalData.chat =='15planner') {
                 if (data.additionalData.Sender==window.localStorage.getItem('idUser')) {
-                    var htmlcalendario="<div class='msg-chat'><strong>IO:</strong> "+data.message+"</div>";
+
+                    var htmlcalendario="<div class='rightmessage'><div class='message-bubble'><div class='message-text'>"+data.message+"<span class='message-meta'>"+data.timestamp+"</span></div></div></div><div class='clearboth'></div>";
+
                     $('#incomingMessages').append(htmlcalendario);
                 } else {
-                    var htmlcalendario="<div class='msg-chat'><strong>"+data.additionalData.nomeutente+":</strong> "+data.message+"</div>";
+                    var htmlcalendario="<div class='leftmessage'><div class='message-bubble'><div class='message-sender'>"+data.additionalData.nomeutente+"</div><div class='message-text'>"+data.message+"<span class='message-meta'>"+data.timestamp+"</span></div></div></div><div class='clearboth'></div>";
                     $('#incomingMessages').append(htmlcalendario);
                     var chatbadge=0;
                     chatbadge=+window.localStorage.getItem("chatbadge") || 0;
@@ -1951,7 +1953,7 @@ var app = {
                     if (resp.length>0) {
                         for (j=0;j<resp.length;j++) {
                             var messaggio=resp[j];
-                            htmlcalendario+="<div class='msg-chat'><strong>"+messaggio.nomeutente+":</strong> "+messaggio.messaggio+"</div>";
+                            htmlcalendario+="<div class='leftmessage'><div class='message-bubble'><div class='message-sender'>"+data.additionalData.nomeutente+"</div><div class='message-text'>"+data.message+"<span class='message-meta'>"+data.timestamp+"</span></div></div></div><div class='clearboth'></div>";
                         }
                         $('#incomingMessages').append(htmlcalendario);
                     }
