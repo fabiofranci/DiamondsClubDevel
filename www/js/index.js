@@ -2045,7 +2045,26 @@ var app = {
                 data: jQuery.param(params) ,
                 success: function (data) {
                     var idmessaggio=data.idmessaggio;
-                    var htmlmessaggio="<div class='msg-chat'><strong>IO:</strong> "+$("#messageText").val()+"</div>";
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth()+1; //January is 0!
+                    var hh=today.getHours();
+                    var ii=today.getMinutes();
+                    var yyyy = today.getFullYear();
+                    if(dd<10){
+                        dd='0'+dd
+                    }
+                    if(mm<10){
+                        mm='0'+mm
+                    }
+                    if (hh<10) {
+                        hh="0"+hh;
+                    }
+                    if (ii<10) {
+                        ii="0"+ii;
+                    }
+                    var adesso= dd+'/'+mm+'/'+yyyy+' '+hh+':'+ii;
+                    var htmlcalendario="<div class='rightmessage'><div class='message-bubble'><div class='message-text'>"+$("#messageText").val()+"<span class='message-meta'>"+adesso+"</span></div></div></div><div class='clearboth'></div>";
                     $.mobile.loading( 'hide');
                     $("#incomingMessages").append(htmlmessaggio);
                     var pagechatoffset=$("#segnapostoincomingMessages").offset().top;
