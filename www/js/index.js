@@ -303,6 +303,11 @@ var app = {
         var materiali_first_time=0;
         var notifiche_first_time=0;
 
+
+        var widthcontainer=$("#container-reg").width();
+        $("#leftpart").width(widthcontainer/2-5);
+        $("#rightpart").width(widthcontainer/2-5);
+
         console.log("Prima di inizializzazione");
         console.log("idUser:"+idUser);
         console.log("idOspite:"+idOspite);
