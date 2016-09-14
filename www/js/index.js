@@ -48,6 +48,8 @@ var audioAttuale='';
 var appId=2235454;
 var secret="jk08lasit76hnjvm98hnj46ukjbfadksdfas";
 
+$("[data-role='page']").hide();
+$("#splash").show();
 
 showToast = function (text) {
     var notifichecount=1*text;
