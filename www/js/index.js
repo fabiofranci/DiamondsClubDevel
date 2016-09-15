@@ -316,6 +316,7 @@ var app = {
 
 
         var widthcontainer=$("#container-reg").width();
+        console.log('widthcontainer:'+widthcontainer);
         if (widthcontainer>0) {
 
         } else {
