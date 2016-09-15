@@ -461,6 +461,7 @@ var app = {
                         url: "https://www.diamondsclub.it/api/logout.php",
                         data: querystring,
                         success: function (resp) {
+                            console.log("Eseguito logout con successo");
                             $.mobile.loading( 'hide' );
                             logoutfunction();
                         },
