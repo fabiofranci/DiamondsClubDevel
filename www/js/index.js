@@ -316,6 +316,11 @@ var app = {
 
 
         var widthcontainer=$("#container-reg").width();
+        if (widthcontainer>0) {
+
+        } else {
+            widthcontainer=350;
+        }
         $("#leftpart").width(widthcontainer/2-5);
         $("#rightpart").width(widthcontainer/2-5);
 
