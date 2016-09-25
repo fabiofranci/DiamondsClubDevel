@@ -144,7 +144,7 @@ var app = {
     },
 
     inizializzaPush: function(id) {
-        console.log("03 - Dentro inizializzaPush");
+        console.log("03 - Dentro inizializzaPush!");
         var push = PushNotification.init({ "android": {"senderID": "553559042102"},
             "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
         push.on('registration', function(data) {
